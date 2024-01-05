@@ -1,9 +1,9 @@
-import "dotenv/config";
-import express from "express";
-import { routes } from "./routes/index.js";
-import { AppError } from "./utils/AppError.js";
+require("dotenv").config();
+const express = require("express");
+const routes = require("./routes/index.js");
+const AppError = require("./utils/AppError.js");
 const app = express();
-app.use(json());
+app.use(express.json());
 
 app.use(routes);
 
@@ -11,13 +11,13 @@ app.use((err, req, res, nxt) => {
   if(err instanceof AppError) {
     return res.status(err.code).json({
       "status": "error",
-      "message": "err.message"
+      "message": err.message
     });
   }
 
   return res.status(500).json({
     "status": "error",
-    "message": "internal error"
+    "message": process.env.NODE_ENV == "development" ? err.message : "internal error" 
   });
 });
 

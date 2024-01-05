@@ -1,0 +1,44 @@
+{
+  "development": {
+    "dialect": "postgres",
+    "username": "admin",
+    "password": "12345678",
+    "database": "database",
+    "host": "localhost",
+    "port": 5432,
+    "define": {
+      "timestamp": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "underscored": true
+    }
+  },
+  "test": {
+    "dialect": "postgres",
+    "username": "admin",
+    "password": "12345678",
+    "database": "database",
+    "host": "localhost",
+    "port": 5432,
+    "define": {
+      "timestamp": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "underscored": true
+    }
+  },
+  "production": {
+    "dialect": "postgres",
+    "username": "postgres",
+    "password": "bg*A34Aef*EacCg4B53CAB4dD*E5a555",
+    "database": "railway",
+    "host": "viaduct.proxy.rlwy.net",
+    "port": 42496,
+    "define": {
+      "timestamp": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "underscored": true
+    }
+  }
+}

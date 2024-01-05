@@ -1,8 +1,10 @@
-import { Router } from "express";
-import { theRoute } from "./the.route.js";
-import { userRoutes } from "./user.routes.js";
+const Router = require("express");
+const theRoute = require("./the.route.js");
+const userRoutes = require("./user.routes.js");
 
-export const routes = Router();
+const routes = Router();
 
 routes.use("/theroute", theRoute);
 routes.use("/user", userRoutes);
+
+module.exports = routes;

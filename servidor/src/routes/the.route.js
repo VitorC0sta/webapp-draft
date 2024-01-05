@@ -1,6 +1,6 @@
-import { Router } from "express";
+const Router = require("express");
 
-export const theRoute = Router();
+const theRoute = Router();
 
 theRoute.get("/:num", (req, res) => {
   const { num } = req.params;
@@ -52,3 +52,5 @@ theRoute.get("/:num", (req, res) => {
   return res.send(`<pre>${message}</pre>`)
   }
 });
+
+module.exports = theRoute;

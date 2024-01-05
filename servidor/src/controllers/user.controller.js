@@ -1,7 +1,7 @@
-import { hash, compare } from "bcrypt";
-import { AppError } from "../utils/AppError";
+const { hash, compare } = require("bcrypt");
+const { AppError } = require("../utils/AppError.js");
 
-export default class UserController {
+class UserController {
   async create(req, res) {
     const { name, cpf, password, email } = req.body;
 
@@ -25,3 +25,5 @@ export default class UserController {
 
 
 }
+
+module.exports = UserController;

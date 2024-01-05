@@ -1,0 +1,27 @@
+version: "3.9"
+
+networks:
+  back:
+    driver: bridge
+
+services: 
+  db: 
+    container_name: "database"  
+    image: "postgres:16.1"
+    restart: "on-failure"
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=database
+    volumes:
+      - data_pg:/data/postgres
+    networks:
+      - back
+
+volumes:
+  data_pg: null
+    
