@@ -1,4 +1,6 @@
 'use strict';
+const databaseConnection = require("../connection");
+
 const {
   Model
 } = require('sequelize');
@@ -9,11 +11,12 @@ module.exports = (sequelize, DataTypes) => {
   Users.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    cpf: DataTypes.STRING,
+    national_id_number: DataTypes.STRING,
     administrator: DataTypes.BOOLEAN
   }, {
-    sequelize,
+    sequelize: databaseConnection(),
     modelName: 'Users',
   });
+
   return Users
 };

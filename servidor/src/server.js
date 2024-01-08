@@ -1,11 +1,16 @@
+require("express-async-errors");
 require("dotenv").config();
+
 const express = require("express");
 const routes = require("./routes/index.js");
 const AppError = require("./utils/AppError.js");
+const databaseConnection = require("./database/connection");
+
 const app = express();
 app.use(express.json());
 
 app.use(routes);
+databaseConnection(); 
 
 app.use((err, req, res, nxt) => {
   if(err instanceof AppError) {
@@ -22,4 +27,4 @@ app.use((err, req, res, nxt) => {
 });
 
 const PORT = process.env.PORT || 3333;
-app.listen(PORT, () => console.log("Server status [ONLINE].:"));
+app.listen(PORT, () => console.log("Server status :: [ONLINE].:"));
