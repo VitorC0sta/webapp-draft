@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     national_id_number: DataTypes.STRING,
-    administrator: DataTypes.BOOLEAN
+    password: DataTypes.STRING,
+    administrator: DataTypes.BOOLEAN,
+    created_at: DataTypes.DATE,
+    updated_at: DataTypes.DATE
   }, {
     sequelize: databaseConnection(),
     modelName: 'Users',

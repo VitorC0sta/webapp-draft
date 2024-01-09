@@ -2,7 +2,7 @@ const { hash, compare } = require("bcrypt");
 const { AppError } = require("../utils/AppError.js");
 const Users = require("../database/entities/users.js");
 
-class UserController {
+class UserController {''
   async create(req, res) {
     const { name, national_id_number, password, email, id_client, administrator } = req.body;
     const requireFields = ["name", "national_id_number", "password", "email"];
