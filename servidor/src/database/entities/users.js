@@ -1,25 +1,15 @@
 'use strict';
-const databaseConnection = require("../connection");
+const databaseConnection = require('../connection');
 
-const {
-  Model
-} = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
-  class Users extends Model {}
+const User = databaseConnection.define('User', {
+  name: DataTypes.STRING,
+  email: DataTypes.STRING,
+  national_id_number: DataTypes.STRING,
+  administrator: DataTypes.BOOLEAN,
+  createdAt: { type: DataTypes.DATE, field: 'created_at' },
+  updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
+});
 
-  Users.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    national_id_number: DataTypes.STRING,
-    password: DataTypes.STRING,
-    administrator: DataTypes.BOOLEAN,
-    created_at: DataTypes.DATE,
-    updated_at: DataTypes.DATE
-  }, {
-    sequelize: databaseConnection(),
-    modelName: 'Users',
-  });
-
-  return Users
-};
+return User
