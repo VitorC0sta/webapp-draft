@@ -2,7 +2,7 @@ const { hash, compare } = require('bcrypt');
 const { AppError } = require('../utils/AppError.js');
 const Users = require('../database/entities/users.js');
 
-class UserController {
+class UserController {''
   async create(req, res) {
     const {
       name,

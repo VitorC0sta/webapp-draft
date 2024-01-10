@@ -12,4 +12,4 @@ const User = databaseConnection.define('User', {
   updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
 });
 
-module.exports = User;
+return User
