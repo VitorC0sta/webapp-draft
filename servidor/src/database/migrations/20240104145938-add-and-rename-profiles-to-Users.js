@@ -1,7 +1,5 @@
 'use strict';
 
-const { Sequelize } = require('sequelize');
-
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.addColumn('Users', 'id_client', {
