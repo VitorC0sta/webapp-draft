@@ -3,7 +3,7 @@ require('express-async-errors');
 require('dotenv').config();
 
 const express = require('express');
-const routes = require('./routes/index.js');
+const routes = require('./routes.js');
 const AppError = require('./utils/AppError.js');
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(routes);
 
 app.use((err, req, res, nxt) => {
   if (err instanceof AppError) {
-    return res.status(err.code).json({
+    return res.status(err.statusCode).json({
       status: 'error',
       message: err.message,
     });

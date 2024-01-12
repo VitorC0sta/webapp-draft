@@ -1,5 +1,4 @@
-const AppError = require('../utils/AppError');
-const Clients = require('../database/entities/clients.js');
+const Clients = require('../../../database/entities/clients.js');
 
 class ClientsController {
   async create(req, res) {
@@ -15,7 +14,7 @@ class ClientsController {
     } = req.body;
   
   
-    await Clients.create({
+   const client =  await Clients.create({
       legal_name,
       dba_name,
       company_id,
@@ -26,9 +25,7 @@ class ClientsController {
       country
     });
   
-    return res.status(201).json({
-      "message": "created"
-    })
+    return res.status(201).json(client);
   }
 
   
