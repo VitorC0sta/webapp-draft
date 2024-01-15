@@ -12,7 +12,7 @@ function ensureAuthenticated(req, res, nxt) {
 
     try {
         const { sub: user_id } = verify(token, authConfig.jwt.secret);
-        
+       
         req.user = {
             id: Number(user_id)
         } 

@@ -12,8 +12,10 @@ function isAdmin(req, res, next) {
   const [, token] = authHeader.split(" ");
 
   try {
-    const { administrator } = verify(token, authConfig.jwt.secret);
-
+    const { sub: administrator} = verify(token, authConfig.jwt.secret);
+    
+    console.log(administrator);
+   
     if (administrator) {
       next();
     } else {

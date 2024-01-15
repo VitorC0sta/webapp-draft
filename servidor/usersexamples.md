@@ -1,3 +1,41 @@
+# Empresas
+
+## Empresa 5
+
+- **Nome Legal:** FreshFoods Corporation
+- **DBA Name:** FreshFoods
+- **Company ID:** FreshCorp123
+- **Cidade:** Cityville
+- **CEP:** 12345-678
+- **Endereço:** Av. Principal, 123
+- **Estado:** Stateville
+- **País:** Countryland
+
+## Empresa 2
+
+- **Nome Legal:** SturdyTools Ltd.
+- **DBA Name:** SturdyTools
+- **Company ID:** Sturdy123
+- **Cidade:** Toolsville
+- **CEP:** 54321-876
+- **Endereço:** Tool St., 456
+- **Estado:** Toolstate
+- **País:** Tooland
+
+## Empresa 3
+
+- **Nome Legal:** Alimentos Deliciosos Ltda.
+- **DBA Name:** Deliciosos
+- **Company ID:** Deli789
+- **Cidade:** Saborville
+- **CEP:** 98765-432
+- **Endereço:** Rua Saborosa, 789
+- **Estado:** Saborland
+- **País:** Saborking
+
+
+
+
 # User List
 
 - **User 1:**
@@ -126,4 +164,12 @@
   - **Password:** emmaPwd456
   - **Email:** emma@example.com
   - **ID Client:** FreshFoods Corporation
+  - **Administrator:** false
+
+- **User 17:**
+  - **Name:** Liam
+  - **National ID Number:** 8765432101
+  - **Password:** liamPass789
+  - **Email:** liam@example.com
+  - **ID Client:** STL789
   - **Administrator:** false
