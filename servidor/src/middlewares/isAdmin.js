@@ -12,11 +12,11 @@ function isAdmin(req, res, next) {
   const [, token] = authHeader.split(" ");
 
   try {
-    const { sub: administrator} = verify(token, authConfig.jwt.secret);
+    const  decoded = verify(token, authConfig.jwt.secret);
     
-    console.log(administrator);
+    console.log(decoded);
    
-    if (administrator) {
+    if (decoded.administrator) {
       next();
     } else {
       throw new AppError("Acesso negado. Você não é um administrador.", 403);

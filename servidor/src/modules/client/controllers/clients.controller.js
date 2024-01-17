@@ -1,4 +1,15 @@
-const Clients = require('../../../database/entities/clients.js');
+const {object, string} = require("yup");
+const CreateClientUseCase = require("../usecases/createClient.usecase.js");
+
+const clientCreationSchema = object({
+  legal_name: string().required(),
+  dba_name: string().required(),
+  company_id: string().required(),
+  postal_code: string().required(),
+  address: string().required(),
+  state: string(),
+  country: string().required()
+})
 
 class ClientsController {
   async create(req, res) {
@@ -10,11 +21,12 @@ class ClientsController {
       postal_code,
       address,
       state,
-      country
+      country,
     } = req.body;
-  
-  
-   const client =  await Clients.create({
+
+    await clientCreationSchema.validate(req.body, { abortEarly: false });
+
+    const client = await new CreateClientUseCase().execute({
       legal_name,
       dba_name,
       company_id,
@@ -22,13 +34,11 @@ class ClientsController {
       postal_code,
       address,
       state,
-      country
+      country,
     });
-  
+
     return res.status(201).json(client);
   }
-
-  
 }
 
 module.exports = ClientsController;

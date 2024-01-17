@@ -16,7 +16,7 @@ class CreateSessionUseCase {
 
     const {secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret, {
+    const token = sign({isAdmin: user.administrator}, secret, {
       subject: String(user.id),
       expiresIn
     });

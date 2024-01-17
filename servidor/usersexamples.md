@@ -1,40 +1,66 @@
 # Empresas
 
-## Empresa 5
+- **Empresa 1:**
+  - **Nome Legal:** ABC Corporation
+  - **DBA Name:** ABC Corp
+  - **Company ID:** C1234567890
+  - **Cidade:** Metropolis
+  - **CEP:** 12345
+  - **Endereço:** 123 Main Street
+  - **Estado:** Metropolis State
+  - **País:** Fantasyland
 
-- **Nome Legal:** FreshFoods Corporation
-- **DBA Name:** FreshFoods
-- **Company ID:** FreshCorp123
-- **Cidade:** Cityville
-- **CEP:** 12345-678
-- **Endereço:** Av. Principal, 123
-- **Estado:** Stateville
-- **País:** Countryland
+- **Empresa 2:**
+  - **Nome Legal:** XYZ Innovations Ltd.
+  - **DBA Name:** XYZ Innovations
+  - **Company ID:** C987654321
+  - **Cidade:** Innovation City
+  - **CEP:** 54321
+  - **Endereço:** 456 Innovation Avenue
+  - **Estado:** Innovatia
+  - **País:** Imaginaria
 
-## Empresa 2
+- **Empresa 3:**
+  - **Nome Legal:** PQR Enterprises
+  - **DBA Name:** PQR Corp
+  - **Company ID:** C555555555
+  - **Cidade:** Corporate Town
+  - **CEP:** 67890
+  - **Endereço:** 123 Corporate Blvd
+  - **Estado:** Corporate State
+  - **País:** Fictionalania 
 
-- **Nome Legal:** SturdyTools Ltd.
-- **DBA Name:** SturdyTools
-- **Company ID:** Sturdy123
-- **Cidade:** Toolsville
-- **CEP:** 54321-876
-- **Endereço:** Tool St., 456
-- **Estado:** Toolstate
-- **País:** Tooland
+- **Empresa 4:**
+  - **Nome Legal:** ABC Tech Solutions Inc.
+  - **DBA Name:** ABC Tech
+  - **Company ID:** C123456789
+  - **Cidade:** Techville
+  - **CEP:** 12345
+  - **Endereço:** 789 Tech Street
+  - **Estado:** Techland
+  - **País:** Fictoria
 
-## Empresa 3
+- **Empresa 5:**
+  - **Nome Legal:** FreshFoods Corporation
+  - **DBA Name:** FreshFoods
+  - **Company ID:** FFC123
+  - **Cidade:** Cityville
+  - **CEP:** 12345
+  - **Endereço:** 123 Main Street
+  - **Estado:** Stateville
+  - **País:** Foodland
 
-- **Nome Legal:** Alimentos Deliciosos Ltda.
-- **DBA Name:** Deliciosos
-- **Company ID:** Deli789
-- **Cidade:** Saborville
-- **CEP:** 98765-432
-- **Endereço:** Rua Saborosa, 789
-- **Estado:** Saborland
-- **País:** Saborking
+- **Empresa 6:**
+  - **Nome Legal:** SturdyTools Ltd.
+  - **DBA Name:** SturdyTools
+  - **Company ID:** STL789
+  - **Cidade:** Toolsville
+  - **CEP:** 56789
+  - **Endereço:** 456 Hardware Lane
+  - **Estado:** Toolsburg
+  - **País:** Metallica
 
-
-
+# <==> <==> # 
 
 # User List
 
@@ -43,7 +69,7 @@
   - **National ID Number:** 1234567890
   - **Password:** senha123
   - **Email:** john@example.com
-  - **ID Client:** 1
+  - **ID Client:** ABC Corp
   - **Administrator:** true
 
 - **User 2:**
@@ -51,7 +77,7 @@
   - **National ID Number:** 2345678901
   - **Password:** password123
   - **Email:** bob@example.com
-  - **ID Client:** 2
+  - **ID Client:** XYZ Innovations
   - **Administrator:** false
 
 - **User 3:**
@@ -59,7 +85,7 @@
   - **National ID Number:** 3456789012
   - **Password:** securepass
   - **Email:** charlie@example.com
-  - **ID Client:** 3
+  - **ID Client:** PQR Corp
   - **Administrator:** true
 
 - **User 4:**
@@ -67,7 +93,7 @@
   - **National ID Number:** 4567890123
   - **Password:** mysecret
   - **Email:** diana@example.com
-  - **ID Client:** 1
+  - **ID Client:** ABC Corp
   - **Administrator:** false
 
 - **User 5:**
@@ -75,7 +101,7 @@
   - **National ID Number:** 5678901234
   - **Password:** confidential
   - **Email:** eva@example.com
-  - **ID Client:** 2
+  - **ID Client:** XYZ Innovations
   - **Administrator:** true
 
 - **User 6:**
@@ -83,7 +109,7 @@
   - **National ID Number:** 6789012345
   - **Password:** topsecret
   - **Email:** frank@example.com
-  - **ID Client:** 3
+  - **ID Client:** PQR Corp
   - **Administrator:** false
 
 - **User 7:**
@@ -91,7 +117,7 @@
   - **National ID Number:** 7890123456
   - **Password:** highlysecure
   - **Email:** grace@example.com
-  - **ID Client:** 1
+  - **ID Client:** ABC Corp
   - **Administrator:** true
 
 - **User 8:**
@@ -99,7 +125,7 @@
   - **National ID Number:** 9876543210
   - **Password:** healthy123
   - **Email:** sophie@example.com
-  - **ID Client:** FreshFoods Corporation
+  - **ID Client:** FreshFoods
   - **Administrator:** true
 
 - **User 9:**
@@ -107,7 +133,7 @@
   - **National ID Number:** 8765432109
   - **Password:** tools123
   - **Email:** fred@example.com
-  - **ID Client:** SturdyTools Ltd.
+  - **ID Client:** SturdyTools
   - **Administrator:** false
 
 - **User 10:**
@@ -115,7 +141,7 @@
   - **National ID Number:** 7654321098
   - **Password:** freshlife
   - **Email:** olivia@example.com
-  - **ID Client:** FreshFoods Corporation
+  - **ID Client:** FreshFoods
   - **Administrator:** true
 
 - **User 11:**
@@ -123,7 +149,7 @@
   - **National ID Number:** 6543210987
   - **Password:** maxpower
   - **Email:** max@example.com
-  - **ID Client:** SturdyTools Ltd.
+  - **ID Client:** SturdyTools
   - **Administrator:** true
 
 - **User 12:**
@@ -131,7 +157,7 @@
   - **National ID Number:** 5432109876
   - **Password:** emmaPwd456
   - **Email:** emma@example.com
-  - **ID Client:** FreshFoods Corporation
+  - **ID Client:** FreshFoods
   - **Administrator:** false
 
 - **User 13:**
@@ -139,7 +165,7 @@
   - **National ID Number:** 2109876543
   - **Password:** lucasPass789
   - **Email:** lucas@example.com
-  - **ID Client:** SturdyTools Ltd.
+  - **ID Client:** SturdyTools
   - **Administrator:** true
 
 - **User 14:**
@@ -147,7 +173,7 @@
   - **National ID Number:** 1098765432
   - **Password:** isabellaPwd321
   - **Email:** isabella@example.com
-  - **ID Client:** FreshFoods Corporation
+  - **ID Client:** FreshFoods
   - **Administrator:** false
 
 - **User 15:**
@@ -155,7 +181,7 @@
   - **National ID Number:** 4321098765
   - **Password:** securepass123
   - **Email:** alex@example.com
-  - **ID Client:** SturdyTools Ltd.
+  - **ID Client:** SturdyTools
   - **Administrator:** true
 
 - **User 16:**
@@ -163,7 +189,7 @@
   - **National ID Number:** 3210987654
   - **Password:** emmaPwd456
   - **Email:** emma@example.com
-  - **ID Client:** FreshFoods Corporation
+  - **ID Client:** FreshFoods
   - **Administrator:** false
 
 - **User 17:**
@@ -171,5 +197,5 @@
   - **National ID Number:** 8765432101
   - **Password:** liamPass789
   - **Email:** liam@example.com
-  - **ID Client:** STL789
+  - **ID Client:** SturdyTools
   - **Administrator:** false
