@@ -11,13 +11,15 @@ function ensureAuthenticated(req, res, nxt) {
     const [, token] = authHeader.split(" ");
 
     try {
-        const { sub: user_id } = verify(token, authConfig.jwt.secret);
-       
-        req.user = {
-            id: Number(user_id)
-        } 
+        const decoded = verify(token, authConfig.jwt.secret);
+        if(decoded.active) {
+            req.user = {
+                id: Number(decoded.sub)
+            } 
+    
+            return nxt();
 
-        return nxt();
+        }
 
     } catch {
         throw new AppError("JWT inválido");

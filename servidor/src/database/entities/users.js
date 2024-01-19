@@ -21,4 +21,8 @@ Users.findOneByEmail = async function(email) {
   return await this.findOne({ where: { email } });
 };
 
+Users.findOneById = async function(id) {
+  return await this.findOne({ where: { id } });
+}
+
 module.exports = Users;
