@@ -16,14 +16,15 @@ class CreateSessionUseCase {
 
     const {secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({payload: user, isAdmin: user.administrator}, secret, {
+    const userResponse = { ...user.dataValues };
+
+    userResponse.password = undefined;
+    
+    const token = sign(userResponse, secret, {
       subject: String(user.id),
       expiresIn
     });
 
-    const userResponse = { ...user.dataValues };
-
-    userResponse.password = undefined;
 
     return { userResponse, token};
   }

@@ -1,28 +1,33 @@
-'use strict';
-const databaseConnection = require('../connection');
+"use strict";
+const databaseConnection = require("../connection");
 
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-const Users = databaseConnection.define('User', {
+const Users = databaseConnection.define("User", {
   name: DataTypes.STRING,
   email: DataTypes.STRING,
-  national_id_number: DataTypes.STRING,
   administrator: DataTypes.BOOLEAN,
-  createdAt: { type: DataTypes.DATE, field: 'created_at' },
-  updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
-  id_client: { type: DataTypes.INTEGER, references: {
-    model: 'Clients',
-    key: 'id'
-  }},
-  password: DataTypes.STRING
+  nationalIdNumber: { type: DataTypes.STRING, field: "national_id_number"  },
+  createdAt: { type: DataTypes.DATE, field: "created_at" },
+  updatedAt: { type: DataTypes.DATE, field: "updated_at" },
+  idClient: {
+    type: DataTypes.INTEGER,
+    field: "id_client",
+    references: {
+      model: "Clients",
+      key: "id",
+    },
+  },
+  status: { type: DataTypes.BOOLEAN, field: "active" },
+  password: DataTypes.STRING,
 });
 
-Users.findOneByEmail = async function(email) {
-  return await this.findOne({ where: { email } });
+Users.findOneByEmail = async function (email) {
+  return await this.findOne({ where: { email, active: true } });
 };
 
-Users.findOneById = async function(id) {
+Users.findOneById = async function (id) {
   return await this.findOne({ where: { id } });
-}
+};
 
 module.exports = Users;

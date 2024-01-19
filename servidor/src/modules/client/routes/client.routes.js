@@ -7,6 +7,6 @@ const clientsRoutes = Router();
 
 const clientsController = new ClientsController();
 
-clientsRoutes.post("/register", ensureAuthenticated, isAdmin, clientsController.create);
+clientsRoutes.post("/register", isAdmin, clientsController.create);
 
 module.exports = clientsRoutes;

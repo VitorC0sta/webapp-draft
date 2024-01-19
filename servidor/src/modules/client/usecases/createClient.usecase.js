@@ -19,6 +19,7 @@ class CreateClientUseCase {
     const client = await Clients.create({
       legal_name,
       dba_name,
+      company_id,
       city,
       postal_code,
       address,

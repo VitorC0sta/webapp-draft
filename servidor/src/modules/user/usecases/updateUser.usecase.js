@@ -4,38 +4,35 @@ const AppError = require("../../../utils/AppError");
 
 class UpdateUserUseCase {
   async update({
-    credentialEmail, 
-    isAdmin,
+    userLogged,
     id,
-    newEmail,
     password,
     newPassword,
-    id_client,
+    idClient,
     administrator,
-    active })
-  {
-    const userCheckEmail = await Users.findOneByEmail(newEmail);
-    const user = await Users.findOneByEmail(credentialEmail);
+    active,
+  }) {
+    if (!user) throw new AppError("Usuário não encontrado.");
 
-    if(!user) throw new AppError("Usuário não encontrado.");
+    if (userLogged.isAdmin && id) {
+      const user = await Users.findOneById(id);
 
-    
-    if(isAdmin) {
-      //administrator changes
-    }
-    
-    if(userCheckEmail && userCheckEmail.id !== user.id) {
-      throw new AppError("Email já está em uso.");
+      user.idClient = idClient ?? user.idClient;
+      user.administrator = administrator ?? user.administrator;
+      user.active = active ?? user.active;
     }
 
+    const user = await Users.findOneByEmail(userLogged.email);
     const verifyPassword = compare(password, user.password);
-    
-    if(verifyPassword) {
+
+    if (verifyPassword) {
       user.password = hash(newPassword, 8);
     }
-    
-    const userUpdated = await Users.update(user, { where: { credentialEmail } } );
-    
+
+    const userUpdated = await Users.update(user, {
+      where: { credentialEmail },
+    });
+
     userUpdated.password = undefined;
 
     return userUpdated;

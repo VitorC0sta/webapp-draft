@@ -5,10 +5,10 @@ class UserController {
   async create(req, res) {
     const  {
       name,
-      national_id_number,
+      nationalIdNumber,
       password,
       email,
-      id_client,
+      idClient,
       administrator,
     } = req.body;
 
@@ -16,10 +16,10 @@ class UserController {
 
     const user = await new CreateUserUseCase().execute({
       name,
-      national_id_number,
+      nationalIdNumber,
       password,
       email,
-      id_client,
+      idClient,
       administrator,
     });
 
@@ -27,7 +27,12 @@ class UserController {
   }
 
   async update(req, res) {
-    
+    const {
+      password,
+      idClient,
+      administrator,
+      status
+    } = req.body;
   }
 }
 

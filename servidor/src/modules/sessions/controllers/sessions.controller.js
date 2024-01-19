@@ -7,7 +7,7 @@ const sessionCreationSchema = object({
 });
 
 class SessionsController {
-  async create(req, res) {
+  async authenticate(req, res) {
     const {email, password} = req.body;
 
     await sessionCreationSchema.validate(req.body, { abortEarly: false });

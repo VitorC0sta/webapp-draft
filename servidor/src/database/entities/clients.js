@@ -1,4 +1,3 @@
-'use strict';
 const databaseConnection = require('../connection');
 
 const { DataTypes } = require('sequelize');
@@ -16,8 +15,8 @@ const Clients = databaseConnection.define('Clients', {
   updatedAt: { type: DataTypes.DATE, field: 'updated_at' }
 });
 
-Clients.findOneByName = async function(legal_name) {
-  return await this.findOne({ where: { legal_name } });
+Clients.findOneByCompanyId = async function( company_id ) {
+  return await this.findOne({ where: { company_id, active: true } });
 }
 
 module.exports = Clients;

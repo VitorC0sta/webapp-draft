@@ -1,13 +1,11 @@
 const { object, string, boolean, number } = require("yup");
 
 const userCreationSchema = object({
-  name: string(),
-  password: string().min(8, "Minimo 8 caracteres").required(),
-  email: string().email(),
-  id_client: number(),
+  password: string().min(8, "Mínimo 8 caracteres"),
+  idClient: number(),
   newPassword: string(),
-  reNewPassword: string(),
-  administrator: boolean().required(),
+  isAdmin: boolean(),
+  status: boolean() 
 });
 
 module.exports = userCreationSchema;
