@@ -1,6 +1,6 @@
-const { compare } = require("bcrypt");
-const Users = require("../../../database/entities/users");
-const AppError = require("../../../utils/AppError");
+const { compare } = require("../../../infra/providers/hashprovider");
+const Users = require("../../../infra/database/entities/users");
+const AppError = require("../../../infra/utils/AppError");
 const authConfig = require("../../../configs/auth.js");
 const { sign } = require("jsonwebtoken");
 

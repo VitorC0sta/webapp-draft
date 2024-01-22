@@ -1,5 +1,5 @@
-const Clients = require("../../../database/entities/clients");
-const AppError = require("../../../utils/AppError");
+const Clients = require("../../../infra/database/entities/clients");
+const AppError = require("../../../infra/utils/AppError");
 
 class CreateClientUseCase {
   async execute({

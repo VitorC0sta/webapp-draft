@@ -1,41 +1,57 @@
-const { hash, compare } = require("bcrypt");
-const Users = require("../../../database/entities/users");
-const AppError = require("../../../utils/AppError");
+const { hash, compare } = require("../../../infra/providers/hashprovider");
+const Users = require("../../../infra/database/entities/users");
+const AppError = require("../../../infra/utils/AppError");
 
 class UpdateUserUseCase {
-  async update({
+  
+  async execute({
     userLogged,
     id,
     password,
     newPassword,
     idClient,
     administrator,
-    active,
   }) {
-    if (!user) throw new AppError("Usuário não encontrado.");
 
-    if (userLogged.isAdmin && id) {
-      const user = await Users.findOneById(id);
+    return await userLogged.isAdmin && id ?
+      this.#userAdmin(idClient, administrator, id, newPassword) : this.#loggedUser(password, newPassword, userLogged); 
 
+  }
+
+  async #userAdmin(idClient, administrator, id, newPassword) {
+    const user = await Users.findOneById(id);
+      
+      if (!user) throw new AppError("Usuário não encontrado.");
+      
       user.idClient = idClient ?? user.idClient;
       user.administrator = administrator ?? user.administrator;
-      user.active = active ?? user.active;
+      user.password = await hash(newPassword,8) ?? user.password;
+
+      await user.save();
+
+      user.password = undefined;
+      
+      return user;
+  }
+
+  async #loggedUser(password, newPassword, userLogged) {
+    const userLoggedUpdate = await Users.findOneById(userLogged.id);
+
+    if (!userLoggedUpdate) throw new AppError("Usuário não encontrado.");
+
+    const verifyPassword = await compare(password, userLoggedUpdate.password);
+
+    if (!verifyPassword) {
+      throw new AppError("Senha inválida");
     }
 
-    const user = await Users.findOneByEmail(userLogged.email);
-    const verifyPassword = compare(password, user.password);
+    userLoggedUpdate.password = await hash(newPassword, 8) ;
 
-    if (verifyPassword) {
-      user.password = hash(newPassword, 8);
-    }
+    await userLoggedUpdate.save();
 
-    const userUpdated = await Users.update(user, {
-      where: { credentialEmail },
-    });
+    userLoggedUpdate.password = undefined;
 
-    userUpdated.password = undefined;
-
-    return userUpdated;
+    return userLoggedUpdate;
   }
 }
 

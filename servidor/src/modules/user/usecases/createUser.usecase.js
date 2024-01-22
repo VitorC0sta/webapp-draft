@@ -1,6 +1,6 @@
-const { hash } = require("bcrypt");
-const Users = require("../../../database/entities/users");
-const AppError = require("../../../utils/AppError");
+const { hash } = require("../../../infra/providers/hashprovider");
+const Users = require("../../../infra/database/entities/users");
+const AppError = require("../../../infra/utils/AppError");
 
 
 class CreateUserUseCase {

@@ -1,10 +1,10 @@
-require('./database/connection');
+require('./infra/database/connection');
 require('express-async-errors');
 require('dotenv').config();
 
 const express = require('express');
 const routes = require('./routes.js');
-const AppError = require('./utils/AppError.js');
+const AppError = require('./infra/utils/AppError.js');
 
 const app = express();
 
