@@ -1,15 +1,22 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Events extends Model { }
-  Events.init({
-    event: DataTypes.STRING,
-    id_vehicle: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Events',
-  });
-  return Events;
-};
+const databaseConnection = require("../connection");
+const { DataTypes, Sequelize } = require("sequelize");
+
+const Events = databaseConnection.define("Events", {
+  eventName: { type: DataTypes.STRING, field: "event_name" },
+  createdAt: {
+    type: DataTypes.DATE,
+    field: "created_at",
+    defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+  },
+  idVehicle: {
+    type: DataTypes.INTEGER,
+    field: "id_vehicle",
+    model: "Vehicles",
+    key: "id"
+  }
+},
+{
+  timestamps: false,
+})
+
+module.exports = Events;

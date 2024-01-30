@@ -6,7 +6,7 @@ const { sign } = require("jsonwebtoken");
 
 class CreateSessionUseCase {
   async execute({ email, password }) {
-    const user = await Users.findOneByEmail(email);
+    const user = await Users.find("email", email);
 
     if(!user) throw new AppError("Email e/ou senha incorreta.", 401);
 

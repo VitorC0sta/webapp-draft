@@ -1,8 +1,8 @@
-const { object, number } = require("yup");
+const { object, number, string } = require("yup");
 
 const userDeleteSchema = object({
   id: number().required(),
-  email: email()
+  email: string().email()
 });
 
 module.exports = userDeleteSchema;

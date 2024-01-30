@@ -3,9 +3,7 @@ const AppError = require("../../../infra/utils/AppError");
 class DeleteUserUseCase {
   async execute ( id, email, userLogged) {
     this.#verifyAdmin(userLogged);
-
-    const user = 0;
-
+    
   }
 
   async #verifyAdmin(userLogged) {

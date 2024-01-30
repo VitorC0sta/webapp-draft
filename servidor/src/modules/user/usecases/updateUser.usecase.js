@@ -19,7 +19,7 @@ class UpdateUserUseCase {
   }
 
   async #userAdmin(idClient, administrator, id, newPassword) {
-    const user = await Users.findOneById(id);
+    const user = await Users.find("id", id);
       
       if (!user) throw new AppError("Usuário não encontrado.");
       
@@ -35,7 +35,7 @@ class UpdateUserUseCase {
   }
 
   async #loggedUser(password, newPassword, userLogged) {
-    const userLoggedUpdate = await Users.findOneById(userLogged.id);
+    const userLoggedUpdate = await Users.find("id", userLogged.id);
 
     if (!userLoggedUpdate) throw new AppError("Usuário não encontrado.");
 

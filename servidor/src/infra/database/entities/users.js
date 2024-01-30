@@ -1,4 +1,3 @@
-"use strict";
 const databaseConnection = require("../connection");
 
 const { DataTypes } = require("sequelize");
@@ -7,6 +6,8 @@ const Users = databaseConnection.define("User", {
   name: DataTypes.STRING,
   email: DataTypes.STRING,
   administrator: DataTypes.BOOLEAN,
+  password: DataTypes.STRING,
+  active: DataTypes.BOOLEAN,
   nationalIdNumber: { type: DataTypes.STRING, field: "national_id_number"  },
   createdAt: { type: DataTypes.DATE, field: "created_at" },
   updatedAt: { type: DataTypes.DATE, field: "updated_at" },
@@ -18,16 +19,14 @@ const Users = databaseConnection.define("User", {
       key: "id",
     },
   },
-  status: { type: DataTypes.BOOLEAN, field: "active" },
-  password: DataTypes.STRING,
 });
 
-Users.findOneByEmail = async function (email) {
-  return await this.findOne({ where: { email, active: true } });
+Users.find = async function (columnKey, value) {
+  const searchField = {};
+  searchField[columnKey] = value;
+
+  return await this.findOne({ where: searchField });
 };
 
-Users.findOneById = async function (id) {
-  return await this.findOne({ where: { id } });
-};
 
 module.exports = Users;
