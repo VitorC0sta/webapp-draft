@@ -6,7 +6,7 @@ const AppError = require("../../../infra/utils/AppError");
 class CreateUserUseCase {
   async execute({ name, email, national_id_number, password, administrator, id_client }) {
     
-    const chkUserExits = await Users.findOneByEmail(email);
+    const chkUserExits = await Users.find("email", email);
         
     if (chkUserExits) throw new AppError('[ERRO].: Email já cadastrado.');
 

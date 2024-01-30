@@ -1,27 +1,23 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Vehicles extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+const databaseConnection = require("../connection");
+
+const { DataTypes } = require("sequelize");
+
+const Vehicles = databaseConnection.define("Vehicles", {
+  vehicleName: { type: DataTypes.STRING, field: "vehicle_name" },
+  vehicleColor: { type: DataTypes.STRING, field: "vehicle_color" },
+  vehicleModel: { type: DataTypes.STRING, field: "vehicle_model" },
+  active: DataTypes.BOOLEAN,
+  vehiclePlate: { type: DataTypes.STRING, field: "vehicle_plate" },
+  createdAt: { type: DataTypes.DATE, field: "created_at" },
+  updatedAt: { type: DataTypes.DATE, field: "updated_at" },
+  idOperation: {
+    type: DataTypes.INTEGER,
+    field: "id_operation",
+    references: {
+      model: "Operations",
+      key: "id"
     }
   }
-  Vehicles.init({
-    name: DataTypes.STRING,
-    color: DataTypes.STRING,
-    model: DataTypes.STRING,
-    vehicle_plate: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'Vehicles',
-  });
-  return Vehicles;
-};
+});
+
+module.exports = Vehicles;

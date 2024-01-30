@@ -3,7 +3,7 @@ const userUpdateSchema = require("../schemas/userUpdateSchema.js");
 const userDeleteSchema = require("../schemas/userDeleteSchema.js");
 const CreateUserUseCase = require("../usecases/createUser.usecase.js");
 const UpdateUserUseCase = require("../usecases/updateUser.usecase.js");
-
+const ShowUserUseCase = require("../usecases/showUser.usecase.js");
 class UserController {
   async create(req, res) {
     const  {
@@ -61,10 +61,18 @@ class UserController {
 
     await userDeleteSchema.validate(req.body, { abortEarly: false});
     
-    const user = await new DeleteUserUseCase().execute();
+    const user = await new DeleteUserUseCase(id, email, userLogged).execute();
 
     return res.status(200).json({message: "User Deleted", user});
     
+  }
+
+  async showUser(req, res) {
+    const { id } = req.params;
+
+    const user = await new ShowUserUseCase().execute(id);
+
+    res.status(200).json(user);
   }
 }
 
