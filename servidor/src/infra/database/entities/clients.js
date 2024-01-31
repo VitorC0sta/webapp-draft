@@ -16,11 +16,5 @@ const Clients = databaseConnection.define('Clients', {
   active: DataTypes.BOOLEAN
 });
 
-Clients.find = async function (columnKey, value) {
-  const searchField = {};
-  searchField[columnKey] = value;
-
-  return await this.findOne({ where: searchField });
-};
 
 module.exports = Clients;

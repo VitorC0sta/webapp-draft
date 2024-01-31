@@ -1,6 +1,7 @@
 const databaseConnection = require("../connection");
 
 const { DataTypes } = require("sequelize");
+const Vehicles = require("./vehicles");
 
 const Operations = databaseConnection.define("Operations", {
   active: DataTypes.BOOLEAN,
@@ -20,11 +21,6 @@ const Operations = databaseConnection.define("Operations", {
   }
 })
 
-Operations.find = async function (columnKey, value) {
-  const searchField = {};
-  searchField[columnKey] = value;
-
-  return await this.findOne({ where: searchField });
-};
+Operations.hasMany( Vehicles, {foreignKey: "idOperation", as: 'vehicles' })
 
 module.exports = Operations;

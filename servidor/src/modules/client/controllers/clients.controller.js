@@ -1,15 +1,7 @@
-const {object, string} = require("yup");
+const clientCreationSchema = require("../schemas/createClientSchema.js");
 const CreateClientUseCase = require("../usecases/createClient.usecase.js");
+const ShowClientUseCase = require("../usecases/showClient.usecase.js");
 
-const clientCreationSchema = object({
-  legal_name: string().required(),
-  dba_name: string().required(),
-  company_id: string().required(),
-  postal_code: string().required(),
-  address: string().required(),
-  state: string(),
-  country: string().required()
-})
 
 class ClientsController {
   async create(req, res) {
@@ -39,6 +31,15 @@ class ClientsController {
 
     return res.status(201).json(client);
   }
+
+  async showClient(req, res) {
+    const { id } = req.params;
+    const userLogged = req.user;
+
+    const client = await new ShowClientUseCase().execute(id, userLogged);
+
+    return res.status(200).json(client);
+  } 
 }
 
 module.exports = ClientsController;

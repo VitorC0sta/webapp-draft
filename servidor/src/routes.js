@@ -6,6 +6,7 @@ const sessionsRoutes = require("./modules/sessions/routes/sessions.routes");
 const operationsRoutes = require("./modules/operations/routes/operations.routes");
 const vehicleRoutes = require("./modules/vehicles/routes/vehicles.routes");
 const ensureAuthenticated = require("./infra/middlewares/ensureAuthenticated");
+const adminOperationsRoutes = require("./modules/administrator/operations/routes/adminOperations.routes");
 const routes = Router();
 
 routes.use("/sessions", sessionsRoutes);
@@ -15,4 +16,5 @@ routes.use("/user", userRoutes);
 routes.use("/client", clientsRoutes);
 routes.use("/operation", operationsRoutes);
 routes.use("/vehicles", vehicleRoutes);
+routes.use("/admin/operation", adminOperationsRoutes);
 module.exports = routes;

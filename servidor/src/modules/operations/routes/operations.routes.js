@@ -7,5 +7,5 @@ const operationsRoutes = Router();
 const operationsController = new OperationsController()
 
 operationsRoutes.post("/", isAdmin, operationsController.createOperation);
-
+operationsRoutes.get("/:id", operationsController.showOperation);
 module.exports = operationsRoutes;

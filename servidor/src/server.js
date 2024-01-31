@@ -1,6 +1,6 @@
+require('dotenv').config();
 require('./infra/database/connection');
 require('express-async-errors');
-require('dotenv').config();
 
 const express = require('express');
 const cron = require('node-cron');

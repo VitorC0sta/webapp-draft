@@ -1,7 +1,7 @@
 const { compare } = require("../../../infra/providers/hashprovider");
 const Users = require("../../../infra/database/entities/users");
 const AppError = require("../../../infra/utils/AppError");
-const authConfig = require("../../../configs/auth.js");
+const authConfig = require("../../../config/auth.js");
 const { sign } = require("jsonwebtoken");
 
 class CreateSessionUseCase {
