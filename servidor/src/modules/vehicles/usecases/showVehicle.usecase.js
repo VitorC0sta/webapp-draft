@@ -21,7 +21,7 @@ class ShowVehicleUseCase {
         model: Vehicles,
         attributes: []
       }]
-    })
+    });
 
     console.log(companyVehicles);
 
