@@ -1,4 +1,4 @@
-const Clients = require("../../../infra/database/entities/clients");
+const Clients = require("../../../../infra/database/entities/clients");
 
 class ShowClientsUseCase {
   async execute() {

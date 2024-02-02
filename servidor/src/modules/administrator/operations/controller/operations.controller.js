@@ -1,5 +1,5 @@
-const ShowOperationUseCase = require("../usecase/showOperation.usecase");
-const ShowOperationsUseCase = require("../usecase/showOperations.usecase");
+const ShowOperationUseCase = require("../usecases/showOperation.usecase");
+const ShowOperationsUseCase = require("../usecases/showOperations.usecase");
 
 class OperationsController {
   async showOperations(req, res) {

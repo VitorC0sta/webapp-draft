@@ -9,4 +9,4 @@ adminOperationsRoutes.get("/", operationsController.showOperations);
 adminOperationsRoutes.get("/:id", operationsController.showOperation)
 
 
-module.exports = adminOperationsRoutes
+module.exports = adminOperationsRoutes;

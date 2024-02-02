@@ -15,7 +15,7 @@ class ShowOperationUseCase {
 
     if(!operations) throw new AppError("Operação não existe.", 404);
 
-    return operations
+    return operations;
   }
 }
 
