@@ -1,0 +1,37 @@
+export default {
+  COLORS: {
+    LIGHTBLUE_700: "#6DA4D3",
+    LIGHTBLUE_600: "#A2CDF0",
+    LIGHTBLUE_500: "#B2D5F2",
+    LIGHTBLUE_100: "#EAF6FF",
+    
+    DARKBLUE_700: "#262D3C",
+    DARKBLUE_600: "#46526C",
+    DARKBLUE_300: "#9FAFD2",
+        
+    NEUTRAL_900: "#2E2E2E",
+    NEUTRAL_800: "#4D4D4D",
+    NEUTRAL_700: "#5F5F5F",
+    NEUTRAL_600: "#7B7B7B",
+    NEUTRAL_500: "#A9A9A9",
+    NEUTRAL_400: "#D7D7D7",
+    NEUTRAL_300: "#E6E6E6",
+    NEUTRAL_200: "#F1F1F1",
+    NEUTRAL_100: "#F6F6F6",
+    WHITE_700: "#FFFFFF",
+    
+    RED_700: "#EF1D00",
+    RED_500: "#FF605C",
+    RED_100: "#FFEBE9",
+    
+    ORANGE_700: "#EA4707",
+    
+    YELLOW_700: "#F4B000",
+    YELLOW_100: "#FFE58A",
+
+    GREEN_700: "#1EC01A",
+    GREEN_100: "#C1F1C0",
+    BLUE_700: "#186DEB"
+ 
+  }
+}
