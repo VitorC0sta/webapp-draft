@@ -9,10 +9,16 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    font-family: "Montserrat", sans-serif;
     font-size: 1.6rem;
   }
 
