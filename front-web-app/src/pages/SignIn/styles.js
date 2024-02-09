@@ -10,6 +10,7 @@ export const Container = styled.main`
     align-items: center;
     justify-content: center;
     img {
+      overflow: hidden;
       display: flex;
       position: absolute;
       opacity: 0.2;
@@ -34,6 +35,9 @@ export const Container = styled.main`
       animation: typing 4.15s steps(63), blinking 0.5s infinite step-end alternate;
     };
 
+    .main-info {
+
+    }
 
     @keyframes typing {
       from {
@@ -46,25 +50,6 @@ export const Container = styled.main`
         border-color: transparent;
       }
     }
-
-@keyframes typing-blinking-sequence {
-  0% {
-    width: 0;
-  }
-
-  50% {
-    width: 100%;
-  }
-
-  60% {
-    border-color: transparent;
-  }
-
-  100% {
-    border-color: transparent;
-  }
-}
-
    
   }
 `;

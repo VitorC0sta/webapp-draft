@@ -4,6 +4,8 @@ import Logo from "../../assets/argus-logo.svg";
 import Icon from "../../assets/argus-icon-background.svg";
 import TextButton from "../../common/components/TextButton/TextButton";
 import { Button } from "../../common/components/Button/Button";
+import { Slider } from "../../common/components/Slider/Slider";
+
 
 export function SignIn() {
   return (
@@ -31,10 +33,12 @@ export function SignIn() {
       </Section>
       <Section className="panel">
         <img src={Icon}/>
-        <div className="typewriter">
-          <p>Líder em Tecnologia de Detecção, Gestão de Fadiga e Distração.</p>
+        <div className="main-info">
+          <div className="typewriter">
+            <p>Líder em Tecnologia de Detecção, Gestão de Fadiga e Distração.</p>
+          </div>
+          <Slider />
         </div>
-        
       </Section>
     </Container>
   );
