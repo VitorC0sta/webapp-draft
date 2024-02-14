@@ -6,7 +6,8 @@ export default {
     LIGHTBLUE_100: "#EAF6FF",
     
     DARKBLUE_700: "#262D3C",
-    DARKBLUE_600: "#46526C",
+    DARKBLUE_600: "#293349",
+    DARKBLUE_500: "#46526C",
     DARKBLUE_300: "#9FAFD2",
         
     NEUTRAL_900: "#2E2E2E",
@@ -25,6 +26,7 @@ export default {
     RED_100: "#FFEBE9",
     
     ORANGE_700: "#EA4707",
+    ORANGE_100: "#FFC184",
     
     YELLOW_700: "#F4B000",
     YELLOW_100: "#FFE58A",

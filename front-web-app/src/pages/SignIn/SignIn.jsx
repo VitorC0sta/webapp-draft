@@ -1,7 +1,7 @@
 import { Container, Section, Tittle, Header } from "./styles";
 import { Input } from "../../common/components/Input/Input";
-import Logo from "../../assets/argus-logo.svg";
-import Icon from "../../assets/argus-icon-background.svg";
+import Logo from "../../assets/argus-svg/argus-logo.svg";
+import Icon from "../../assets/argus-svg/argus-icon-background.svg";
 import TextButton from "../../common/components/TextButton/TextButton";
 import { Button } from "../../common/components/Button/Button";
 import { Slider } from "../../common/components/Slider/Slider";

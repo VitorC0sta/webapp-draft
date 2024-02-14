@@ -1,9 +1,11 @@
 import { Container } from "./styles";
 
-export function UserCreation() {
+export function Chart() {
+  //codigo do gráfico
+
   return (
     <Container>
-      
+
     </Container>
-  )
+  );
 }

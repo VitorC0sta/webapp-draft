@@ -32,7 +32,7 @@ export const Container = styled.main`
       white-space: nowrap;
       overflow: hidden;
       border-right: 0.5rem ${({ theme }) => theme.COLORS.WHITE_700} solid;
-      animation: typing 4.15s steps(63), blinking 0.5s infinite step-end alternate;
+      animation: typing 3.15s steps(63), blinking 0.5s infinite step-end alternate;
     };
 
     .main-info {
