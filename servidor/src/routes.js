@@ -13,7 +13,7 @@ const adminClientRoutes = require("./modules/administrator/client/routes/client.
 const adminUserRoutes = require("./modules/administrator/user/routes/user.routes");
 const adminVehiclesRoutes = require("./modules/administrator/vehicles/routes/adminVehicles.routes");
 
-routes.use("/sessions", sessionsRoutes);
+routes.use("/", sessionsRoutes);
 routes.use("/capy", theRoute);
 routes.use(ensureAuthenticated);
 routes.use("/user", userRoutes);
