@@ -4,7 +4,8 @@ import { SideBar } from "../../common/components/SideBar/SideBar";
 import { Card } from "../../common/components/Card/Card";
 import { FiBriefcase, FiMap, FiAlertTriangle } from "react-icons/fi";
 import { MdBusAlert } from "react-icons/md";
-import { Chart } from "../../common/components/Chart/Chart"
+import { StackBarChart } from "../../common/components/Charts/StackBarChart/StackBarChart";
+import { EventTable } from "../../common/components/EventTable/EventTable";
 
 export function Home() {
   return (
@@ -47,10 +48,8 @@ export function Home() {
             />
           </Cards>
           <Charts>
-            <Chart />
-            <div className="operations-chart">
-            
-            </div>
+            <StackBarChart />
+            <EventTable />
           </Charts>
         </Main>
       </section>

@@ -36,15 +36,8 @@ export const Cards = styled.div`
 `;
 
 export const Charts = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-
+  display: flex;
   justify-content: space-between;
-  > .operations-chart {
-    width: 20vw;
-    height: 60vh;
-    background: ${({theme}) => theme.COLORS.RED_500};
-    border-radius: 2rem;
 
-  }
+  padding: 0 7.5rem;
 `;

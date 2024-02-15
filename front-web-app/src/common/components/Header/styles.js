@@ -11,7 +11,7 @@ justify-content: space-between;
 border-bottom: 0.1rem solid ${({theme}) => theme.COLORS.DARKBLUE_800};
 
 box-shadow: 0 0 1rem 0.3rem ${({theme}) => theme.COLORS.NEUTRAL_900};
-padding: 0 12rem 0 3rem;
+padding: 0.5rem 6.5rem 0 3rem;
 
 background: ${({theme}) => theme.COLORS.DARKBLUE_700};
 

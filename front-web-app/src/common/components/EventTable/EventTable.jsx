@@ -1,11 +1,9 @@
 import { Container } from "./styles";
 
-export function Chart() {
-  //codigo do gráfico
-
-  return (
+export function EventTable() {
+  return(
     <Container>
-
+      
     </Container>
   );
 }
