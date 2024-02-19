@@ -7,14 +7,16 @@ export const Container = styled.div`
 
 export const Menu = styled.ul`
   height: 100vh; 
-  width: 22rem;
-  
+  width: 25rem;
+  padding: 3rem;
   
   background-color: ${({theme}) => theme.COLORS.DARKBLUE_700};
   
   display: flex;
   flex-direction: column;
   
+  align-items: center;
+
   > hr {
     margin-left: auto;
     margin-right: auto;

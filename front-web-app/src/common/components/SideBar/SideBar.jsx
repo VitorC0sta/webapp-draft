@@ -2,10 +2,13 @@ import { Container, Menu, MenuItems } from "./styles";
 import { FiBriefcase, FiUsers, FiMap, FiAlertOctagon } from "react-icons/fi";
 import { MdBusAlert } from "react-icons/md";
 import { PropTypes } from "prop-types";
+import Logo from "../../../assets/argus-svg/argus-logo-header.svg";
+
 export function SideBar() {
   return (
     <Container>
       <Menu>
+        <img src={Logo} alt="argus logo"/>
         <MenuItems>
           <a href="#">
             <MdBusAlert />
@@ -21,7 +24,7 @@ export function SideBar() {
         </MenuItems>
         <hr />
         <MenuItems>
-          <a href="/user">
+          <a href="/users">
             <FiUsers />
             Usuários
           </a>

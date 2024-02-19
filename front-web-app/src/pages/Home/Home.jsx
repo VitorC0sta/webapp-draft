@@ -1,5 +1,4 @@
 import { Container, Main, Cards, Charts } from "./styles";
-import { Header } from "../../common/components/Header/Header";
 import { SideBar } from "../../common/components/SideBar/SideBar";
 import { Card } from "../../common/components/Card/Card";
 import { FiBriefcase, FiMap, FiAlertTriangle } from "react-icons/fi";
@@ -10,7 +9,6 @@ import { EventTable } from "../../common/components/EventTable/EventTable";
 export function Home() {
   return (
     <Container>
-      <Header />
       <section className="hero">
         <SideBar />
         <Main>

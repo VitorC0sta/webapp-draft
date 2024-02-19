@@ -22,11 +22,11 @@ export function StackBarChart() {
       },
       xAxis: {
         type: "category",
-        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        data: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
       },
       yAxis: {
-        type: "value",
-        show: "false",
+        type: "log",
+        show: false,
       },
       series: [
         {

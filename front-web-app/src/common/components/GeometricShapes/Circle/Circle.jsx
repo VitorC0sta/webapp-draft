@@ -1,7 +1,7 @@
 import { Container } from "./styles";
-import {PropTypes} from "prop-types";
+import { PropTypes } from "prop-types";
 
-export function Point({diameter, radio, color}) {
+export function Circle({diameter, radio, color}) {
   
 
   return(
@@ -11,7 +11,7 @@ export function Point({diameter, radio, color}) {
   )
 }
 
-Point.propTypes = {
+Circle.propTypes = {
   diameter: PropTypes.string,
   radio: PropTypes.number,
   color: PropTypes.string

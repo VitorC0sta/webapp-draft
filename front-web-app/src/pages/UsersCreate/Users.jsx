@@ -1,6 +1,5 @@
 import { Container, Form, Main } from "./styles";
 import { SideBar } from "../../common/components/SideBar/SideBar";
-import { Header } from "../../common/components/Header/Header";
 import { Input } from "../../common/components/Input/Input";
 import {Button} from "../../common/components/Button/Button";
 
@@ -8,7 +7,6 @@ import {Button} from "../../common/components/Button/Button";
 export function UsersCreate() {
   return (
     <Container>
-      <Header />
       <div className="container-body">
         <SideBar />
         <div className="hero">
