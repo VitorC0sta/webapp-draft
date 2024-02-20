@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 17vw;
+  width: 100%;
+  height: 100%;
+  
   padding: 2.5rem 0 2.5rem 1.5rem;
 
   border-radius: 2rem;
@@ -14,7 +16,7 @@ export const Container = styled.div`
     gap: 1rem;
 
     margin: 2rem 0 0.5rem 0;
-
+    font-size: 2.2rem;
     .percent-data {
       display: flex;
 
@@ -28,4 +30,6 @@ export const Container = styled.div`
       border-radius: 0.6rem;
     }
   }
+
+  
 `;

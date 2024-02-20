@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 import { PropTypes } from "prop-types";
 
-export function Title({$text}) {
+export function Title({$text, className}) {
   return(
-    <Container>
+    <Container className={ className  }>
       <h1>
         { $text }
       </h1>
@@ -13,4 +13,5 @@ export function Title({$text}) {
 
 Title.propTypes = {
   $text: PropTypes.string,
+  className: PropTypes.string,
 }

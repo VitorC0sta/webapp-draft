@@ -3,10 +3,9 @@ import { SideBar } from "../../common/components/SideBar/SideBar";
 import { InputSearch } from "../../common/components/InputSearch/InputSearch";
 import { CreationButton } from "../../common/components/CreationButton/CreationButton";
 
-export function User() {
+export function Users() {
   return (
     <Container>
-      <div className="body-container">
         <SideBar />
         <div className="hero">
           <div className="hero-head">
@@ -18,7 +17,7 @@ export function User() {
           <Main>
           </Main>
         </div>
-      </div>
+
     </Container>
   )
 }

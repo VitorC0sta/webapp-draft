@@ -7,7 +7,7 @@ export function Card({ icon: Icon, $cardValue,$up, $percent, $title, ...rest }) 
     <Container {...rest}>
       {Icon && <Icon size={20} />}
       <div className="content">
-        <h2>{$cardValue}</h2>
+        <h3>{$cardValue}</h3>
         <div className="percent-data">
           { $up? <FiTrendingUp/> : <FiTrendingDown/> }
           <span>{$percent}%</span>

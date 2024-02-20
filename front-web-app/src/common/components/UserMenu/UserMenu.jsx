@@ -6,10 +6,10 @@ export function UserMenu() {
     <Container>
       <img src="https://github.com/VitorC0sta.png" alt="User Logo" />
 
-      <a href="">
+      <a href="/user">
         <FiSettings />
       </a>
-      <a href="" className="logout-btn">
+      <a href="/signin" className="logout-btn">
         <FiLogOut />
       </a>
     </Container>

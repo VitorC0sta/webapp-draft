@@ -17,6 +17,11 @@ export default createGlobalStyle`
   html {
     scroll-behavior: smooth;
   }
+
+  h1, h2{
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+  }
   
   body {
     font-size: 1.6rem;
