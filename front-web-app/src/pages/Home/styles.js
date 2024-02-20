@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10rem auto;
+  height: 100vh;
 
-  > .hero {
-    display: flex;
-  }
+  display: grid;
+  grid-template-columns: 20% auto;
 `;
 
 export const Main = styled.main`
-  width: 90vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows:   ; 
+  
+
 `;
 
 export const Cards = styled.div`
   display: flex;
 
   justify-content: space-evenly;
-
-  padding: 4rem 0;
 
   > .vehicles {
     background: ${({ theme }) => theme.COLORS.LIGHTBLUE_600};
@@ -37,7 +37,7 @@ export const Cards = styled.div`
 
 export const Charts = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
-  padding: 0 7.5rem;
+ 
 `;

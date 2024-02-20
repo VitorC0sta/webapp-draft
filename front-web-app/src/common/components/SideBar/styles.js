@@ -1,21 +1,29 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+    height: 100vh;
+    width: 25rem;
+    
+    background-color: ${({theme}) => theme.COLORS.DARKBLUE_700};
+
+    display: grid;
+    grid-template-rows: 10% 80% auto;
+
+    > .logo {
+      margin:  auto;
+    }
   `;
 
 
 export const Menu = styled.ul`
-  height: 100vh; 
-  width: 25rem;
-  padding: 3rem;
-  
-  background-color: ${({theme}) => theme.COLORS.DARKBLUE_700};
-  
   display: flex;
   flex-direction: column;
   
+  margin-top: 4rem;
+
   align-items: center;
+  
+  gap: 2rem;
 
   > hr {
     margin-left: auto;
@@ -25,23 +33,29 @@ export const Menu = styled.ul`
     border-color: ${({theme}) => theme.COLORS.NEUTRAL_600};
   }
   
-  
-  
   `;
 
-export const MenuItems = styled.li`
+
+export const Items = styled.li`
   display: flex;
+  flex-direction: column;
   align-items: center;
   
-  
-  padding: 3rem;
-  
-  background: ${({theme, $isActive}) => $isActive? theme.COLORS.WHITE_700: ""};
+  width: 100%;
 
+  background: ${({theme, $isActive}) => $isActive? theme.COLORS.WHITE_700: ""};
+  
+  cursor: pointer;
+  
   > a {
     display: flex;
+    
     gap: 1rem;
+    
+    width: 100%;
 
+    padding-left: 4rem;
+    
     color: ${({ theme, $isActive }) => $isActive ?
      theme.COLORS.DARKBLUE_700 : theme.COLORS.WHITE_700};
     

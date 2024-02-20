@@ -1,5 +1,6 @@
-import { Container, Main, Cards, Charts } from "./styles";
+  import { Container, Main, Cards, Charts } from "./styles";
 import { SideBar } from "../../common/components/SideBar/SideBar";
+import { Title } from "../../common/components/Title/Title";
 import { Card } from "../../common/components/Card/Card";
 import { FiBriefcase, FiMap, FiAlertTriangle } from "react-icons/fi";
 import { MdBusAlert } from "react-icons/md";
@@ -9,9 +10,9 @@ import { EventTable } from "../../common/components/EventTable/EventTable";
 export function Home() {
   return (
     <Container>
-      <section className="hero">
         <SideBar />
         <Main>
+          <Title $text="Home" className=""/>
           <Cards>
             <Card
               icon={MdBusAlert}
@@ -50,7 +51,6 @@ export function Home() {
             <EventTable />
           </Charts>
         </Main>
-      </section>
     </Container>
   );
 }
