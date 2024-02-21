@@ -13,11 +13,14 @@ export const Main = styled.main`
   grid-template-rows: 1fr 2fr 7fr;
 
   padding: 0 0 0 3rem;
-  > .back-to-dashboard {
+
+  .back-to-dashboard {
     display: flex;
 
     align-items: center;
 
+    font-size: 2.4rem;
+    
     a {
       display: flex;
 
@@ -26,17 +29,24 @@ export const Main = styled.main`
       gap: 2rem;
 
       text-decoration: none;
+      font-weight: 500;
       color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
-
-      font-size: 3rem;
-
-      svg {
-        background: ${({ theme }) => theme.COLORS.DARKBLUE_700};
-        color: white;
-        border: none;
-        border-radius: 50%;
+      
+      &:hover {
+    
+          opacity: 0.8;
+        
       }
     }
+
+    svg {
+      border-radius: 50%;
+
+      background: ${({ theme }) => theme.COLORS.DARKBLUE_700};
+
+      color: ${({ theme }) => theme.COLORS.WHITE_700};
+    }
+
   }
 
   > .profile-basic-info {
@@ -80,48 +90,36 @@ export const Main = styled.main`
   }
 
   > .profile-container {
+    display:  grid;
+    
+    grid-template-rows: 1fr 16fr;
+
     .profile-options {
       display: flex;
+      
+      gap: 2rem;
 
-      gap: 3rem;
-      padding: 0 0 0 2rem;
-      > li {
-        padding-bottom: 1rem;
-        a {
-          padding-bottom: rem;
-          text-decoration: none;
-          color: ${({ theme }) => theme.COLORS.NEUTRAL_600};
-          font-size: 2rem;
-          font-weight: 500;
-        }
+      padding-left: 2;
+      
+      border-bottom: 0.1rem solid ${({ theme }) => theme.COLORS.NEUTRAL_600};
 
-        &.selected {
-          a {
-            font-weight: 600;
-            color: ${({ theme }) => theme.COLORS.NEUTRAL_900};
-          }
-
-          &:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 0.3rem;
-            background-color: ${({ theme }) => theme.COLORS.NEUTRAL_900};
-          }
-        }
-      }
-
-      hr {
-        border: none;
-        height: 0.1rem;
-        background-color: ${({ theme }) => theme.COLORS.NEUTRAL_600};
-        margin: 0;
-      }
-
-      /* border-bottom: 0.1rem solid ${({ theme }) =>
-        theme.COLORS.NEUTRAL_600}; */
     }
   }
+`;
+
+export const Button = styled.button`
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+
+  text-decoration: none;
+
+  color: ${(props) =>
+    props.selected
+      ? props.theme.COLORS.DARKBLUE_700
+      : props.theme.COLORS.NEUTRAL_600};
+  font-size: 2rem;
+
+  font-weight: ${props => props.selected ? 600: 500};
 `;

@@ -1,8 +1,25 @@
-import { Container, Main } from "./styles";
+import { Container, Main, Button } from "./styles";
 import { SideBar } from "../../common/components/SideBar/SideBar";
 import { FiArrowLeft } from "react-icons/fi";
+import { useState, useMemo } from "react";
+import { Introduction } from "../../common/components/Introduction/Introduction";
+import { AccountConfiguration } from "../../common/components/AccountConfig/AccountConfiguration";
 
 export function Profile() {
+  const [tab, setTab] = useState(1);
+
+  const optionProfile = useMemo(() => { 
+    if(tab == 1) {
+      return(
+        <Introduction />
+      )
+    } else if(tab == 2) {
+      return(
+        <AccountConfiguration />
+      )
+    }
+  }, [tab]);
+
   return (
     <Container>
       <SideBar />
@@ -40,13 +57,14 @@ export function Profile() {
         </div>
         <div className="profile-container">
           <ul className="profile-options">
-            <li ><a href="" >Introdução</a></li>
-            <li className="selected"><a href="">Configurações</a></li>
+            <li ><Button selected={tab==1} onClick={() => setTab(1)}>Introdução</Button></li>
+            <li ><Button selected={tab==2} onClick={() => setTab(2)} >Configurações</Button></li>
           </ul>
-          <hr />
 
           <div className="option">
-
+            {
+              optionProfile
+            }
           </div>
         </div>
       </Main>

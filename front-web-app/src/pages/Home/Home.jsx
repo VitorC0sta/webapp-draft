@@ -5,7 +5,7 @@ import { Card } from "../../common/components/Card/Card";
 import { FiBriefcase, FiMap, FiAlertTriangle } from "react-icons/fi";
 import { MdBusAlert } from "react-icons/md";
 import { StackBarChart } from "../../common/components/Charts/StackBarChart/StackBarChart";
-import { LastEvents } from "../../common/components/LastEvents/LastEvents";
+import { LastEventsTable } from "../../common/components/LastEventsTable/LastEventsTable";
 
 export function Home() {
   return (
@@ -50,7 +50,7 @@ export function Home() {
           <Charts className="chart-container">
             <StackBarChart />
           </Charts>
-          <LastEvents />
+          <LastEventsTable />
         </Analytics>
       </Main>
     </Container>
