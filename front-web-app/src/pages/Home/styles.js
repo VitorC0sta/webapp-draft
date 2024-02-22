@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
-
+  
   display: grid;
   grid-template-columns: 13% auto;
 `;
@@ -21,7 +21,6 @@ export const Main = styled.main`
 `;
 
 export const Cards = styled.div`
-  //grid-area: cards;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   
@@ -54,6 +53,7 @@ export const Cards = styled.div`
 
 export const Charts = styled.div`
   //grid-area: chart-container;
+  background-color: ${({theme}) => theme.COLORS.NEUTRAL_100};
 `;
 
 export const Analytics = styled.div`

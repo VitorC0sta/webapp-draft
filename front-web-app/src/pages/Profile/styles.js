@@ -98,8 +98,8 @@ export const Main = styled.main`
       display: flex;
       
       gap: 2rem;
-
-      padding-left: 2;
+      margin-right: 3rem;
+      padding-left: 2rem;
       
       border-bottom: 0.1rem solid ${({ theme }) => theme.COLORS.NEUTRAL_600};
 
