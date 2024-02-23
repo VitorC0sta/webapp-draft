@@ -4,22 +4,24 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 20% auto;
+  grid-template-columns: 1fr 9fr;
+  > .body-container {
+    height: 100%;
 
-  > .hero {
-    width: 90%;
-    padding: 3rem 6rem;
+    padding: 2.5rem 3rem 5rem 3rem;
 
-    .hero-head {
+    .head-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: space-between
     }
   }
 `;
 
 export const Main = styled.main`
-  grid-area: main;
+  width: 100%;
+  height: 100%;
+
+  padding: 6.5rem 0 10rem 0;
 `;
 
-export const Form = styled.form``;
+
