@@ -4,13 +4,13 @@ import { InputSearch } from "../../common/components/InputSearch/InputSearch";
 import { CreationButton } from "../../common/components/CreationButton/CreationButton";
 import { QueryResultsTable } from "../../common/components/QueryResultsTable/QueryResultsTable";
 
-export function Users() {
+export function Operations() {
   return (
     <Container>
       <SideBar />
       <div className="body-container">
         <div className="head-container">
-          <InputSearch $searchFor={"usuários"} />
+          <InputSearch $searchFor={"operações"} />
           <CreationButton />
         </div>
         <Main>

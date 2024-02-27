@@ -28,14 +28,14 @@ export function SideBar() {
             Dashboard
           </Link>
         </Items>
-        <Items >
-          <Link to="#">
+        <Items className={isActive('/fleets') ? 'active': ''}>
+          <Link to="/fleets">
             <MdBusAlert />
             Frotas
           </Link>
         </Items>
-        <Items className={isActive()}>
-          <Link to="#">
+        <Items className={isActive('/clients') ? 'active': ''}>
+          <Link to="/clients">
             <FiBriefcase />
             Clientes
           </Link>
@@ -46,14 +46,14 @@ export function SideBar() {
             Usuários
           </Link>
         </Items>
-        <Items className={isActive()}>
-          <Link to="#">
+        <Items className={isActive('/operations') ? 'active': ''}>
+          <Link to="/operations">
             <FiMap />
             Operações
           </Link>
         </Items>
-        <Items className={isActive()}>
-          <Link to="#">
+        <Items className={isActive('/events') ? 'active': ''}>
+          <Link to="/events">
             <FiAlertOctagon />
             Eventos
           </Link>

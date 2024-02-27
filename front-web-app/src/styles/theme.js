@@ -22,6 +22,7 @@ export default {
     WHITE_700: "#FFFFFF",
     
     RED_700: "#EF1D00",
+    RED_600: "#993937",
     RED_500: "#FF605C",
     RED_100: "#FFEBE9",
     

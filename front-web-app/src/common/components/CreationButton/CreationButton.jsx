@@ -2,7 +2,7 @@ import { Container } from "./styles";
 import { FiPlus } from "react-icons/fi";
 export function CreationButton() {
   return (
-    <Container>
+    <Container >
       <a href="#">
         Criar
         <FiPlus />

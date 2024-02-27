@@ -2,20 +2,20 @@ import { Container } from "./styles";
 import userData from "./userExample";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
+import { PropTypes } from "prop-types";
 
-export function QueryResultsTable() {
+export function QueryResultsTable({ fields }) {
   return (
     <Container>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th>Contato</th>
-          <th>Empresa</th>
-          <th>Criação</th>
-          <th>Status</th>
-          <th>Administrador</th>
-          <th></th>
+          {
+            fields.map(field => {
+              return (
+                <th key={field}> { field } </th>
+              )
+            })
+          }
         </tr>
       </thead>
       <tbody>
@@ -32,7 +32,7 @@ export function QueryResultsTable() {
               )
             )}
             <td>
-              <Link to="/users">
+              <Link to="/users" className="query-profile">
                 <FiUser />
               </Link>
             </td>
@@ -41,4 +41,8 @@ export function QueryResultsTable() {
       </tbody>
     </Container>
   );
+}
+
+QueryResultsTable.propTypes = {
+  fields: PropTypes.array
 }
