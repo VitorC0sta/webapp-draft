@@ -13,6 +13,37 @@ export const Container = styled.div`
     .head-container {
       display: flex;
       justify-content: space-between;
+       form {
+        display: flex;
+        flex-direction: column;
+
+        gap: 1.5rem;
+
+        h2 {
+          margin-bottom: 0.5rem;
+        }
+
+        label {
+          margin-left: 0.5rem;
+          margin-top: 0.5rem;
+        }
+
+        .address-details {
+          .country-info {
+            display: flex;
+            gap: 0.5rem;
+          }
+        }
+
+        .contact-detail {
+          h2 {
+          }
+          .contact-info {
+            display: flex;
+            gap: 0.5rem;
+          }
+        }
+      }
     }
   }
 `;

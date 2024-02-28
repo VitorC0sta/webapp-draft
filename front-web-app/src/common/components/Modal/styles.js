@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   
   align-items: center;
-  
+  justify-content: center;
   z-index: 98;
   
   height: 100%;
@@ -19,23 +19,38 @@ export const Container = styled.div`
   
   background-color: rgba(0, 0, 0, 0.3);
 
-  padding-top: 13rem;
-
-  > .close-modal {
-    font-size: 2rem;
-    background-color: ${({theme}) => theme.COLORS.RED_500};
-    color: ${({theme}) => theme.COLORS.RED_500};
-    border-radius: 50%;
-    transition: 350ms;
-
-    &:hover {
-      color: ${({theme}) => theme.COLORS.RED_600};
-    }
-  }
 `;
 
 export const ModalContent = styled.div`
   background: ${({theme}) =>theme.COLORS.NEUTRAL_200};
+  
+  border-radius: 2rem;
+  
+  padding: 4rem;
+  padding-top: 1.5rem;
+  > .wrap-closebutton {
+    display: flex;
+    justify-content: right;
+    .close-modal {
+      font-size: 2rem;
+      
+      background-color: ${({theme}) => theme.COLORS.RED_500};
+      color: ${({theme}) => theme.COLORS.RED_500};
+      
+      border-radius: 50%;
+      
+      transition: 350ms;
+  
+      margin-bottom: 2rem;
+  
+      align-self: left;
+  
+      &:hover {
+        color: ${({theme}) => theme.COLORS.RED_600};
+      }
+    }
+
+  }
 `;
 
 

@@ -12,7 +12,16 @@ export const Container = styled.div`
 
     .head-container {
       display: flex;
-      justify-content: space-between
+      justify-content: space-between;
+
+      form {
+        .vehicle-info {
+          .wrap-row {
+            display: flex;
+            gap: 1rem;
+          }
+        }
+      }
     }
   }
 `;
@@ -24,4 +33,29 @@ export const Main = styled.main`
   padding: 6.5rem 0 10rem 0;
 `;
 
+export const NewClientButton = styled.button`
+  border: none;
 
+  border-radius: 4rem;
+
+  background: ${({ theme }) => theme.COLORS.DARKBLUE_700};
+
+  color: ${({ theme }) => theme.COLORS.WHITE_700};
+
+  width: 10rem;
+
+  padding: 1rem;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+  color: ${({ theme }) => theme.COLORS.WHITE_700};
+
+  text-decoration: none;
+
+  font-size: 2rem;
+`;

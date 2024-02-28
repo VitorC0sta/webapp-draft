@@ -4,8 +4,6 @@ import Logo from "../../assets/argus-svg/argus-logo.svg";
 import Icon from "../../assets/argus-svg/argus-icon-background.svg";
 import TextButton from "../../common/components/TextButton/TextButton";
 import { Button } from "../../common/components/Button/Button";
-import { Slider } from "../../common/components/Slider/Slider";
-
 
 export function SignIn() {
   return (
@@ -27,8 +25,8 @@ export function SignIn() {
         <form action="submit">
           <Input $label="Email" $id="email" $type="email" />
           <Input $label="Senha" $id="password" $type="password" />
-          <TextButton text="Esqueceu a senha ?" href={"#"} />
-          <Button type={"submit"} text={"Entrar"} />
+          <TextButton text="Esqueceu a senha ?" href="/" />
+          <Button text={"Entrar"} href="/" />
         </form>
       </Section>
       <Section className="panel">
@@ -37,7 +35,6 @@ export function SignIn() {
           <div className="typewriter">
             <p>Líder em Tecnologia de Detecção, Gestão de Fadiga e Distração.</p>
           </div>
-          <Slider />
         </div>
       </Section>
     </Container>
