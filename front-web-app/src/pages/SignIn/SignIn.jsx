@@ -4,8 +4,21 @@ import Logo from "../../assets/argus-svg/argus-logo.svg";
 import Icon from "../../assets/argus-svg/argus-icon-background.svg";
 import TextButton from "../../common/components/TextButton/TextButton";
 import { Button } from "../../common/components/Button/Button";
+import { useAuth } from "../../common/hooks/auth";
+import { useState } from "react";
 
 export function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { signIn } = useAuth();
+
+  function handleSignIn(event) {
+    event.preventDefault();
+
+    signIn({ email, password });
+  }
+
   return (
     <Container>
       <Section>
@@ -22,18 +35,30 @@ export function SignIn() {
             />
           </div>
         </Tittle>
-        <form action="submit">
-          <Input $label="Email" $id="email" $type="email" />
-          <Input $label="Senha" $id="password" $type="password" />
+        <div>
+          <Input
+            label="Email"
+            id="email"
+            type="email"
+            onChange={ e => setEmail(e.target.value)}
+          />
+          <Input
+            label="Senha"
+            id="password"
+            type="password"
+            onChange={ e => setPassword(e.target.value)}
+          />
           <TextButton text="Esqueceu a senha ?" href="/" />
-          <Button text={"Entrar"} href="/" />
-        </form>
+          <Button type="button" title={"Entrar"} onClick={e => handleSignIn(e)} />
+        </div>
       </Section>
       <Section className="panel">
-        <img src={Icon}/>
+        <img src={Icon} />
         <div className="main-info">
           <div className="typewriter">
-            <p>Líder em Tecnologia de Detecção, Gestão de Fadiga e Distração.</p>
+            <p>
+              Líder em Tecnologia de Detecção, Gestão de Fadiga e Distração.
+            </p>
           </div>
         </div>
       </Section>

@@ -1,10 +1,10 @@
 import { Container } from "./styles";
 import PropTypes from 'prop-types';
 
-export function Button({ type, text }) {
+export function Button({ type, title }) {
   return(
     <Container type={type}>
-      {text}
+      {title}
     </Container>
   )
 }

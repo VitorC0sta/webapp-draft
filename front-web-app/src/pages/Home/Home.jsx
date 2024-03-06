@@ -6,14 +6,9 @@ import { FiBriefcase, FiMap, FiAlertTriangle } from "react-icons/fi";
 import { MdBusAlert } from "react-icons/md";
 import { StackBarChart } from "../../common/components/Charts/StackBarChart/StackBarChart";
 import { LastEventsTable } from "../../common/components/LastEventsTable/LastEventsTable";
-import { MyContext } from "../../common/hooks/auth";
-import { useContext } from "react";
 
 
 export function Home() {
-  const data = useContext(MyContext);
-  console.log("Meu Contexto => ", data);
-
   return (
     <Container>
       <SideBar />
