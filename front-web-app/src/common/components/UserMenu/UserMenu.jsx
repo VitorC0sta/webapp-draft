@@ -9,7 +9,7 @@ export function UserMenu() {
       <a href="/user">
         <FiSettings />
       </a>
-      <a href="/signin" className="logout-btn">
+      <a href="/" className="logout-btn">
         <FiLogOut />
       </a>
     </Container>
