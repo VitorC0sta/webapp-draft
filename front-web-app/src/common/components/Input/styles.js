@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   width: 100%;
 
-  label.sr-only {
+  > label.sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -19,31 +19,48 @@ export const Container = styled.div`
     border-width: 0;
   }
 
-  input {
-    padding: 1rem;
-    height: 4rem;
+  > .wrap-input {
+    display: flex;
+    align-items: center;
     
-    font-size: 1.6rem;
-    font-weight: 400;
-    
+    background: ${({theme}) => theme.COLORS.WHITE_700 };
+
     border-radius: 0.6rem;
     border: 1px solid ${ ( { theme }) => theme.COLORS.NEUTRAL_400};
-
-    color: ${({theme}) => theme.COLORS.NEUTRAL_700};
     
-  }
-  input:focus {
-    border: 2px solid ${({theme}) => theme.COLORS.NEUTRAL_600};
+    padding-left: 2rem;
     
-    box-shadow: 0 0 0.5rem 0.5rem ${({theme}) => theme.COLORS.NEUTRAL_100};
+    svg {
+      color: ${({theme}) => theme.COLORS.NEUTRAL_500};
+    }
     
-    outline: none;
-    outline-offset: 0;
+    input {
+      width: 100%;
+      padding: 1rem;
+      height: 4rem;
+      
+      font-size: 1.6rem;
+      font-weight: 400;
+      
+  
+      color: ${({theme}) => theme.COLORS.NEUTRAL_700};
+      border: none;
+    }
 
+    input:focus {     
+      outline: none;
+      outline-offset: 0;
+    }
 
+    input::placeholder {
+      color: ${({theme}) => theme.COLORS.NEUTRAL_500};
+    }
+
+    &:focus-within {
+      border: solid 0.1rem ${({theme}) => theme.COLORS.NEUTRAL_500};
+    }
   }
 
-  input::placeholder {
-    color: ${({theme}) => theme.COLORS.NEUTRAL_500};
-  }
+
+
 `;

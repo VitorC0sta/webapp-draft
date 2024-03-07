@@ -16,6 +16,12 @@ export const Container = styled.div`
 
       form {
         .vehicle-info {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          
+          margin-bottom: 3rem;
+
           .wrap-row {
             display: flex;
             gap: 1rem;

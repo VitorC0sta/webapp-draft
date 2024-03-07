@@ -19,7 +19,7 @@ export const Container = styled.div`
   
   background-color: rgba(0, 0, 0, 0.3);
 
-`;
+  `;
 
 export const ModalContent = styled.div`
   background: ${({theme}) =>theme.COLORS.NEUTRAL_200};
