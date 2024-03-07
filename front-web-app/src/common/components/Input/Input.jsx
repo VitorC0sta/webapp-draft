@@ -1,13 +1,13 @@
 import { Container } from "./styles";
 import PropTypes from 'prop-types';
 
-export function Input({ label, id, type, $srOnly }) {
+export function Input({ label, id, type, $srOnly, ...rest }) {
   return(
     <Container>
       <label className={ $srOnly ? 'sr-only' : "" } htmlFor={ id } >
         { label }
       </label>
-      <input type={ type } id={id} placeholder={label}/>
+      <input type={ type } id={id} placeholder={label} {...rest}/>
     </Container>
   );
 }

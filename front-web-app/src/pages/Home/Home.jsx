@@ -6,14 +6,17 @@ import { FiBriefcase, FiMap, FiAlertTriangle } from "react-icons/fi";
 import { MdBusAlert } from "react-icons/md";
 import { StackBarChart } from "../../common/components/Charts/StackBarChart/StackBarChart";
 import { LastEventsTable } from "../../common/components/LastEventsTable/LastEventsTable";
+import { useAuth } from "../../common/hooks/auth";
 
 
 export function Home() {
+  const { user } = useAuth();
+
   return (
     <Container>
       <SideBar />
       <Main>
-        <Title $text="Dashboard" className="title" />
+        <Title $text={`Dashboard ${user.name}`} className="title" />
         <Cards className="cards">
           <Card
             icon={MdBusAlert}
