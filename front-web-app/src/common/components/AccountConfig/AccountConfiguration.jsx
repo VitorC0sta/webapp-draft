@@ -7,9 +7,9 @@ export function AccountConfiguration() {
     <Container>
       <h2>Alterações</h2>
       <form action="submit">
-        <Input icon={FiLock} label="Senha" id="user-password" type="password" />
-        <Input icon={FiLock} label="Nova senha" id="user-new-password" type="password" />
-      </form>
+        <Input icon={ <FiLock size={14}/> } label="Senha" id="user-password" type="password" />
+        <Input icon={ <FiLock size={14}/> } label="Nova senha" id="user-new-password" type="password" />
+      </form> 
     </Container>
   );
 }

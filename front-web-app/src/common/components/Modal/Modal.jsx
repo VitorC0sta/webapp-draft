@@ -1,5 +1,4 @@
 import { Container, ModalContent } from "./styles";
-import { PropTypes } from "prop-types";
 import { IoIosClose } from "react-icons/io";
 
 export function Modal({ children, isOpen, setIsOpen }) {
@@ -18,9 +17,3 @@ export function Modal({ children, isOpen, setIsOpen }) {
     }
     </>;
 }
-
-Modal.propTypes = {
-  children: PropTypes.node,
-  isOpen: PropTypes.func,
-  setIsOpen: PropTypes.func,
-};

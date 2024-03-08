@@ -8,12 +8,13 @@ import TextButton from "../../common/components/TextButton/TextButton";
 import { Button } from "../../common/components/Button/Button";
 import { useAuth } from "../../common/hooks/auth";
 
+
 export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { signIn } = useAuth();
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
 
   function handleSignIn(event) {
     event.preventDefault();
@@ -52,6 +53,7 @@ export function SignIn() {
             type="password"
             onChange={e => setPassword(e.target.value)}
           />
+          
           <TextButton text="Esqueceu a senha ?" href="/" />
           <Button type="button" title={"Entrar"} onClick={handleSignIn} />
         </form>

@@ -7,5 +7,5 @@ export const Container = styled.div`
   font-family: "Roboto Slab", serif;
   font-size: 2.6rem;
 
-  color: ${({ theme }) => theme.COLORS.WHITE_700};
+  color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
 `;

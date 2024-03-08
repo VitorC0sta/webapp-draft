@@ -24,25 +24,25 @@ export const Container = styled.div`
     align-items: center;
     
     background: ${({theme}) => theme.COLORS.WHITE_700 };
+    
+    padding: 0.5rem 1rem;
 
     border-radius: 0.6rem;
     border: 1px solid ${ ( { theme }) => theme.COLORS.NEUTRAL_400};
     
-    padding-left: 2rem;
-    
     svg {
       color: ${({theme}) => theme.COLORS.NEUTRAL_500};
+      margin-right: 0.5rem;
     }
     
     input {
       width: 100%;
-      padding: 1rem;
       height: 4rem;
       
       font-size: 1.6rem;
       font-weight: 400;
       
-  
+      
       color: ${({theme}) => theme.COLORS.NEUTRAL_700};
       border: none;
     }
