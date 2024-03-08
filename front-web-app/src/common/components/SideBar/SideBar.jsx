@@ -16,13 +16,13 @@ export function SideBar() {
   return (
     <Container>
       <div className="logo">
-        <Link to="/dashboard">
+        <Link to="/">
           <img src={Logo} alt="argus logo" />
         </Link>
       </div>
 
       <Menu>
-        <Items className={isActive('/dashboard') ? 'active': ''}>
+        <Items className={isActive('/') ? 'active': ''}>
           <Link to="/">
             <LiaChartBarSolid />
             Dashboard

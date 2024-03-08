@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import { Container, Section, Tittle, Header } from "./styles";
 import { Input } from "../../common/components/Input/Input";
 import Logo from "../../assets/argus-svg/argus-logo.svg";
@@ -14,14 +13,11 @@ export function SignIn() {
   const [password, setPassword] = useState("");
 
   const { signIn } = useAuth();
-  const navigate = useNavigate();
 
   function handleSignIn(event) {
     event.preventDefault();
 
     signIn({ email, password });
-
-    navigate('/dashboard');
   }
 
   return (

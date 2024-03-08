@@ -6,6 +6,11 @@ const { sign } = require("jsonwebtoken");
 
 class CreateSessionUseCase {
   async execute({ email, password }) {
+    if(!email || !password) {
+      console.log("Os campos senha e/ou email em branco", 400);
+      return
+    }
+
     const user = await Users.find("email", email);
 
     if(!user) throw new AppError("Email e/ou senha incorreta.", 401);
@@ -20,6 +25,8 @@ class CreateSessionUseCase {
 
     userResponse.password = undefined;
     
+    console.log(userResponse);
+
     const token = sign(userResponse, secret, {
       subject: String(user.id),
       expiresIn

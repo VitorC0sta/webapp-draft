@@ -39,7 +39,7 @@ export function Operations() {
                   <Input label="País" id="company-country" type="text" />
                 </div>
               </div>
-              <Button type="submit" text="Enviar" />
+              <Button type="submit" title="Enviar" />
             </form>
           </Modal>
         </div>

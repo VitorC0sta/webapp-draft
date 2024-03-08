@@ -1,7 +1,11 @@
 import { Container } from "./styles";
 import { FiLogOut, FiSettings } from "react-icons/fi";
+import { useAuth } from "../../hooks/auth";
 
 export function UserMenu() {
+  const { signOut } = useAuth();
+
+
   return (
     <Container>
       <img src="https://github.com/VitorC0sta.png" alt="User Logo" />
@@ -9,8 +13,8 @@ export function UserMenu() {
       <a href="/user">
         <FiSettings />
       </a>
-      <a href="/" className="logout-btn">
-        <FiLogOut />
+      <a href="/" onClick={signOut} className="logout-btn">
+        <FiLogOut/>
       </a>
     </Container>
   );

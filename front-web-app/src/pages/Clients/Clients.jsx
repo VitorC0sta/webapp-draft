@@ -46,7 +46,7 @@ export function Clients() {
                   <Input label="Email da companhia" id="company-email" type="email"/>
                 </div>
               </div>
-              <Button type="submit" text="Enviar"/>
+              <Button type="submit" title="Enviar"/>
             </form>
           </Modal>
         </div>

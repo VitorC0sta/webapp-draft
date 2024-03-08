@@ -16,7 +16,7 @@ export const Container = styled.div`
   
   a {
     color: ${({theme}) => theme.COLORS.NEUTRAL_500};
-
+    cursor: pointer;
   }
 
   > img {

@@ -33,7 +33,7 @@ export function Fleets() {
                 </div>
                 <Input label="Id da operação" id="id-operation" type="text"/>
               </div>
-              <Button type="submit" text="Enviar" />
+              <Button type="submit" title="Enviar" />
             </form>
           </Modal>
         </div>

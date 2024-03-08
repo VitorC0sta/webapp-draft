@@ -1,5 +1,4 @@
 import { Container } from "./styles";
-import PropTypes from 'prop-types';
 
 export function Button({ title, ...rest }) {
   return(
@@ -9,7 +8,3 @@ export function Button({ title, ...rest }) {
   )
 }
 
-Button.propTypes = {
-  type: PropTypes.string,
-  text: PropTypes.string
-}
