@@ -9,7 +9,7 @@ function AuthProvider({ children }) {
     const user = localStorage.getItem("@WebApp:user");
 
     if (token && user) {
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       return { token, user: JSON.parse(user) };
     }
@@ -20,14 +20,14 @@ function AuthProvider({ children }) {
   const signIn = useCallback(async ({ email, password }) => {
     try {
       const response = await api.post("/", { email, password });
-
+      
       const { token, userResponse } = response.data;
 
       localStorage.setItem("@WebApp:token", token);
       localStorage.setItem("@WebApp:user", JSON.stringify(userResponse));
 
-      api.defaults.headers.authorization = `Bearer ${token}`;
-
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      
       setData({ token, user: userResponse });
     } catch (err) {
       alert("Não foi possível fazer login, tente novamente");

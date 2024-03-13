@@ -1,6 +1,22 @@
-import { Container, IntroductionCard } from "./styles";
 
-export function Introduction() {
+import { useAuth } from "../../hooks/auth";
+import { Container, IntroductionCard } from "./styles";
+import {differenceInYears, format} from "date-fns";
+
+export function Introduction({ companyName }) {
+  const {user} = useAuth();
+
+  const { email, id, nationalIdNumber, phoneNumber } = user;
+  
+  const age = differenceInYears(new Date(), new Date(2002, 3, 12));
+  
+  console.log(age);
+  
+  const dates = {
+    registeredAt: format(user.createdAt, "MM/dd/yyyy - hh:mm aa"),
+    updatedAt: format(user.updatedAt, "MM/dd/yyyy - hh:mm aa"),
+  }
+
   return (
     <Container>
       <IntroductionCard>
@@ -8,15 +24,15 @@ export function Introduction() {
         <div className="info-container">
           <div className="wrap-info">
             <span>Idade</span>
-            <p>22</p>
+            <p></p>
           </div>
           <div className="wrap-info">
             <span>ID Internacional</span>
-            <p>(BR) 123.456.789-10</p>
+            <p>(BR) { nationalIdNumber }</p>
           </div>
           <div className="wrap-info">
             <span>Companhia</span>
-            <p>FreshCo ent.</p>
+            <p>{ companyName }</p>
           </div>
           <div className="wrap-info">
             <span>Area</span>
@@ -29,19 +45,19 @@ export function Introduction() {
         <div className="info-container">
           <div className="wrap-info">
             <span>ID no Banco</span>
-            <p>ed5$3#ft1</p>
+            <p>{ id }</p>
           </div>
           <div className="wrap-info">
             <span>Status do usuário</span>
-            <p>Ativo</p>
+            <p>{ user.active? "Ativo" : "Inativo" }</p>
           </div>
           <div className="wrap-info">
             <span>Registrado</span>
-            <p>19/02/2024 - 07:43 AM</p>
+            <p>{ dates.registeredAt }</p>
           </div>
           <div className="wrap-info">
             <span>Ultima atualização</span>
-            <p>19/02/2024 - 01:39 PM</p>
+            <p>{ dates.updatedAt }</p>
           </div>
         </div>
       </IntroductionCard>
@@ -50,11 +66,11 @@ export function Introduction() {
         <div className="info-container">
           <div className="wrap-info">
             <span>Celular</span>
-            <p>(99) 9999-999</p>
+            <p>{ phoneNumber }</p>
           </div>
           <div className="wrap-info">
             <span>Email</span>
-            <p>email@email.com</p>
+            <p>{ email }</p>
           </div>
           <div className="wrap-info">
             <span>LinkedIn</span>
