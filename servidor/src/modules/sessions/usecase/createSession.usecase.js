@@ -11,7 +11,7 @@ class CreateSessionUseCase {
       return
     }
 
-    const user = await Users.find("email", email);
+    const user = await Users.findOne({ where:  { email } });
 
     if(!user) throw new AppError("Email e/ou senha incorreta.", 401);
 

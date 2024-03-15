@@ -6,13 +6,21 @@ const UpdateUserUseCase = require("../usecases/updateUser.usecase.js");
 const ShowUserUseCase = require("../usecases/showUser.usecase.js");
 class UserController {
   async create(req, res) {
-    const  {
+    const {
       name,
       nationalIdNumber,
       password,
       email,
       idClient,
       administrator,
+      postalCode,
+      userAddress,
+      userCity,
+      userState,
+      userCountry,
+      phoneNumber,
+      birthdate,
+      companyRole
     } = req.body;
 
     await userCreationSchema.validate(req.body, { abortEarly: false });
@@ -24,6 +32,14 @@ class UserController {
       email,
       idClient,
       administrator,
+      postalCode,
+      userAddress,
+      userCity,
+      userState,
+      userCountry,
+      phoneNumber,
+      birthdate,
+      companyRole
     });
 
     return res.status(201).json(user);
@@ -36,10 +52,18 @@ class UserController {
       newPassword,
       idClient,
       administrator,
+      postalCode,
+      userAddress,
+      userCity,
+      userState,
+      userCountry,
+      phoneNumber,
+      birthdate,
+      companyRole
     } = req.body;
 
-    await userUpdateSchema.validate(req.body, {abortEarly: false});
-    
+    await userUpdateSchema.validate(req.body, { abortEarly: false });
+
     const userLogged = req.user;
 
     const user = await new UpdateUserUseCase().execute({
@@ -49,22 +73,29 @@ class UserController {
       newPassword,
       idClient,
       administrator,
+      postalCode,
+      userAddress,
+      userCity,
+      userState,
+      userCountry,
+      phoneNumber,
+      companyRole,
+      birthdate,
     });
 
     return res.status(200).json(user);
   }
 
-  async delete (req, res) {
+  async delete(req, res) {
     const { id, email } = req.body;
-    
+
     const userLogged = req.user;
 
-    await userDeleteSchema.validate(req.body, { abortEarly: false});
-    
+    await userDeleteSchema.validate(req.body, { abortEarly: false });
+
     const user = await new DeleteUserUseCase(id, email, userLogged).execute();
 
-    return res.status(200).json({message: "User Deleted", user});
-    
+    return res.status(200).json({ message: "User Deleted", user });
   }
 
   async showUser(req, res) {

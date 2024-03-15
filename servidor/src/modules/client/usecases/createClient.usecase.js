@@ -12,7 +12,7 @@ class CreateClientUseCase {
     state,
     country,
   }) {
-    const chkClientExists = await Clients.find(companyId, companyId.value);
+    const chkClientExists = await Clients.findOne({ where: {companyId: companyId.value } });
 
     if (chkClientExists) throw new AppError("[ERRO].: Cliente já cadastrado.");
 

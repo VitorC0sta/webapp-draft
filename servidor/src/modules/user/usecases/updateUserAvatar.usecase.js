@@ -6,7 +6,7 @@ class UpdateUserAvatarUseCase {
   async execute(id, avatarFilename) {
     const diskStorage = new DiskStorage();
 
-    const user = await Users.find("id", id)
+    const user = await Users.findOne({ where: { id } });
     
     if(!user) throw new AppError("Somente usuários autenticados podem trocar a foto.", 401);
 

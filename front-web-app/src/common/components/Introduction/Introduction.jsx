@@ -1,20 +1,19 @@
 
 import { useAuth } from "../../hooks/auth";
 import { Container, IntroductionCard } from "./styles";
-import {differenceInYears, format} from "date-fns";
+import { format } from "date-fns";
 
 export function Introduction({ companyName }) {
   const {user} = useAuth();
 
-  const { email, id, nationalIdNumber, phoneNumber } = user;
+  const { email, id, nationalIdNumber, phoneNumber, birthdate } = user;
   
-  const age = differenceInYears(new Date(), new Date(2002, 3, 12));
-  
-  console.log(age);
+  console.log(user)
   
   const dates = {
     registeredAt: format(user.createdAt, "MM/dd/yyyy - hh:mm aa"),
     updatedAt: format(user.updatedAt, "MM/dd/yyyy - hh:mm aa"),
+    birthdateFormated: format(birthdate, "MM/dd/yyyy")
   }
 
   return (
@@ -23,8 +22,8 @@ export function Introduction({ companyName }) {
         <h2>Informações</h2>
         <div className="info-container">
           <div className="wrap-info">
-            <span>Idade</span>
-            <p></p>
+            <span>Data de Nascimento</span>
+            <p>{dates.birthdateFormated}</p>
           </div>
           <div className="wrap-info">
             <span>ID Internacional</span>

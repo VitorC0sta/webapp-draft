@@ -33,4 +33,4 @@ app.use((err, req, res, nxt) => {
 });
 
 const PORT = process.env.PORT || 3333;
-app.listen(PORT, () => console.log('Server status :: [ONLINE].:'));
+app.listen(PORT, () => console.log('Server status :: [ONLINE].: ' + PORT));

@@ -3,7 +3,7 @@ const AppError = require("../../../infra/utils/AppError");
 
 class ShowUserUseCase {
   async execute(id) {
-    const user = await Users.find("id", id);
+    const user = await Users.findOne({ where: { id } });
     
     if(!user) throw new AppError("Usuário não existente.", 403);
         

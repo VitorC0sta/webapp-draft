@@ -8,9 +8,11 @@ const Users = databaseConnection.define("User", {
   administrator: DataTypes.BOOLEAN,
   password: DataTypes.STRING,
   active: DataTypes.BOOLEAN,
+  birthdate: DataTypes.STRING,
   nationalIdNumber: { type: DataTypes.STRING, field: "national_id_number"  },
   createdAt: { type: DataTypes.DATE, field: "created_at" },
   updatedAt: { type: DataTypes.DATE, field: "updated_at" },
+  companyRole: {type: DataTypes.STRING, field: "company_role"},
   idClient: {
     type: DataTypes.INTEGER,
     field: "id_client",
@@ -19,14 +21,13 @@ const Users = databaseConnection.define("User", {
       key: "id",
     },
   },
+  postalCode: { type: DataTypes.STRING, field: "postal_code" },
+  userAddress: { type: DataTypes.STRING, field: "user_address" },
+  userCity: { type: DataTypes.STRING, field: "user_city" },
+  userState: { type: DataTypes.STRING, field: "user_state" },
+  userCountry: { type: DataTypes.STRING, field: "user_country" },
+  phoneNumber: { type: DataTypes.STRING, field: "phone_number"},
 });
-
-Users.find = async function (columnKey, value) {
-  const searchField = {};
-  searchField[columnKey] = value;
-
-  return await this.findOne({ where: searchField });
-};
 
 
 module.exports = Users;

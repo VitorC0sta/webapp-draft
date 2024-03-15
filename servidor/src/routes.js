@@ -22,7 +22,7 @@ routes.use("/operation", operationsRoutes);
 routes.use("/vehicles", vehicleRoutes);
 routes.use(isAdmin);
 routes.use("/admin/operation", adminOperationsRoutes);
-routes.use("/admin/client", adminClientRoutes);
+routes.use("/admin/clients", adminClientRoutes);
 routes.use("/admin/user", adminUserRoutes);
 routes.use("/admin/vehicles", adminVehiclesRoutes);
 
