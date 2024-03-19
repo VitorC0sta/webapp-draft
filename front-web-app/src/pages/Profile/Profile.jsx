@@ -18,20 +18,22 @@ export function Profile() {
   const getClientData = useCallback(async () => {
     try {
 
-     const response = await api.get(`/client/${idClient}`).then( response => response.data);    
-     setClientData(response);
+     const response = await api.get(`/client/${idClient}`);    
+     
+     console.log(response.data);
 
+     setClientData(response.data);
+     
     } catch (err){
-
-      alert("Não foi possível resgatar os dados da api");
+      console.log(err.response.data); 
     }
     
-  }, []);
+  }, [idClient]);
 
   
   useEffect( () => {
-    getClientData(idClient);
-  }, [])
+    getClientData();
+  }, [getClientData]);
 
   const optionProfile = useMemo(() => { 
     if(tab == 1) {

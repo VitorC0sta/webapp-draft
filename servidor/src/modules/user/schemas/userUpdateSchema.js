@@ -1,4 +1,4 @@
-const { object, string, boolean, number } = require("yup");
+const { object, string, boolean, number, date } = require("yup");
 
 const userUpdateSchema = object({
   password: string().min(8, "Mínimo 8 caracteres"),
@@ -12,6 +12,8 @@ const userUpdateSchema = object({
   userState: string(),
   userCountry: string(),
   phoneNumber: string(),
+  birthdate: date(),
+  companyRole: string(),
 });
 
 module.exports = userUpdateSchema;

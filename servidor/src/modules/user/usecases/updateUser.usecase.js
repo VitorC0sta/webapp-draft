@@ -104,15 +104,17 @@ class UpdateUserUseCase {
   }
 
   async #stringToDate(birthdate) {
-    const [monthString, dayString, yearString] = await birthdate.split("/");
+    const [yearString, monthString, dayString] = birthdate.split("/");
 
+      const year = Number(yearString);
     const month = Number(monthString) - 1; //months in 'Date' [0-11] [jan-dec].
     const day = Number(dayString);
-    const year = Number(yearString);
 
-    await this.#dateValidation({ month, day, year });
-
-    return new Date(year, month, day);
+    await this.#dateValidation({ month, day, year });  useEffect( () => {
+      getClientData(idClient);
+    }, [getClientData, idClient]);
+    
+    return (new Date(year, month, day));
   }
 
   async #dateValidation({ month, day, year }) {
@@ -121,7 +123,7 @@ class UpdateUserUseCase {
 
     console.log(`dia: ${day} - mes: ${month} - ano ${year}`)
 
-    const currentYear = await currentDate.getFullYear();
+    const currentYear = currentDate.getFullYear();
     console.log(currentDate, inputDate);
     if (inputDate > currentDate) {
       throw new AppError("Data futura não permitida", 401);
