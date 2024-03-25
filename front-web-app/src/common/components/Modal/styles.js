@@ -40,9 +40,7 @@ export const ModalContent = styled.div`
       border-radius: 50%;
       
       transition: 350ms;
-  
-      margin-bottom: 2rem;
-  
+   
       align-self: left;
   
       &:hover {

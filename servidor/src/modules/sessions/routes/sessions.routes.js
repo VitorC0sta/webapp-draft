@@ -6,6 +6,6 @@ const sessionsController = new SessionsController();
 const sessionRoutes = Router();
 
 sessionRoutes.post("/", sessionsController.authenticate);
-sessionRoutes.post("/forgot_password", sessionsController.recoveryPassword);
-
+sessionRoutes.post("/forgot_password", sessionsController.sendRecoveryEmail);
+sessionRoutes.post("/reset_password/:token", sessionsController.resetPassword);
 module.exports = sessionRoutes;

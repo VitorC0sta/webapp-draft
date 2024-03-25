@@ -3,28 +3,35 @@ import styled from "styled-components";
 export const Container = styled.main`
   display: grid;
   grid-template-columns: 50% 50%;
-  .panel {
+
+  > .panel {
     padding: 0;
     background-color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
     display: flex;
     align-items: center;
     justify-content: center;
     img {
+      svg {
+        height: 90vh;
+        width: 90vw;
+      }
+
+      width: max-content;
+      height: 90vh;
       overflow: hidden;
       display: flex;
       position: absolute;
       opacity: 0.2;
-      height: 90vh;
-      width: 90vw;
       z-index: 0;
     }
-    .typewriter{
+
+    .typewriter {
       display: inline-block;
     }
 
-    p{
+    p {
       color: ${({ theme }) => theme.COLORS.WHITE_700};
-      
+
       font-family: monospace;
       font-size: 2rem;
       font-weight: 500;
@@ -32,11 +39,11 @@ export const Container = styled.main`
       white-space: nowrap;
       overflow: hidden;
       border-right: 0.5rem ${({ theme }) => theme.COLORS.WHITE_700} solid;
-      animation: typing 3.15s steps(63), blinking 0.5s infinite step-end alternate;
-    };
+      animation: typing 3.15s steps(63),
+        blinking 0.5s infinite step-end alternate;
+    }
 
     .main-info {
-
     }
 
     @keyframes typing {
@@ -50,8 +57,24 @@ export const Container = styled.main`
         border-color: transparent;
       }
     }
-   
   }
+`;
+
+export const ForgotButton = styled.button`
+  align-self: flex-end;
+
+  border: none;
+
+  background-color: transparent;
+
+  color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
+
+  text-decoration: underline;
+
+  font-weight: 700;
+  font-size: 1.6rem;
+
+  cursor: pointer;
 `;
 
 export const Section = styled.section`
@@ -73,6 +96,15 @@ export const Section = styled.section`
     a {
       margin-left: auto;
       margin-bottom: 3rem;
+    }
+  }
+
+  .forgot-password {
+    div {
+      h2 {
+        margin-bottom: 2rem;
+      }
+      
     }
   }
 `;

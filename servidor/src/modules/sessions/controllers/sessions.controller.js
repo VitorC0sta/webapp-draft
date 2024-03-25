@@ -1,40 +1,41 @@
 const CreateSessionUseCase = require("../usecase/createSession.usecase");
 const createSessionSchema = require("../schemas/createSession.schema");
-const Users = require("../../../infra/database/entities/users");
-const AppError = require("../../../infra/utils/AppError");
-const crypto = require("crypto");
+const SendRecoveryEmailUseCase = require("../usecase/sendRecoveryEmail.usecase");
+const ResetPasswordUseCase = require("../usecase/resetPassword.usecase");
+
 class SessionsController {
   async authenticate(req, res) {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     await createSessionSchema.validate(req.body, { abortEarly: false });
 
-    const session = await new CreateSessionUseCase().execute({ email, password });
-    
+    const session = await new CreateSessionUseCase().execute({
+      email,
+      password,
+    });
+
     return res.json(session);
   }
 
-  async recoveryPassword(req, res) {
-    const { email } = req.body; 
+  async sendRecoveryEmail(req, res) {
+    const { recoveryEmail } = req.body;
 
-    try {
-      const user = await Users.findOne({ where: {email} });
+    await new SendRecoveryEmailUseCase().execute({ email: recoveryEmail, url });
 
-      if(!user) {
-        throw new AppError("Email e/ou usuário inválido", 401);
-      }
+    return res.status(204).json();
+  }
 
-      const token = crypto.randomBytes(20).toString('hex');
+  async resetPassword(req, res) {
+    const { newPassword, confirmNewPassword } = req.body;
+    const { token } = request.params;
 
-      const now = new Date();
+    await ResetPasswordUseCase().execute({
+      token,
+      newPassword,
+      confirmNewPassword,
+    });
 
-      now.setMinutes(now.getMinutes() + 30);
-
-
-    } catch (err) {
-      response.status(400).send({error: 'Erro, tente novamente'});
-    }
-
+    return;
   }
 }
 

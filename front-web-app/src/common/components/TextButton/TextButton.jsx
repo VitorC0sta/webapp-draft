@@ -1,8 +1,8 @@
 import { Container } from "./style";
 
-export default function TextButton({href, text}) {
+export default function TextButton({text, ...rest}) {
   return(
-    <Container href={href} target="_blank">
+    <Container {...rest}>
       {text}
     </Container>
   );
