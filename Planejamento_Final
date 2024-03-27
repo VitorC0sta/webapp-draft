@@ -1,0 +1,23 @@
+Planejamento:
+
+ - :: Recuperação de senha (envio no email).
+ 	-> Gerar migration para nova tabela com os dados de recovery. 20/03 - 11min
+ 	-> Regular entities. 20/03 - 11min
+ 	-> Continuar usecase de recovery. 21/03     
+ 	-> Tela de recuperação(link) com as informações do backend para reset.
+ 	    obs:: Buscar token pelo back diretamente, pegar token por console.log.
+ 	-> Enviar o token por email e testar se funciona.
+ 	-> Salvar no banco a senha nova. 	
+ 	
+ - :: Pegar dados do banco para as tabelas(services).
+ 
+ - :: Alteração de vizualização para usuários default(dashboard, fleets, operations, events).
+ 
+ - :: Criação de dados(clientes, frotas, operações, usuários);
+ 
+ - :: Alteração de dados cadastrais dos usuários pelo administrador(modal).
+ 
+ - :: Geração aleatória de senha e enviada ao email do usuário para não ter conflitos de segurança.
+ 
+ -  :: Atualização de dados da dashboard(cards, last events e Echart).
+ 
