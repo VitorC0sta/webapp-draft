@@ -20,12 +20,7 @@
   - **Estado:** Innovatia
   - **País:** Imaginaria
 
-- **Empresa 3:**
-  - **Nome Legal:** PQR Enterprises
-  - **DBA Name:** PQR Corp
-  - **Company ID:** C555555555
-  - **Cidade:** Corporate Town
-  - **CEP:** 67890
+- **Empresa 3is Please note that this function is not present in the FP submodule as it uses Date.now() internally hence impure and can't be safely currie67890
   - **Endereço:** 123 Corporate Blvd
   - **Estado:** Corporate State
   - **País:** Fictionalania 

@@ -7,5 +7,5 @@ const sessionRoutes = Router();
 
 sessionRoutes.post("/", sessionsController.authenticate);
 sessionRoutes.post("/forgot_password", sessionsController.sendRecoveryEmail);
-sessionRoutes.post("/reset_password/", sessionsController.resetPassword);
+sessionRoutes.post("/reset_password", sessionsController.resetPassword);
 module.exports = sessionRoutes;

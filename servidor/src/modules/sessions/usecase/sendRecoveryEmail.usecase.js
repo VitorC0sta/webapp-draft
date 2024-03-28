@@ -7,7 +7,7 @@ const AppError = require("../../../infra/utils/AppError");
 const crypto = require("crypto");
 
 class SendRecoveryEmailUseCase {
-  async  execute({email, url}) {
+  async  execute({ email }) {
     try {
       const user = await Users.findOne({ where: {email} });
 
@@ -27,7 +27,7 @@ class SendRecoveryEmailUseCase {
         expiresIn
       });
 
-      const resetPasswordUrl = process.env.APP_URL + `recoveryPassword?token=${token}`
+      const resetPasswordUrl = process.env.APP_URL + `/reset_password?token=${token}`
       
       await sendEmail({email, resetPasswordUrl});
 

@@ -20,7 +20,7 @@ class SessionsController {
   async sendRecoveryEmail(req, res) {
     const { recoveryEmail } = req.body;
 
-    await new SendRecoveryEmailUseCase().execute({ email: recoveryEmail, url });
+    await new SendRecoveryEmailUseCase().execute({ email: recoveryEmail });
 
     return res.status(204).json();
   }
@@ -35,7 +35,7 @@ class SessionsController {
       confirmNewPassword,
     });
 
-    return;
+    return res.status(204).json({});
   }
 }
 
