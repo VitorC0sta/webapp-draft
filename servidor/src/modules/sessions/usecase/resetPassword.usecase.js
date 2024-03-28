@@ -28,7 +28,7 @@ class ResetPasswordUseCase {
 
     user.save();
 
-    return user;
+    return;
   }
 }
 

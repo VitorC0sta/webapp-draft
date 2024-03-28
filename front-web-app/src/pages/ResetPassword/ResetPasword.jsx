@@ -12,10 +12,13 @@ export function ResetPassword() {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   async function handleResetPassword(event) {
-      event.preventDefault();
-
-      await api.post("/reset_password", { newPassword, confirmNewPassword });
-
+    event.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    await api.post(`/reset_password?token=${token}`, {
+      newPassword,
+      confirmNewPassword,
+    });
   }
 
   return (
@@ -46,7 +49,11 @@ export function ResetPassword() {
             type="password"
             onChange={(e) => setConfirmNewPassword(e.target.value)}
           />
-          <Button type="button" title={"Alterar senha"} onClick={handleResetPassword}/>
+          <Button
+            type="button"
+            title={"Alterar senha"}
+            onClick={handleResetPassword}
+          />
         </form>
       </Section>
       <Section className="panel">

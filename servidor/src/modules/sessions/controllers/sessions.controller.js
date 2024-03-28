@@ -27,9 +27,9 @@ class SessionsController {
 
   async resetPassword(req, res) {
     const { newPassword, confirmNewPassword } = req.body;
-    const { token } = request.query;
+    const { token } = req.query;
 
-    await ResetPasswordUseCase().execute({
+    await new ResetPasswordUseCase().execute({
       token,
       newPassword,
       confirmNewPassword,
