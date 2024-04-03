@@ -35,7 +35,7 @@ class SessionsController {
       confirmNewPassword
     });
 
-    return;
+    return res.status(204).json({});
   }
 }
 

@@ -1,3 +1,4 @@
+const { hash } = require("bcrypt");
 const SecurityData = require("../../../infra/database/entities/security_data");
 const Users = require("../../../infra/database/entities/users");
 const { hash } = require("../../../infra/providers/hashprovider");

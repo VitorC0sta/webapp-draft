@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Section, Tittle, Header, ForgotButton } from "./styles";
 import { Input } from "../../common/components/Input/Input";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/argus-svg/argus-logo.svg";
 import Icon from "../../assets/argus-svg/argus-icon-background.svg";
 import TextButton from "../../common/components/TextButton/TextButton";
@@ -40,7 +41,9 @@ export function SignIn() {
     <Container>
       <Section>
         <Header>
-          <img src={Logo} alt="Argus Logo" />
+          <Link to="/">
+            <img src={Logo} alt="Argus Logo" />
+          </Link>
         </Header>
         <Tittle>
           <h1>Entrar</h1>

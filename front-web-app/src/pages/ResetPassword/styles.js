@@ -6,10 +6,14 @@ export const Container = styled.main`
 
   > .panel {
     padding: 0;
+
     background-color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     img {
       svg {
         height: 90vh;
@@ -62,32 +66,23 @@ export const Container = styled.main`
 
 export const Section = styled.section`
   height: 100vh;
+  display: grid;
+  grid-template-rows: 20% 15% auto;
   
+  padding: 0 18%;
 
   form {
     margin-top: 4rem;
-    
     padding: 0 auto;
-    
-      display: flex;
+    display: flex;
     flex-direction: column;
-    
-    gap: 2rem;  
+    gap: 2rem;
 
     align-items: center;
 
     a {
       margin-left: auto;
       margin-bottom: 3rem;
-    }
-  }
-
-  .forgot-password {
-    div {
-      h2 {
-        margin-bottom: 2rem;
-      }
-      
     }
   }
 `;
@@ -97,5 +92,22 @@ export const Header = styled.div`
   img {
     width: 14rem;
     height: 3.2rem;
+  }
+`;
+
+export const Tittle = styled.div`
+  margin-top: 5rem;
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  div {
+    display: flex;
+    gap: 1.5rem;
+    p {
+      color: ${({ theme }) => theme.COLORS.NEUTRAL_700};
+    }
   }
 `;
