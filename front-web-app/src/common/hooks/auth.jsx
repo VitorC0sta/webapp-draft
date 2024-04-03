@@ -31,6 +31,8 @@ function AuthProvider({ children }) {
       setData({ token, user: userResponse });
     } catch (err) {
       alert("Não foi possível fazer login, tente novamente");
+
+      //to do adicionar toastfy 
     }
   }, []);
 

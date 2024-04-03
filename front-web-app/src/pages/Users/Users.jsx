@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Main, NewClientButton } from "./styles";
 import { SideBar } from "../../common/components/SideBar/SideBar";
 import { InputSearch } from "../../common/components/InputSearch/InputSearch";
@@ -7,10 +7,30 @@ import { QueryResultsTable } from "../../common/components/QueryResultsTable/Que
 import { Modal } from "../../common/components/Modal/Modal";
 import { Input } from "../../common/components/Input/Input";
 import { Button } from "../../common/components/Button/Button";
+import { api } from "../../common/service/api";
 
 export function Users() {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get(
+          import.meta.env.VITE_API_URL + "admin/users"
+        );
+        const responseData = response.data;
+        
+        setData(responseData);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    fetchData();
+
+    return
+  }, []);
   return (
     <Container>
       <SideBar />
@@ -83,6 +103,7 @@ export function Users() {
               "Administrator",
               "",
             ]}
+            data={data}
           />
         </Main>
       </div>

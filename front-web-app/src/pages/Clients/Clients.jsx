@@ -3,15 +3,34 @@ import { SideBar } from "../../common/components/SideBar/SideBar";
 import { InputSearch } from "../../common/components/InputSearch/InputSearch";
 import { QueryResultsTable } from "../../common/components/QueryResultsTable/QueryResultsTable";
 import { Modal } from "../../common/components/Modal/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { Input } from "../../common/components/Input/Input";
 import { Button } from "../../common/components/Button/Button";
+import { api } from "../../common/service/api";
 
 export function Clients() {
-  const  [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get(
+          import.meta.env.VITE_API_URL + "admin/clients"
+        );
+        const responseData = response.data;
+        
+        setData(responseData);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
 
+    fetchData();
+
+    return
+  }, []);
 
   return (
     <Container>
@@ -19,36 +38,40 @@ export function Clients() {
       <div className="body-container">
         <div className="head-container">
           <InputSearch $searchFor={"clientes"} />
-          <NewClientButton onClick={() => setOpen(true)} >
+          <NewClientButton onClick={() => setOpen(true)}>
             Criar
             <FiPlus />
           </NewClientButton>
-          <Modal isOpen={open} setIsOpen={setOpen} >
+          <Modal isOpen={open} setIsOpen={setOpen}>
             <form action="submit">
               <div className="company-info">
                 <h2>Informações da Empresa</h2>
-                <Input label="Razão social " id="legal-name" type="text"/>
-                <Input label="Nome fantasia" id="dba-name" type="text"/>
-                <Input label="CNPJ" id="company-id" type="text"/>      
+                <Input label="Razão social " id="legal-name" type="text" />
+                <Input label="Nome fantasia" id="dba-name" type="text" />
+                <Input label="CNPJ" id="company-id" type="text" />
               </div>
               <div className="address-details">
                 <h2>Endereços</h2>
-                <Input label="CEP" id="postal-code" type="text"/>
-                <Input label="Endereço" id="company-address" type="text"/>
-                <Input label="Cidade" id="company-city" type="text"/>
+                <Input label="CEP" id="postal-code" type="text" />
+                <Input label="Endereço" id="company-address" type="text" />
+                <Input label="Cidade" id="company-city" type="text" />
                 <div className="country-info">
-                  <Input label="Estado" id="company-state" type="text"/>
-                  <Input label="País" id="company-country" type="text"/>
+                  <Input label="Estado" id="company-state" type="text" />
+                  <Input label="País" id="company-country" type="text" />
                 </div>
               </div>
               <div className="contact-detail">
                 <h2>Contato</h2>
                 <div className="contact-info">
-                  <Input label="Telefone" id="contact-number" type="text"/>
-                  <Input label="Email da companhia" id="company-email" type="email"/>
+                  <Input label="Telefone" id="contact-number" type="text" />
+                  <Input
+                    label="Email da companhia"
+                    id="company-email"
+                    type="email"
+                  />
                 </div>
               </div>
-              <Button type="submit" title="Enviar"/>
+              <Button type="submit" title="Enviar" />
             </form>
           </Modal>
         </div>
@@ -57,14 +80,14 @@ export function Clients() {
             fields={[
               "#",
               "Nome",
-              "Contato",
-              "Empresa",
-              "Criação",
+              "Idenficação Fiscal",
+              "Código Postal",
+              "Cidade",
+              "Pais",
               "Status",
-              "Administrator",
               "",
             ]}
-            endpoint={"clients"}
+            data={data}
           />
         </Main>
       </div>

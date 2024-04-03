@@ -7,9 +7,8 @@ import { MdBusAlert } from "react-icons/md";
 import { StackBarChart } from "../../common/components/Charts/StackBarChart/StackBarChart";
 import { LastEventsTable } from "../../common/components/LastEventsTable/LastEventsTable";
 
-
 export function Home() {
-
+  
   return (
     <Container>
       <SideBar />

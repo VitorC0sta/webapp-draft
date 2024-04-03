@@ -47,13 +47,11 @@ export function Operations() {
           <QueryResultsTable
             fields={[
               "#",
-              "Nome",
-              "Contato",
-              "Empresa",
+              "Operação",
+              "Destino",
+              "Código postal",
               "Criação",
               "Status",
-              "Administrator",
-              "",
             ]}
           />
         </Main>

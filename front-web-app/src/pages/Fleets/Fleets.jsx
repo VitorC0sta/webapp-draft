@@ -41,15 +41,13 @@ export function Fleets() {
           <QueryResultsTable
             fields={[
               "#",
-              "Nome",
-              "Contato",
-              "Empresa",
-              "Criação",
+              "Identificação",
+              "Cor",
+              "Modelo",
+              "Placa",
               "Status",
-              "Administrator",
               "",
             ]}
-            endpoint={"fleets"}
           />
         </Main>
       </div>
