@@ -30,7 +30,7 @@ export function SignIn() {
     try {
       await api.post("/forgot_password", { recoveryEmail });
     } catch (err) {
-      console.log("Não foi possivel enviar o email");
+      console.log("Não foi possível enviar o email");
     }
 
     setOpen(false);
@@ -88,7 +88,7 @@ export function SignIn() {
           </div>
         </div>
         <Modal isOpen={open} setIsOpen={setOpen} className="modal">
-          <form action="submit" className="forgot-password">
+          <form className="forgot-password">
             <div>
               <h2>Enviar email de recuperação</h2>
               <Input

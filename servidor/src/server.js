@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./infra/database/connection');
 require('express-async-errors');
 
+const morgan = require('morgan');
 const cors = require('cors');
 const express = require('express');
 const cron = require('node-cron');
@@ -10,6 +11,7 @@ const AppError = require('./infra/utils/AppError.js');
 const eventTrigger = require('./cron-jobs/eventTrigger.job.js');
 
 const app = express();
+app.use(morgan('dev'));
 
 app.use(cors());
 app.use(express.json());

@@ -22,7 +22,7 @@ function AuthProvider({ children }) {
       const response = await api.post("/", { email, password });
       
       const { token, userResponse } = response.data;
-
+      
       localStorage.setItem("@WebApp:token", token);
       localStorage.setItem("@WebApp:user", JSON.stringify(userResponse));
 

@@ -49,6 +49,7 @@ export function Fleets() {
               "Administrator",
               "",
             ]}
+            endpoint={"fleets"}
           />
         </Main>
       </div>

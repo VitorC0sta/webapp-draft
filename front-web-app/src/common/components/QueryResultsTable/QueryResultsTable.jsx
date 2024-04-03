@@ -1,10 +1,13 @@
 import { Container } from "./styles";
-import userData from "./userExample";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 import { PropTypes } from "prop-types";
+import { api } from "../../service/api";
 
-export function QueryResultsTable({ fields }) {
+export async function QueryResultsTable({ fields, endpoint }) {
+
+  const userData = await api.get(`${endpoint}`);
+
   return (
     <Container>
       <thead>

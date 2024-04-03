@@ -11,6 +11,8 @@ import { Button } from "../../common/components/Button/Button";
 export function Clients() {
   const  [open, setOpen] = useState(false);
 
+
+
   return (
     <Container>
       <SideBar />
@@ -62,6 +64,7 @@ export function Clients() {
               "Administrator",
               "",
             ]}
+            endpoint={"clients"}
           />
         </Main>
       </div>

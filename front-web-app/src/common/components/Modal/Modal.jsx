@@ -6,10 +6,10 @@ export function Modal({ children, isOpen, setIsOpen }) {
 
   return <>{
     isOpen && 
-    <Container isOpen>
+    <Container>
       <ModalContent>
       <div className="wrap-closebutton">
-        <IoIosClose className="close-modal" onClick={() => setIsOpen(!isOpen)}/>
+        <IoIosClose className="close-modal" onClick={() => setIsOpen(false)}/>
       </div>
         {children}
       </ModalContent>
