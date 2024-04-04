@@ -2,19 +2,20 @@ import { Container } from "./styles";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 
-
 export function QueryResultsTable({ fields, data }) {
+  console.log()
+
   return (
     <Container>
       <thead>
         <tr>
-          {fields?.map((field) => {
+          {fields.map((field) => {
             return <th key={field}> {field} </th>;
           })}
         </tr>
       </thead>
       <tbody>
-        {data.map((user, index) => (
+        {data?.map((user, index) => (
           <tr key={index}>
             {Object.keys(user).map((key) =>
               key == "contact" ? (
