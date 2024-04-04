@@ -10,7 +10,9 @@ class UpdateClientUseCase {
       city,
       state,
       country,
-      active
+      active,
+      companyPhone,
+      companyEmail
   ) {
 
     const client = await Clients.findOne({where: { id } });
@@ -30,7 +32,9 @@ class UpdateClientUseCase {
     client.city = city ?? client.city;
     client.state = state ?? client.state;
     client.country = country ?? client.country;
-
+    client.companyPhone = companyPhone ?? client.companyPhone;
+    client.companyEmail = companyEmail ?? client.companyEmail;
+    
     await client.save();
 
     return client;

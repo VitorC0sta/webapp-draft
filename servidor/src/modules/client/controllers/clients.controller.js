@@ -6,27 +6,31 @@ const ShowClientUseCase = require("../usecases/showClient.usecase.js");
 class ClientsController {
   async create(req, res) {
     const {
-      legal_name,
-      dba_name,
-      company_id,
-      city,
-      postal_code,
       address,
-      state,
+      city,
+      companyEmail,
+      companyId,
+      companyPhone,
       country,
+      dbaName,
+      legalName,
+      postalCode,
+      state,
     } = req.body;
 
     await clientCreationSchema.validate(req.body, { abortEarly: false });
 
     const client = await new CreateClientUseCase().execute({
-      legal_name,
-      dba_name,
-      company_id,
-      city,
-      postal_code,
       address,
-      state,
+      city,
+      companyEmail,
+      companyId,
+      companyPhone,
       country,
+      dbaName,
+      legalName,
+      postalCode,
+      state,
     });
 
     return res.status(201).json(client);

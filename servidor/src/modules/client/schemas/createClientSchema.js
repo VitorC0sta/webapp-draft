@@ -1,13 +1,30 @@
-const {object, string} = require("yup");
+const { object, string } = require("yup");
 
 const clientCreationSchema = object({
-  legal_name: string().required(),
-  dba_name: string().required(),
-  company_id: string().required(),
-  postal_code: string().required(),
+  active,
+  city,
+  companyEmail,
+  companyId,
+  companyPhone,
+  country,
+  dbaName,
+  postalCode,
+  legalName: string().required(),
+  dbaName: string().required(),
+  companyId: string().required(),
+  postalCode: string().required(),
   address: string().required(),
   state: string(),
-  country: string().required()
-})
+  country: string().required(),
+});
 
 module.exports = clientCreationSchema;
+active,
+            city,
+            companyEmail,
+            companyId,
+            companyPhone,
+            country,
+            dbaName,
+            id,
+            postalCode,

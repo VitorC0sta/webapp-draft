@@ -23,7 +23,7 @@ routes.use("/vehicles", vehicleRoutes);
 routes.use(isAdmin);
 routes.use("/admin/operation", adminOperationsRoutes);
 routes.use("/admin/clients", adminClientRoutes);
-routes.use("/admin/user", adminUserRoutes);
+routes.use("/admin/users", adminUserRoutes);
 routes.use("/admin/vehicles", adminVehiclesRoutes);
 
 module.exports = routes;
