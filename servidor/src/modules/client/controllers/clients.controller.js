@@ -33,7 +33,7 @@ class ClientsController {
       state,
     });
 
-    return res.status(201).json(client);
+    return res.status(201).json(client);  
   }
 
   async showClient(req, res) {

@@ -7,10 +7,11 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
 
   display: grid;
-  grid-template-rows: 10% 80% auto;
+  grid-template-rows: 10% 70% auto;
 
   > .logo {
-    margin: auto;
+    margin: auto 2rem ;
+    
   }
 `;
 
@@ -60,12 +61,12 @@ export const Items = styled.li`
 
     width: 100%;
 
-    padding-left: 4rem;
+    padding-left: 2rem;
 
     color: ${({ theme }) => theme.COLORS.WHITE_700};
 
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 2.2rem;
 
     text-decoration: none;
   }

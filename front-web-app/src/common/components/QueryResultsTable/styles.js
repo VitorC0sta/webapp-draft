@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const Container = styled.table`
   width: 100%;
   height: 100%;
-  background-color: white;
+  max-height: 100%;
+  background-color: ${({theme}) => theme.COLORS.WHITE};
+
+  overflow-y: auto;
 
   /* &:nth-child(1) {
     border: solid 0.1rem ${({theme}) => theme.COLORS.NEUTRAL_600};

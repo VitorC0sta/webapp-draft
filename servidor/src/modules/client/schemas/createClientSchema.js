@@ -1,14 +1,10 @@
 const { object, string } = require("yup");
 
 const clientCreationSchema = object({
-  active,
-  city,
-  companyEmail,
-  companyId,
-  companyPhone,
-  country,
-  dbaName,
-  postalCode,
+  city: string().required(),
+  companyEmail: string().required(),
+  companyPhone: string().required(),
+  country: string().required(),  
   legalName: string().required(),
   dbaName: string().required(),
   companyId: string().required(),
@@ -19,12 +15,3 @@ const clientCreationSchema = object({
 });
 
 module.exports = clientCreationSchema;
-active,
-            city,
-            companyEmail,
-            companyId,
-            companyPhone,
-            country,
-            dbaName,
-            id,
-            postalCode,

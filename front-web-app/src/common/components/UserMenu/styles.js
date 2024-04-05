@@ -2,29 +2,29 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-
-  align-items: center;
+  flex-direction: column;
+  
   justify-content: center;
 
-  gap: 2rem;
+  gap: 3rem;
   
   font-size: 2.4rem;
-  
-  margin: 0 1rem;
-
-  border-top: 0.1rem solid ${({ theme }) => theme.COLORS.DARKBLUE_500};
-  
+    
   a {
-    color: ${({theme}) => theme.COLORS.NEUTRAL_500};
+    display: flex;
+    
+    align-items: center;
+   
+    gap: 1rem;
+    font-size: 2.2rem;
+    color: ${({ theme }) => theme.COLORS.WHITE_700};
     cursor: pointer;
-  }
+    
+    text-decoration: none;
 
-  > img {
-    width: 4.8rem;
-    height: 4.8rem;
-    border-radius: 50%;
+    font-weight: 500;
 
-    border: 0.2rem solid ${({ theme }) => theme.COLORS.DARKBLUE_500};
+    padding-left: 2rem;
   }
 
   > .logout-btn {

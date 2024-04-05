@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
+import { Link } from "react-router-dom";
 
 export function UserMenu() {
   const { signOut } = useAuth();
@@ -8,14 +9,14 @@ export function UserMenu() {
 
   return (
     <Container>
-      <img src="https://github.com/VitorC0sta.png" alt="User Logo" />
-
-      <a href="/user">
+      <Link to="/user">
         <FiSettings />
-      </a>
-      <a href="/" onClick={signOut} className="logout-btn">
+        Configurações
+      </Link>
+      <Link to="/" onClick={signOut} className="logout-btn">
         <FiLogOut/>
-      </a>
+        Sair
+      </Link>
     </Container>
   );
 }

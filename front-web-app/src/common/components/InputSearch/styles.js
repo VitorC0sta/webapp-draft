@@ -2,32 +2,34 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-
+  
   grid-area: search;
 
   align-items: center;
   
   gap: 2rem;
-
+  
   font-size: 2rem;
 
-  border: 0.2rem solid ${({theme}) => theme.COLORS.DARKBLUE_300};
-  border-radius: 4rem;
+  background: ${({theme}) => theme.COLORS.NEUTRAL_400};
 
-  height: 4rem;
-  width: 60rem;
+  padding: 0rem 1rem;
 
-  padding: 2rem 1rem;
-
-  color: ${({theme}) => theme.COLORS.NEUTRAL_600};
+  color: ${({theme}) => theme.COLORS.NEUTRAL_500};
 
   > #search {
+    background: transparent;
+
+    height: 5rem;
+
     border: none;
+
     outline: none;
-    width: 100%;
+    
     font-size: 2rem;
+    
     &::placeholder {
-      color: ${({theme}) => theme.COLORS.NEUTRAL_600};
+      color: ${({theme}) => theme.COLORS.NEUTRAL_500};
     }
   }
 
