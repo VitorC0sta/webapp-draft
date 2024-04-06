@@ -60,7 +60,7 @@ export const Container = styled.main`
   }
 `;
 
-export const ForgotButton = styled.button`
+export const ForgotButton = styled.a`
   align-self: flex-end;
 
   border: none;

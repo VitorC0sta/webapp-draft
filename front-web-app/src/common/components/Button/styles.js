@@ -1,19 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  border-radius: 2.4rem;
-  background: ${({theme}) => theme.COLORS.DARKBLUE_700};
+  border-radius: 1rem;
+  background: ${({theme}) => theme.COLORS.WHITE_700};
+  color: ${({theme}) => theme.COLORS.BLACK_700};
+
+  width: ${({width}) => width || ''};
   
-
-  height: 5rem;
-  width: 100%;
-
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 500;
-
-  color: white;
-
-  border: none;
-
+    
+  border: solid 1px ${({theme}) => theme.COLORS.NEUTRAL_300};
+  padding: 0.8rem 1rem ;
   cursor: pointer;
+
 `;

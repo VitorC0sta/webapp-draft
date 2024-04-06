@@ -1,18 +1,13 @@
 import { Container } from "./styles";
 import { FiSearch } from "react-icons/fi";
-import { PropTypes } from "prop-types";
 
 
-export function InputSearch({$searchFor}) {
+export function InputSearch() {
   return(
     <Container>
       <FiSearch />
-      <label htmlFor="search" className="sr-only">Pesquisar {$searchFor}</label>
-      <input type="text" name="search" id="search" placeholder={"Pesquisar " + $searchFor}/>
+      <label htmlFor="search" className="sr-only">Pesquisar</label>
+      <input type="text" name="search" id="search" placeholder="Pesquisar"/>
     </Container>
   )
-}
-
-InputSearch.propTypes = {
-  $searchFor: PropTypes.string
 }

@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
 
   display: grid;
-  grid-template-rows: 10% 70% auto;
+  grid-template-rows: 10% 78% auto;
 
   > .logo {
     margin: auto 2rem ;
@@ -23,7 +23,7 @@ export const Menu = styled.ul`
 
   align-items: center;
 
-  gap: 3rem;
+  gap: 1rem;
 
   > hr {
     margin-left: auto;
@@ -65,8 +65,8 @@ export const Items = styled.li`
 
     color: ${({ theme }) => theme.COLORS.WHITE_700};
 
-    font-weight: 500;
-    font-size: 2.2rem;
+    font-weight: 300;
+    font-size: 2rem;
 
     text-decoration: none;
   }

@@ -17,8 +17,7 @@ export default createGlobalStyle`
   }
 
   h1, h2{
-    font-family: "Roboto Slab", serif;
-    font-weight: 400;
+    font-weight: 600;
   }
   
   body {

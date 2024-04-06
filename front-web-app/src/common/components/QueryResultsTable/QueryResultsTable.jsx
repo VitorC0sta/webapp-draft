@@ -7,7 +7,7 @@ export function QueryResultsTable({ fields, data }) {
 
   return (
     <Container>
-      <thead>
+      <thead>  
         <tr>
           {fields.map((field) => {
             return <th key={field}> {field} </th>;

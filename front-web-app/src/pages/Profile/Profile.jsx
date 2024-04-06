@@ -4,6 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { Introduction } from "../../common/components/Introduction/Introduction";
 import { AccountConfiguration } from "../../common/components/AccountConfig/AccountConfiguration";
+import { ProfileImage } from "../../common/components/ProfileImage/ProfileImage";
 import { useAuth } from "../../common/hooks/auth";
 import { api } from "../../common/service/api";
 
@@ -59,7 +60,7 @@ export function Profile() {
         </div>
         <div className="profile-basic-info">
           <div className="user-info">
-            <img src="https://github.com/VitorC0sta.png" alt="Imagem do usuário" />
+            <ProfileImage name={name} size={10}/>
             <div className="wrap-text">
               <h3>{ name }</h3>
             <span>{ user.administrator? "Administrator" : "Default" }</span>

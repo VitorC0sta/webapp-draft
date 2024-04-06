@@ -15,6 +15,7 @@ export default {
     NEUTRAL_700: "#5F5F5F",
     NEUTRAL_600: "#7B7B7B",
     NEUTRAL_500: "#A9A9A9",
+    NEUTRAL_450: "#BABABA", 
     NEUTRAL_400: "#D7D7D7",
     NEUTRAL_300: "#E6E6E6",
     NEUTRAL_200: "#F1F1F1",

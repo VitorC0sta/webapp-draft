@@ -6,27 +6,31 @@ export const Container = styled.div`
   grid-area: search;
 
   align-items: center;
+    
+  gap: 1rem;
   
-  gap: 2rem;
-  
-  font-size: 2rem;
+  border-radius: 0.5rem;
 
-  background: ${({theme}) => theme.COLORS.NEUTRAL_400};
+  font-size: 2.6rem;
+
+  background: ${({theme}) => theme.COLORS.NEUTRAL_200};
 
   padding: 0rem 1rem;
+
+  margin: auto 0;
 
   color: ${({theme}) => theme.COLORS.NEUTRAL_500};
 
   > #search {
     background: transparent;
 
-    height: 5rem;
-
     border: none;
 
     outline: none;
     
-    font-size: 2rem;
+    height: 4rem;
+
+    font-size: 1.6rem;
     
     &::placeholder {
       color: ${({theme}) => theme.COLORS.NEUTRAL_500};

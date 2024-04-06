@@ -16,13 +16,13 @@ export const Container = styled.div`
     align-items: center;
    
     gap: 1rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: ${({ theme }) => theme.COLORS.WHITE_700};
     cursor: pointer;
     
     text-decoration: none;
 
-    font-weight: 500;
+    font-weight: 300;
 
     padding-left: 2rem;
   }

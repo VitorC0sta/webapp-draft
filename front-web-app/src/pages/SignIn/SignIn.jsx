@@ -21,13 +21,12 @@ export function SignIn() {
 
   function handleSignIn(event) {
     event.preventDefault();
-
+    
     signIn({ email, password });
   }
 
   async function handleSendEmail(event) {
     event.preventDefault();
-    
     try {
       await api.post("/forgot_password", { recoveryEmail });
     } catch (err) {
@@ -37,8 +36,12 @@ export function SignIn() {
     setOpen(false);
   }
 
+  async function handleSendEmailOnKeyDown(event) {
+    event.key === "Enter"? signIn({ email, password }): '';
+  }
+
   return (
-    <Container>
+    <Container onKeyDown={handleSendEmailOnKeyDown}>
       <Section>
         <Header>
           <Link to="/">
@@ -101,7 +104,7 @@ export function SignIn() {
                 onChange={e => {setRecoveryEmail(e.target.value)} }
               ></Input>
             </div>
-            <Button type="button" title={"Enviar"} onClick={handleSendEmail}/>
+            <Button type="submit" title={"Enviar"} onClick={handleSendEmail} />
           </form>
         </Modal>
       </Section>

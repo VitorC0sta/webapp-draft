@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export function UserMenu() {
   const { signOut } = useAuth();
 
-
   return (
     <Container>
       <Link to="/user">
@@ -14,7 +13,7 @@ export function UserMenu() {
         Configurações
       </Link>
       <Link to="/" onClick={signOut} className="logout-btn">
-        <FiLogOut/>
+        <FiLogOut />
         Sair
       </Link>
     </Container>
