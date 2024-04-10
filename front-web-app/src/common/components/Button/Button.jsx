@@ -1,15 +1,9 @@
 import { Container } from "./styles";
 
-export function Button({ text, $typeSubmit, ...rest }) {
+export function Button({ title, $typeSubmit, ...rest }) {  
   return (
-    <>
-      { $typeSubmit ? (
-        <Container {...rest} className="submit">
-          {text}
-        </Container>
-      ) : (
-        <Container {...rest}>{text}</Container>
-      )}
-    </>
+    <Container $typeSubmit={$typeSubmit} {...rest}>
+      {title}
+    </Container>
   );
 }

@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.table`
-  width: 100%;
-  height: 100%;             
-  max-height: 100%;
   background-color: ${({theme}) => theme.COLORS.WHITE};
+  width: 100%;
+  height: 100%;
 
   overflow-y: auto;
 
@@ -12,13 +11,16 @@ export const Container = styled.table`
   border-collapse: collapse;
   
   > thead {
+
     tr{
       th {
-        font-size: 1.4rem; 
+        font-size: 1.6rem; 
         font-weight: 500;
-        color: ${({theme}) => theme.COLORS.NEUTRAL_600};
+        color: ${({theme}) => theme.COLORS.BLACK_700};
         text-align: left;
-        padding-bottom: 1.5rem;
+        padding: 1.5rem 1rem;
+
+        font-weight: 600;
       }
       
       border-bottom: 0.1rem solid ${({theme}) => theme.COLORS.NEUTRAL_400};
@@ -26,28 +28,23 @@ export const Container = styled.table`
   }
   
   > tbody {
-    border-bottom: solid 0.1rem ${({theme}) => theme.COLORS.NEUTRAL_400};
-    tr {
-      td:nth-child(1) {
-        border-radius: 2rem 0 0 2rem;
-        
-      }
-      td:last-child {
-        border-radius: 0 2rem 2rem 0;
-      }
-      td {      
-        padding: 1rem;
-        text-align: left;
-        
-        height: 5rem;
+    overflow-y: auto;
 
+    tr {
+      td {      
+        padding: 3rem 1rem;
+        text-align: left;
+      
+        border-bottom: solid 0.1rem ${({theme}) => theme.COLORS.NEUTRAL_400};
+        
         span {
           font-size: 1.4rem;
           color: ${({theme}) => theme.COLORS.NEUTRAL_600};
           margin: 0.4rem;
         }
 
-      }    
+      }
+
       .query-profile {
         text-decoration: none;
         color: ${({theme}) => theme.COLORS.ORANGE_500};
@@ -59,3 +56,19 @@ export const Container = styled.table`
     }
   }
 `;
+
+export const Badge = styled.div `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${({theme, $active}) => $active ? theme.COLORS.GREEN_100 : theme.COLORS.RED_200};
+
+  color: ${({theme, $active}) => $active ? theme.COLORS.GREEN_500 : theme.COLORS.RED_100};
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 0.5rem;
+
+  font-weight: 500;
+`

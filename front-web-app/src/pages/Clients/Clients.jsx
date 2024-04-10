@@ -4,6 +4,7 @@ import {
   Main,
   Content,
   ContentHeader,
+  ContentBody,
   CreateButton,
 } from "./styles";
 import { Header } from "../../common/components/Header/Header";
@@ -25,6 +26,7 @@ import { Modal } from "../../common/components/Modal/Modal";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { Input } from "../../common/components/Input/Input";
+import { Button } from "../../common/components/Button/Button";
 import { api } from "../../common/service/api";
 
 export function Clients() {
@@ -43,65 +45,67 @@ export function Clients() {
     state: "",
   });
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await api.get("admin/clients");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get("admin/clients");
 
-  //       const clientData = response.data?.map((client) => {
-  //         const {
-  //           active,
-  //           city,
-  //           companyEmail,
-  //           companyId,
-  //           companyPhone,
-  //           country,
-  //           dbaName,
-  //           id,
-  //           postalCode,
-  //         } = client;
+        const clientsData = response.data?.map((client) => {
+          const {
+            active,
+            city,
+            companyEmail,
+            companyId,
+            companyPhone,
+            country,
+            dbaName,
+            id,
+            postalCode,
+          } = client;
 
-  //         return {
-  //           id,
-  //           dbaName,
-  //           companyId,
-  //           contact: {
-  //             email: companyEmail,
-  //             phoneNumber: companyPhone,
-  //           },
-  //           postalCode,
-  //           city,
-  //           country,
-  //           active,
-  //         };
-  //       });
+          return {
+            id,
+            dbaName,
+            companyId,
+            contact: {
+              email: companyEmail,
+              phoneNumber: companyPhone,
+            },
+            active,
+            postalCode,
+            city,
+            country,
+          };
+        });
 
-  //       setData(clientData);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+        setData(clientsData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  //   fetchData();
+    fetchData();
 
-  //   return;
-  // }, []);
+    return;
+  }, []);
 
-  function handleFormChange(event) {
+  function handleChange(event) {
     const { id, value } = event.target;
-    console.log(value);
+    
     setFormData((prevState) => ({
       ...prevState,
       [id]: value,
     }));
-
-    console.log(formData);
   }
 
   async function handleNewClient(event) {
     event.preventDefault();
+    
     setOpen(false);
-    return await api.post("client/register", { ...formData });
+    
+    console.log({...formData});
+
+    await api.post("client/register", { ...formData });
   }
 
   return (
@@ -116,15 +120,14 @@ export function Clients() {
           title="Adicionar Cliente"
           exists
         >
-          <form action="submit" className="new-client-form">
+          <form onSubmit={handleNewClient} className="new-client-form">
             <div className="company-info">
-              <div className="flex-row">
                 <Input
                   icon={<BiBriefcaseAlt2 />}
                   label="Razão social "
                   id="legalName"
                   type="text"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
                 <div className="flex-row">
@@ -133,7 +136,7 @@ export function Clients() {
                     label="Título"
                     id="dbaName"
                     type="text"
-                    onChange={handleFormChange}
+                    onChange={handleChange}
                     $srOnly
                   />
                   <Input
@@ -141,11 +144,10 @@ export function Clients() {
                     label="CNPJ"
                     id="companyId"
                     type="text"
-                    onChange={handleFormChange}
+                    onChange={handleChange}
                     $srOnly
                   />
                 </div>
-              </div>
             </div>
             <div className="address-details">
               <Input
@@ -153,7 +155,7 @@ export function Clients() {
                 label="Endereço"
                 id="address"
                 type="text"
-                onChange={handleFormChange}
+                onChange={handleChange}
                 $srOnly
               />
               <div className="flex-row">
@@ -162,7 +164,7 @@ export function Clients() {
                   label="CEP"
                   id="postalCode"
                   type="text"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
                 <Input
@@ -170,7 +172,7 @@ export function Clients() {
                   label="Cidade"
                   id="city"
                   type="text"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
               </div>
@@ -181,7 +183,7 @@ export function Clients() {
                   label="Estado"
                   id="state"
                   type="text"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
                 <Input
@@ -189,7 +191,7 @@ export function Clients() {
                   label="País"
                   id="country"
                   type="text"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
               </div>
@@ -201,7 +203,7 @@ export function Clients() {
                   label="Telefone"
                   id="companyPhone"
                   type="text"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
                 <Input
@@ -209,11 +211,15 @@ export function Clients() {
                   label="Email da companhia"
                   id="companyEmail"
                   type="email"
-                  onChange={handleFormChange}
+                  onChange={handleChange}
                   $srOnly
                 />
               </div>
             </div>
+            <section className="handle-buttons">
+              <Button title="Limpar" width="15rem" />
+              <Button title="Enviar" $typeSubmit width="15rem" />
+            </section>
           </form>
         </Modal>
         <Main>
@@ -225,16 +231,21 @@ export function Clients() {
                 <p>Criar Cliente</p>
               </CreateButton>
             </ContentHeader>
-            <QueryResultsTable
-              fields={[
-                "Id",
-                "Nome",
-                "Idenficação Fiscal",
-                "Código Postal",
-                "Cidade",
-                "Pais",
-              ]}
-            />
+            <ContentBody>
+              <QueryResultsTable
+                fields={[
+                  "Id",
+                  "Nome",
+                  "Idenficação Fiscal",
+                  "Contato",
+                  "Status",
+                  "Código Postal",
+                  "Cidade",
+                  "Pais",
+                ]}
+                data={data}
+              />
+            </ContentBody>
           </Content>
         </Main>
       </ContentArea>

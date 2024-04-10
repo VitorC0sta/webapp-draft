@@ -80,13 +80,12 @@ export const ForgotButton = styled.a`
 export const Section = styled.section`
   height: 100vh;
   display: grid;
-  grid-template-rows: 20% 15% auto;
+  grid-template-rows: 20% 15% 45%;
 
   padding: 0 18%;
 
   form {
     margin-top: 4rem;
-    padding: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;

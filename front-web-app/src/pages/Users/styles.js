@@ -1,111 +1,84 @@
 import styled from "styled-components";
-
+  
 export const Container = styled.div`
   height: 100vh;
 
+  display: flex;
+  `;
+
+export const ContentArea = styled.section`
+  background-color: ${({theme}) => theme.COLORS.NEUTRAL_200};
+  
+  flex: 1;
+  
   display: grid;
-  grid-template-columns: 1fr 9fr;
-  > .body-container {
-    height: 100%;
+  grid-template-rows: 1fr 9fr;
+  
+  .new-user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 
-    padding: 2.5rem 3rem 5rem 3rem;
-
-    .head-container {
-      display: flex;
-      justify-content: space-between;
-
-      
-      form {
-        display: flex;
-        flex-direction: column;
-
-        gap: 1.5rem;
-
-        h2 {
-          margin-bottom: 0.5rem;
-        }
-
-        label {
-          margin-left: 0.5rem;
-          margin-top: 0.5rem;
-        }
-
-        .user-info {
-          .complete-name {
-            display: flex;
-            gap: 1rem;
-          }
-          .row-wrap {
-            margin-top: 0.8rem;
-            display: flex;
-            gap: 1rem;
-      
-
-            fieldset {
-              display: flex;
-              flex-direction: column;
-              padding: 0.5rem;
-              font-size: 1.4rem;
-              
-              text-align: left;
-
-              align-items: center;
-              justify-content: center;
-              
-              border: solid 0.2rem ${({theme}) => theme.COLORS.NEUTRAL_400};
-
-              .wrap-is-administrator {
-                display: flex;
-                
-                align-items: center;
-                             
-                color: ${({theme}) => theme.COLORS.NEUTRAL_900};
-              
-                label {
-                  
-                }
-              }
-            }
-          }
-        } 
-        
-        .address-details {
-          .country-info {
-            display: flex;
-            gap: 0.5rem;
-          }
-        }
-
-        .contact-detail {
-          h2 {
-          }
-          .contact-info {
-            display: flex;
-            gap: 0.5rem;
-          }
-        }
-      }
+    .flex-row {
+     display: flex;
+     gap: 1rem;
     }
+
+    .address-details {
+      display: flex;
+      flex-direction: column;
+
+      gap: 1rem;
+
+    }
+
+    .handle-buttons {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
   }
+
+  }
+
 `;
 
 export const Main = styled.main`
-  width: 100%;
-  height: 100%;
-
-  padding: 6.5rem 0 10rem 0;
+  padding: 2rem 5rem;
 `;
 
-export const NewClientButton = styled.button`
+export const Content = styled.section`
+  display: flex;
+  flex-direction: column;
+  
+  gap: 3rem;
+  padding: 3rem 2rem 1rem 2rem;
+  
+  border-radius: 1rem;
+
+  background: ${({ theme }) => theme.COLORS.WHITE_700};
+`;
+
+export const ContentHeader = styled.div`
+    
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0;
+
+  > h2 {
+    font-size: 3.4rem;
+  }
+`;
+
+export const CreateButton = styled.button`
   border: none;
 
-  border-radius: 4rem;
+  border-radius: 0.5rem;
 
   background: ${({ theme }) => theme.COLORS.DARKBLUE_700};
 
   color: ${({ theme }) => theme.COLORS.WHITE_700};
-
-  width: 10rem;
 
   padding: 1rem;
 
@@ -120,6 +93,10 @@ export const NewClientButton = styled.button`
 
   text-decoration: none;
 
-  font-size: 2rem;
-`;
+  font-size: 2.4rem;
 
+  p{
+    font-size: 1.4rem;
+  }
+
+`;

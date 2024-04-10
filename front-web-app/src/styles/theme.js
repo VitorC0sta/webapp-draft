@@ -25,6 +25,7 @@ export default {
     RED_700: "#EF1D00",
     RED_600: "#993937",
     RED_500: "#FF605C",
+    RED_200: "#FFAFAD",
     RED_100: "#FFEBE9",
     
     ORANGE_700: "#EA4707",
@@ -36,7 +37,8 @@ export default {
 
     GREEN_700: "#1EC01A",
     GREEN_500: "#4ACC47",
-    GREEN_100: "#C1F1C0",
+    GREEN_200: "#C1F1C0",
+    GREEN_100: "#ECFAEC",
 
     BLUE_700: "#186DEB",
     BLUE_500: "#74A7F3",

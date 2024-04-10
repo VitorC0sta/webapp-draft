@@ -20,28 +20,29 @@ export const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
 `;
 
-export const ModalContent = styled.div`
-  background: ${({ theme }) => theme.COLORS.WHITE_700};
+export const ModalContainer = styled.div`
+  padding: 4rem;
 
+  background: ${({ theme }) => theme.COLORS.WHITE_700};
+  border-radius: 1rem;
+`;
+
+export const ModalContent = styled.div`
   display: flex;
 
   flex-direction: column;
 
-  border-radius: 1rem;
-
-  padding: 4rem;
-  padding-top: 1.5rem;
-
-  max-height: 50vh;
-  width: 40vw;
+  max-height: 65rem;
+  width: 80rem;
   gap: 2rem;
 
   > .modal-header {
     display: flex;
 
     justify-content: space-between;
-    h2 {
+    > h2 {
       color: ${({ theme }) => theme.COLORS.DARKBLUE_700};
+      margin-bottom: 3rem;
     }
     .close-modal {
       font-size: 2.5rem;
@@ -56,17 +57,6 @@ export const ModalContent = styled.div`
       align-self: left;
 
       cursor: pointer;
-    }
-  }
-
-  > .handle-buttons {
-    display: flex;
-    justify-content: right;
-    gap: 1rem;
-
-    .submit {
-      background: ${({ theme }) => theme.COLORS.BLUE_700};
-      color: ${({ theme }) => theme.COLORS.WHITE_700};
     }
   }
 `;

@@ -1,13 +1,11 @@
-import { Container } from "./styles";
-import { Link } from "react-router-dom";
-import { FiUser } from "react-icons/fi";
+import { Container, Badge } from "./styles";
+
 
 export function QueryResultsTable({ fields, data }) {
-  console.log()
-
+ 
   return (
     <Container>
-      <thead>  
+      <thead>
         <tr>
           {fields.map((field) => {
             return <th key={field}> {field} </th>;
@@ -17,23 +15,38 @@ export function QueryResultsTable({ fields, data }) {
       <tbody>
         {data?.map((user, index) => (
           <tr key={index}>
-            {Object.keys(user).map((key) =>
-              key == "contact" ? (
-                <td className=".contact" key={key}>
-                  <p>{user[key].email}</p>
-                  <span>{user[key].phoneNumber}</span>
-                </td>
-              ) : (
-                <td key={key}>
-                  <p>{user[key]}</p>
-                </td>
-              )
-            )}
-            <td>
-              <Link to="/users" className="query-profile">
-                <FiUser />
-              </Link>
-            </td>
+            {Object.keys(user).map((key) => {  
+                if (key === "contact") {
+                  return (
+                    <td className=".contact" key={key}>
+                      <p>{user[key].email}</p>
+                      <span>{user[key].phoneNumber}</span>
+                    </td>
+                  );
+                } else if (key === "active") {
+                  
+                  return user[key] ? (
+                    <td key={key} >
+                      <Badge $active>
+                        <p>Ativo</p>
+                      </Badge>
+                    </td>
+                  ) : (
+                    <td key={key}>
+                      <Badge>
+                        <p>Inativo</p>
+                      </Badge>
+                    </td>
+                  );
+                }
+
+                return (
+                  <td key={key}>
+                    <p>{user[key]}</p>
+                  </td>
+                );
+              })
+            }
           </tr>
         ))}
       </tbody>

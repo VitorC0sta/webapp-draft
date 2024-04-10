@@ -6,7 +6,7 @@ export const Container = styled.div`
   
   justify-content: space-between;
 
-  padding: 0rem 5rem;
+  padding: 2rem 5rem;
 `;
 
 

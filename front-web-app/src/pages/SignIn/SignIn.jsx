@@ -81,7 +81,7 @@ export function SignIn() {
           >
             Esqueceu a senha ?
           </ForgotButton>
-          <Button type="button" title={"Entrar"} onClick={handleSignIn} />
+          <Button type="button" title="Entrar" onClick={handleSignIn} $typeSubmit={true} /> 
         </form>
       </Section>
       <Section className="panel">
@@ -104,7 +104,9 @@ export function SignIn() {
                 onChange={e => {setRecoveryEmail(e.target.value)} }
               ></Input>
             </div>
-            <Button type="submit" title={"Enviar"} onClick={handleSendEmail} />
+            <Button type="submit" onClick={handleSendEmail} $typeSubmit={true}>
+              Enviar
+            </Button>
           </form>
         </Modal>
       </Section>

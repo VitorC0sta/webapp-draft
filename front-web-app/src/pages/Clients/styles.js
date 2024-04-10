@@ -8,11 +8,12 @@ export const Container = styled.div`
 
 export const ContentArea = styled.section`
   background-color: ${({theme}) => theme.COLORS.NEUTRAL_200};
-  
-  flex: 1;
-  
-  display: grid;
-  grid-template-rows: 1fr 9fr;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
   
   .new-client-form {
     display: flex;
@@ -23,13 +24,26 @@ export const ContentArea = styled.section`
      display: flex;
      gap: 1rem;
     }
-
-    .address-details {
+    .company-info {
       display: flex;
       flex-direction: column;
 
       gap: 1rem;
     }
+    
+    .address-details {
+      display: flex;
+      flex-direction: column;
+
+      gap: 1rem;
+
+    }
+
+    .handle-buttons {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+  }
 
   }
 
@@ -37,11 +51,13 @@ export const ContentArea = styled.section`
 
 export const Main = styled.main`
   padding: 2rem 5rem;
+  max-height: 90%;
 `;
 
 export const Content = styled.section`
   display: flex;
   flex-direction: column;
+  height: 100%;
   
   gap: 3rem;
   padding: 3rem 2rem 1rem 2rem;
@@ -52,21 +68,24 @@ export const Content = styled.section`
 `;
 
 export const ContentHeader = styled.div`
-    
-  align-items: end;
+  align-items: center;
   display: flex;
   justify-content: space-between;
 
-  padding: 0;
-
   > h2 {
     font-size: 3.4rem;
-    margin: -1rem 0;
   }
+`;
+
+export const ContentBody = styled.div`
+  width: 100%;
+  overflow: auto;
 `;
 
 export const CreateButton = styled.button`
   border: none;
+
+  font-weight: 500;
 
   border-radius: 0.5rem;
 
@@ -89,8 +108,8 @@ export const CreateButton = styled.button`
 
   font-size: 2.4rem;
 
-  p{
-    font-size: 1.4rem;
+  > p {
+    font-size: 1.6rem;
   }
 
 `;
