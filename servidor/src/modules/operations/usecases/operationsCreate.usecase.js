@@ -3,7 +3,7 @@ const AppError = require("../../../infra/utils/AppError.js");
 
 class OperationCreateUseCase {
   async execute(operationName, destinationCity, destinationRegion, destinationCountry, idClient) {
-    const chkOperation = await Operations.find("operationName", operationName);
+    const chkOperation = await Operations.findOne({where: { operationName } });
 
     if(chkOperation) throw new AppError("Operação existente", 403);
 

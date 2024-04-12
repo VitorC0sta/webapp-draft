@@ -7,6 +7,6 @@ const vehicleRoutes = Router();
 
 vehicleRoutes.post("/", vehicleController.create);
 vehicleRoutes.get("/:id", vehicleController.show);
-vehicleRoutes.get("/", isAdmin, vehicleController.showVehicles);
+vehicleRoutes.get("/", vehicleController.showVehicles);
 
 module.exports = vehicleRoutes;
