@@ -12,6 +12,7 @@ const adminOperationsRoutes = require("./modules/administrator/operations/routes
 const adminClientRoutes = require("./modules/administrator/client/routes/client.routes");
 const adminUserRoutes = require("./modules/administrator/user/routes/user.routes");
 const adminVehiclesRoutes = require("./modules/administrator/vehicles/routes/adminVehicles.routes");
+const eventRoutes = require("./modules/events/routes/events.routes");
 
 routes.use("/", sessionsRoutes);
 routes.use("/capy", theRoute);
@@ -20,6 +21,7 @@ routes.use("/user", userRoutes);
 routes.use("/client", clientsRoutes);
 routes.use("/operation", operationsRoutes);
 routes.use("/vehicles", vehicleRoutes);
+routes.use("/events", eventRoutes)
 routes.use(isAdmin);
 routes.use("/admin/operation", adminOperationsRoutes);
 routes.use("/admin/clients", adminClientRoutes);

@@ -1,6 +1,7 @@
 const createOperationSchema = require("../schema/createOperationsSchema");
 const OperationCreateUseCase = require("../usecases/operationsCreate.usecase.js");
 const ShowOperationUseCase = require("../usecases/showOperation.usecase.js");
+const ShowOperationsUseCase = require("../../operations/usecases/showOperations.usecase.js");
 
 class OperationsController {
   async createOperation(req, res) {
@@ -27,6 +28,15 @@ class OperationsController {
     
 
     return res.status(200).json(operation);
+  }
+
+  async showOperations(req, res) {
+    const userLogged = req.user;
+    
+    const operations = await new ShowOperationsUseCase().execute({userLogged});
+
+    return res.status(200).json(operations)
+
   }
 }
 

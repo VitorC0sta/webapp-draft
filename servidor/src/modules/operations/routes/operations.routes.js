@@ -8,5 +8,6 @@ const operationsController = new OperationsController()
 
 operationsRoutes.post("/", isAdmin, operationsController.createOperation);
 operationsRoutes.get("/:id", operationsController.showOperation);
+operationsRoutes.get("/", operationsController.showOperations);
 
 module.exports = operationsRoutes;
