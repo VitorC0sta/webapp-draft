@@ -20,6 +20,11 @@ export const ContentArea = styled.section`
     flex-direction: column;
     gap: 4rem;
 
+    h3 {
+      font-weight: 500;
+      color: ${({theme}) => theme.COLORS.NEUTRAL_600};
+    }
+
     .flex-row {
      display: flex;
      gap: 1rem;

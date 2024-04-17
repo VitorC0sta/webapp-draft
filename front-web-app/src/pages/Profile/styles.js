@@ -102,7 +102,9 @@ export const Main = styled.main`
       padding-left: 2rem;
       
       border-bottom: 0.1rem solid ${({ theme }) => theme.COLORS.NEUTRAL_600};
-
+      li {
+        list-style: none;
+      }
     }
   }
 `;

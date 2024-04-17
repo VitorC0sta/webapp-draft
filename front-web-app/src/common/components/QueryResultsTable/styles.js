@@ -16,20 +16,26 @@ export const Container = styled.table`
       th {
         font-size: 1.6rem; 
         font-weight: 500;
+        
         color: ${({theme}) => theme.COLORS.BLACK_700};
+        background-color: ${({theme}) => theme.COLORS.WHITE_700};
+        
         text-align: left;
-        padding: 1.5rem 1rem;
-
         font-weight: 600;
+        
+        padding: 1.5rem 1rem;
+      
+        position: sticky; 
+        top: 0;
+        z-index: 1;
+        border-bottom: 0.1rem solid ${({theme}) => theme.COLORS.NEUTRAL_400};
       }
       
-      border-bottom: 0.1rem solid ${({theme}) => theme.COLORS.NEUTRAL_400};
     }
   }
   
   > tbody {
     overflow-y: auto;
-
     tr {
       td {      
         padding: 3rem 1rem;
@@ -62,11 +68,11 @@ export const Badge = styled.div `
   align-items: center;
   justify-content: center;
 
-  background: ${({theme, $active}) => $active ? theme.COLORS.GREEN_100 : theme.COLORS.RED_200};
+  background: ${({theme, $active}) => $active ? theme.COLORS.GREEN_100 : theme.COLORS.RED_100};
 
-  color: ${({theme, $active}) => $active ? theme.COLORS.GREEN_500 : theme.COLORS.RED_100};
+  color: ${({theme, $active}) => $active ? theme.COLORS.GREEN_500 : theme.COLORS.RED_500};
 
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0rem;
 
   border-radius: 0.5rem;
 

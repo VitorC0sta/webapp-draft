@@ -1,61 +1,197 @@
-import { Container, Main, NewClientButton } from "./styles";
+import {
+  Container,
+  ContentArea,
+  Main,
+  Content,
+  ContentHeader,
+  ContentBody,
+  CreateButton,
+} from "./styles";
+import { Header } from "../../common/components/Header/Header";
 import { SideBar } from "../../common/components/SideBar/SideBar";
-import { InputSearch } from "../../common/components/InputSearch/InputSearch";
 import { QueryResultsTable } from "../../common/components/QueryResultsTable/QueryResultsTable";
-import { FiPlus } from "react-icons/fi";
-import { useState } from "react";
+import {
+  BiBarcodeReader,
+  BiPen,
+  BiMap,
+  BiGlobe,
+  BiMapPin,
+} from "react-icons/bi";
 import { Modal } from "../../common/components/Modal/Modal";
+import { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
 import { Input } from "../../common/components/Input/Input";
 import { Button } from "../../common/components/Button/Button";
+import { api } from "../../common/service/api";
 
 export function Operations() {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState();
+  const [formData, setFormData] = useState({
+    operationName: "",
+    destinationCity: "",
+    destinationRegion: "",
+    destinationCountry: "",
+    idClient: "",
+  });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/operation");
+
+        console.log(response);
+
+        const operationsData = response.data?.map((operation) => {
+
+          const { dbaName } = operation.Client;
+
+          const {
+            id,
+            operationName,
+            destinationCity,
+            destinationRegion,
+            destinationCountry,
+            active,
+          } = operation;
+
+          return {
+            id,
+            operationName,
+            destinationCity,
+            destinationRegion,
+            destinationCountry,
+            active,
+            dbaName
+          };
+        });
+
+        setData(operationsData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+
+    return;
+  }, []);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    
+  }
+
+  async function handleNewClient(event) {
+    event.preventDefault();
+
+    setOpen(false);
+
+
+    await api.post("/operation", { ...formData });
+  }
 
   return (
     <Container>
       <SideBar />
-      <div className="body-container">
-      <div className="head-container">
-          <InputSearch $searchFor={"usuários"} />
-          <NewClientButton onClick={() => setOpen(true)}>
-            Criar
-            <FiPlus />
-          </NewClientButton>
-          <Modal isOpen={open} setIsOpen={setOpen} className="modal">
-            <form action="submit">
-              <div className="operation-info">
-                <h2>Informações</h2>
-                <Input label="Nome da operação" id="operation-name" type="text" />
-                <Input label="Id do cliente" id="client-id" type="text" />
+      <ContentArea>
+        <Header />
+        <Modal
+          isOpen={open}
+          setIsOpen={setOpen}
+          className="modal"
+          title="Nova Operação"
+          exists
+        >
+          <form onSubmit={handleNewClient} className="new-vehicle-form">
+            <div className="company-info">
+              <Input
+                icon={<BiPen />}
+                label="Nome da operação"
+                id="operation-name"
+                name="operationName"
+                type="text"
+                onChange={handleChange}
+                $srOnly
+              />
+              <div className="flex-row">
+                <Input
+                  icon={<BiMapPin />}
+                  label="Cidade de destino"
+                  id="destination-city"
+                  name="destinationCity"
+                  type="text"
+                  onChange={handleChange}
+                  $srOnly
+                />
+                <Input
+                  icon={<BiMap />}
+                  label="Região"
+                  id="destination-region"
+                  name="destinationRegion"
+                  type="text"
+                  onChange={handleChange}
+                  $srOnly
+                />
               </div>
-              <div className="destiny-details">
-                <h2>Endereço de Destino</h2>
-                <Input label="CEP" id="postal-code" type="text" />
-                <Input label="Endereço" id="company-address" type="text" />
-                <Input label="Cidade" id="company-city" type="text" />
-                <div className="country-info">
-                  <Input label="Estado" id="company-state" type="text" />
-                  <Input label="País" id="company-country" type="text" />
-                </div>
+              <div className="flex-row">
+                <Input
+                  icon={<BiGlobe />}
+                  label="Pais de destino"
+                  id="destination-country"
+                  name="destinationCountry"
+                  type="text"
+                  onChange={handleChange}
+                  $srOnly
+                />
+                <Input
+                  icon={<BiBarcodeReader />}
+                  label="Id do Cliente"
+                  id="id-client"
+                  name="idClient"
+                  type="text"
+                  onChange={handleChange}
+                  $srOnly
+                />
               </div>
-              <Button type="submit" title="Enviar" />
-            </form>
-          </Modal>
-        </div>
+            </div>
+            <section className="handle-buttons">
+              <Button title="Limpar" width="15rem" />
+              <Button title="Enviar" $typeSubmit width="15rem" />
+            </section>
+          </form>
+        </Modal>
         <Main>
-          <QueryResultsTable
-            fields={[
-              "#",
-              "Operação",
-              "Destino",
-              "Código postal",
-              "Criação",
-              "Status",
-            ]}
-          />
+          <Content>
+            <ContentHeader>
+              <h2>Operações</h2>
+              <CreateButton onClick={() => setOpen(true)}>
+                <FiPlus />
+                <p>Criar Operação</p>
+              </CreateButton>
+            </ContentHeader>
+            <ContentBody>
+              <QueryResultsTable
+                fields={[
+                  "ID",
+                  "Operação",
+                  "Destino",
+                  "País",
+                  "Criação",
+                  "Status",
+                  "Empresa"
+                ]}
+                data={data}
+              />
+            </ContentBody>
+          </Content>
         </Main>
-      </div>
+      </ContentArea>
     </Container>
   );
 }

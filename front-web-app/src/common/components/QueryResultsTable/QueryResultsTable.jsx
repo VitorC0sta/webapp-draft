@@ -38,6 +38,8 @@ export function QueryResultsTable({ fields, data }) {
                       </Badge>
                     </td>
                   );
+                } else if  (key === "administrator") {
+                  return user[key] ? <td key={key}>administrador</td> : <td>padrão</td>
                 }
 
                 return (

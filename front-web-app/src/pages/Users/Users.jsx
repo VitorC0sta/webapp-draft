@@ -4,6 +4,7 @@ import {
   Main,
   Content,
   ContentHeader,
+  ContentBody,
   CreateButton,
 } from "./styles";
 import { Header } from "../../common/components/Header/Header";
@@ -15,6 +16,21 @@ import { Modal } from "../../common/components/Modal/Modal";
 import { Input } from "../../common/components/Input/Input";
 import { Button } from "../../common/components/Button/Button";
 import { api } from "../../common/service/api";
+import { format } from "date-fns";
+import {
+  BiUser,
+  BiEnvelope,
+  BiIdCard,
+  BiCalendar,
+  BiUserCircle,
+  BiMapPin,
+  BiHomeAlt,
+  BiMapAlt,
+  BiMap,
+  BiWorld,
+  BiMobileAlt,
+  BiBriefcase,
+} from "react-icons/bi";
 
 export function Users() {
   const [open, setOpen] = useState(false);
@@ -27,13 +43,31 @@ export function Users() {
           import.meta.env.VITE_API_URL + "admin/users"
         );
 
-        const usersData = response.data?.map( userData => {
-          const { id, name, phone, email } = userData;
+        const usersData = response.data?.map((userData) => {
+          const {
+            id,
+            name,
+            phoneNumber,
+            email,
+            createdAt,
+            administrator,
+            active,
+          } = userData;
 
-          
+          return {
+            id,
+            name,
+            contact: {
+              phoneNumber,
+              email,
+            },
+            createdAt: format(createdAt, "MM/dd/yyyy - hh:mm aa"),
+            active,
+            administrator,
+          };
         });
 
-        //setData(usersData);
+        setData(usersData);
       } catch (err) {
         console.log(err.message);
       }
@@ -43,84 +77,7 @@ export function Users() {
 
     return;
   }, []);
-  // return (
-  //   <Container>
-  //     <SideBar />
-  //     <div className="body-container">
-  //       <div className="head-container">
-  //         <InputSearch $searchFor={"usuários"} />
-  //         <NewClientButton onClick={() => setOpen(true)}>
-  //           Criar
-  //           <FiPlus />
-  //         </NewClientButton>
-  //         <Modal isOpen={open} setIsOpen={setOpen} className="modal">
-  //           <form action="submit">
-  //             <div className="user-info">
-  //               <h2>Informações do usuário</h2>
-  //               <div className="complete-name">
-  //                 <Input label="Nome" id="new-user-id" type="text" />
-  //                 <Input label="Sobrenome" id="user-surname" type="text" />
-  //               </div>
-  //               <Input label="CPF" id="national-id-number" type="text" />
-  //               <div className="row-wrap">
-  //                 <Input label="Nascimento" id="user-born" type="text" />
-  //                 <fieldset>
-  //                   <legend>Privilégios</legend>
-  //                   <div className="wrap-is-administrator">
-  //                     <input
-  //                       type="checkbox"
-  //                       name="admin-rules"
-  //                       id="check-is-admin"
-  //                       value="administrator"
-  //                     />
-  //                     <label htmlFor="check-is-admin">Admin</label>
-  //                   </div>
-  //                 </fieldset>
-  //               </div>
-  //             </div>
-  //             <div className="address-details">
-  //               <h2>Endereço</h2>
-  //               <Input label="CEP" id="postal-code" type="text" />
-  //               <Input label="Endereço" id="company-address" type="text" />
-  //               <Input label="Cidade" id="company-city" type="text" />
-  //               <div className="country-info">
-  //                 <Input label="Estado" id="company-state" type="text" />
-  //                 <Input label="País" id="company-country" type="text" />
-  //               </div>
-  //             </div>
-  //             <div className="contact-detail">
-  //               <h2>Contato</h2>
-  //               <div className="contact-info">
-  //                 <Input label="Telefone" id="contact-number" type="text" />
-  //                 <Input
-  //                   label="Email da companhia"
-  //                   id="company-email"
-  //                   type="email"
-  //                 />
-  //               </div>
-  //             </div>
-  //             <Button type="submit" title="Enviar" />
-  //           </form>
-  //         </Modal>
-  //       </div>
-  //       <Main>
-  //         <QueryResultsTable
-  //           fields={[
-  //             "#",
-  //             "Nome",
-  //             "Contato",
-  //             "Empresa",
-  //             "Criação",
-  //             "Status",
-  //             "Administrator",
-  //             "",
-  //           ]}
-  //           data={data}
-  //         />
-  //       </Main>
-  //     </div>
-  //   </Container>
-  // );
+
   return (
     <Container>
       <SideBar />
@@ -134,70 +91,91 @@ export function Users() {
           exists
         >
           <form className="new-user-form">
-            <div className="company-info">
+            <div className="user-info">
+              <h3>Informações pessoais</h3>
+              <Input label="Nome" id="name" type="text" $srOnly icon={<BiUser/>}/>
               <div className="flex-row">
                 <Input
-                  label="Razão social "
-                  id="legalName"
+                  label="Data de Nascimento"
+                  id="birthdate"
                   type="text"
                   $srOnly
+                  icon={<BiCalendar/>}
                 />
-                <div className="flex-row">
-                  <Input label="Título" id="dbaName" type="text" $srOnly />
-                  <Input label="CNPJ" id="companyId" type="text" $srOnly />
-                </div>
+                <Input label="CPF" id="nationalIdNumber" type="text" $srOnly icon={<BiIdCard/>}/>
               </div>
             </div>
             <div className="address-details">
-              <Input label="Endereço" id="address" type="text" $srOnly />
+              <h3>Endereço</h3>
+              <Input label="Endereço" id="userAddress" type="text" $srOnly icon={<BiHomeAlt />}/>
               <div className="flex-row">
-                <Input label="CEP" id="postalCode" type="text" $srOnly />
-                <Input label="Cidade" id="city" type="text" $srOnly />
+                <Input label="CEP" id="postalCode" type="text" $srOnly icon={<BiMapPin />}/>
+                <Input label="Cidade" id="userCity" type="text" $srOnly icon={<BiMap />}/>
               </div>
 
               <div className="flex-row">
-                <Input label="Estado" id="state" type="text" $srOnly />
-                <Input label="País" id="country" type="text" $srOnly />
+                <Input label="Estado" id="userState" type="text" $srOnly icon={<BiMapAlt />}/>
+                <Input label="País" id="userCountry" type="text" $srOnly icon={<BiWorld />}/>
+              </div>
+            </div>
+            <div className="account-info">
+              <h3>Informações da conta</h3>
+              <div className="flex-row">
+                <div className="checkbox-wrap">
+                  <div className="flex-row">
+                    <label htmlFor="administrator">Administrador</label>
+                    <input
+                      type="checkbox"
+                      name="userAdmin"
+                      id="administrator"
+                    />
+                  </div>
+                </div>
+                <Input
+                  label="Id da empresa"
+                  id="idClient"
+                  type="text"
+                  $srOnly
+                  icon={<BiUserCircle />}
+                />
+                <Input label="Cargo" id="companyRole" type="text" $srOnly icon={<BiBriefcase />}/>
               </div>
             </div>
             <div className="contact-detail">
+              <h3>Contato</h3>
               <div className="flex-row">
-                <Input label="Telefone" id="companyPhone" type="text" $srOnly />
-                <Input
-                  label="Email da companhia"
-                  id="companyEmail"
-                  type="email"
-                  $srOnly
-                />
+                <Input label="Telefone" id="phoneNumber" type="text" $srOnly icon={<BiMobileAlt />}/>
+                <Input label="Email" id="mail" type="email" $srOnly icon={<BiEnvelope />}/>
               </div>
             </div>
             <section className="handle-buttons">
-              <Button text="Limpar" width="8rem" />
-              <Button text="Enviar" $typeSubmit width="8rem" />
+              <Button title="Limpar" width="8rem" />
+              <Button title="Enviar" $typeSubmit width="8rem" />
             </section>
           </form>
         </Modal>
         <Main>
           <Content>
             <ContentHeader>
-              <h2>Clientes</h2>
+              <h2>Usuários</h2>
               <CreateButton onClick={() => setOpen(true)}>
                 <FiPlus />
-                <p>Criar Cliente</p>
+                <p>Criar Usuário</p>
               </CreateButton>
             </ContentHeader>
-            <QueryResultsTable
-              fields={[
-                "Id",
-                "Nome",
-                "Contato",
-                "Empresa",
-                "Criação",
-                "Status",
-                "Administrator",
-              ]}
-              data={data}
-            />
+            <ContentBody>
+              <QueryResultsTable
+                fields={[
+                  "ID",
+                  "Nome",
+                  "Contato",
+                  "Criação",
+                  "Status",
+                  "Administrator",
+                ]}
+                data={data}
+              />
+            </ContentBody>
           </Content>
         </Main>
       </ContentArea>

@@ -35,41 +35,42 @@ export function Fleets() {
     idOperation: "",
   });
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await api.get("admin/clients");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/vehicles");
+        
+        const vehiclesData = response.data?.map( vehicle => {
+          const {
+            id,
+            vehicleName,
+            vehicleColor,
+            vehicleModel,
+            vehiclePlate,
+            active,
+          } = vehicle;
+          
+          return {
+            id,
+            vehicleName,
+            vehicleColor,
+            vehicleModel,
+            vehiclePlate,
+            active
+          };
+        });
+        
 
-  //       const vehiclesData = response.data?.map( vehicle => {
-  //         const {
-            
-  //         } = vehicle;
+        setData(vehiclesData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  //         return {
-  //           id,
-  //           dbaName,
-  //           companyId,
-  //           contact: {
-  //             email: companyEmail,
-  //             phoneNumber: companyPhone,
-  //           },
-  //           active,
-  //           postalCode,
-  //           city,
-  //           country,
-  //         };
-  //       });
+    fetchData();
 
-  //       setData(clientsData);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   return;
-  // }, []);
+    return;
+  }, []);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -172,13 +173,14 @@ export function Fleets() {
             <ContentBody>
               <QueryResultsTable
                 fields={[
-                  "Id",
+                  "ID",
                   "Identificação",
                   "Cor",
                   "Modelo",
                   "Placa",
                   "Status",
                 ]}
+                data={data}
               />
             </ContentBody>
           </Content>
@@ -186,8 +188,4 @@ export function Fleets() {
       </ContentArea>
     </Container>
   );
-}
-
-{
-  /**/
 }

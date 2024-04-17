@@ -122,6 +122,7 @@ export function Clients() {
         >
           <form onSubmit={handleNewClient} className="new-client-form">
             <div className="company-info">
+                <h3>Informações da empresa</h3>
                 <Input
                   icon={<BiBriefcaseAlt2 />}
                   label="Razão social "
@@ -150,6 +151,7 @@ export function Clients() {
                 </div>
             </div>
             <div className="address-details">
+              <h3>Endereços</h3>
               <Input
                 icon={<BiMap />}
                 label="Endereço"
@@ -197,6 +199,7 @@ export function Clients() {
               </div>
             </div>
             <div className="contact-detail">
+              <h3>Contatos</h3>
               <div className="flex-row">
                 <Input
                   icon={<BiMobileAlt />}
