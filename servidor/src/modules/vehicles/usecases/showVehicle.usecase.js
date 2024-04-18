@@ -23,7 +23,7 @@ class ShowVehicleUseCase {
       }]
     });
 
-    console.log(companyVehicles);
+    return companyVehicles;
 
   }
 }

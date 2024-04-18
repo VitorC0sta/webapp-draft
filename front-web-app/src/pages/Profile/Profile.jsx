@@ -14,17 +14,14 @@ export function Profile() {
 
   const { user } = useAuth();
 
-  const  { name, email, id, phoneNumber, idClient } = user;
+  const { name, email, id, phoneNumber, idClient } = user;
 
   const getClientData = useCallback(async () => {
     try {
 
      const response = await api.get(`/client/${idClient}`);    
      
-     console.log(response.data);
-
      setClientData(response.data);
-     
     } catch (err){
       console.log(err.response.data); 
     }

@@ -8,7 +8,7 @@ const express = require('express');
 const cron = require('node-cron');
 const routes = require('./routes.js');
 const AppError = require('./infra/utils/AppError.js');
-const eventTrigger = require('./cron-jobs/eventTrigger.job.js');
+//const eventTrigger = require('./cron-jobs/eventTrigger.job.js');
 
 const app = express();
 app.use(morgan('dev'));
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-cron.schedule("30-45 30 12 * * *", async () => await eventTrigger());
+//cron.schedule("30-45 30 12 * * *", async () => await eventTrigger());
 
 app.use((err, req, res, nxt) => {
   if (err instanceof AppError) {

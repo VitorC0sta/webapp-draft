@@ -3,7 +3,8 @@ const AppError = require("../../../infra/utils/AppError");
 
 class ShowClientUseCase {
   async execute( id, userLogged ) {
-    if(!userLogged.isAdmin && id !== userLogged.idClient) {
+
+    if(!userLogged.isAdmin && Number(id) !== userLogged.idClient) {
       throw new AppError("Sem autorização para acessar dados solicitados.", 403);
     }
 

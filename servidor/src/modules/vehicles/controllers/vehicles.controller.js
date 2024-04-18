@@ -3,7 +3,6 @@ const ShowVehiclesUseCase = require("../usecases/showAllVechicles.usecase");
 const ShowVehicleUseCase = require("../usecases/showVehicle.usecase");
 const VehiclesCreateUseCase = require("../usecases/vehiclesCreate.usecase");
 
-
 class VehiclesController {
   async create(req, res) {
     const { vehicleName, vehicleColor, vehicleModel, vehiclePlate, idOperation } = req.body;    

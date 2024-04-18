@@ -11,9 +11,11 @@ import { SideBar } from "../../common/components/SideBar/SideBar";
 import { QueryResultsTable } from "../../common/components/QueryResultsTable/QueryResultsTable";
 import { useEffect, useState } from "react";
 import { api } from "../../common/service/api";
+import { format } from "date-fns";
 
 export function Events() {
   const [data, setData] = useState();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,34 +26,41 @@ export function Events() {
           const {
             id,
             eventName,
-            idVehicle,
             createdAt
           } = event;
-
+          
+          const { vehiclePlate } = event.Vehicle;
+          const { dbaName } = event.Vehicle.Operation.Client;
+          
           return {
             id,
             eventName,
-            idVehicle,
-            createdAt
+            vehiclePlate,
+            dbaName,
+            createdAt: format(createdAt, "MM/dd/yyyy - hh:mm aa"),
           };
         });
-
+        
         setData(eventsList);
       } catch (err) {
         console.log(err);
       }
     };
-
+    
     fetchData();
-
+    
     return;
   }, []);
+  
+  useEffect(() => {
+    console.log(search);
+  },[search]);
 
   return (
     <Container>
       <SideBar />
       <ContentArea>
-        <Header />
+        <Header  />
         <Main>
           <Content>
             <ContentHeader>
@@ -59,7 +68,7 @@ export function Events() {
             </ContentHeader>
             <ContentBody>
               <QueryResultsTable
-                fields={["ID", "Evento", "Horário", "Placa"]}
+                fields={["ID", "Evento", "Placa", "Cliente", "Horário"]}
                 data={data}
               />
             </ContentBody>

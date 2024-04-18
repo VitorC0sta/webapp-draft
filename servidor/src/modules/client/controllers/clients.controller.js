@@ -39,7 +39,7 @@ class ClientsController {
   async showClient(req, res) {
     const { id } = req.params;
     const userLogged = req.user;
-
+    
     const client = await new ShowClientUseCase().execute(id, userLogged);
 
     return res.status(200).json(client);

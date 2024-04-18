@@ -7,9 +7,7 @@ export function Introduction({ companyName }) {
   const {user} = useAuth();
 
   const { email, id, nationalIdNumber, phoneNumber, birthdate } = user;
-  
-  console.log(user)
-  
+   
   const dates = {
     registeredAt: format(user.createdAt, "MM/dd/yyyy - hh:mm aa"),
     updatedAt: format(user.updatedAt, "MM/dd/yyyy - hh:mm aa"),

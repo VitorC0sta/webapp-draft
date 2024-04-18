@@ -40,7 +40,9 @@ export function Fleets() {
       try {
         const response = await api.get("/vehicles");
         
+        
         const vehiclesData = response.data?.map( vehicle => {
+          
           const {
             id,
             vehicleName,
@@ -50,17 +52,20 @@ export function Fleets() {
             active,
           } = vehicle;
           
+          const { operationName } = vehicle.Operation;
+          
           return {
             id,
             vehicleName,
             vehicleColor,
             vehicleModel,
             vehiclePlate,
+            operationName,
             active
           };
         });
         
-
+        console.log(vehiclesData);
         setData(vehiclesData);
       } catch (err) {
         console.log(err);
@@ -178,6 +183,7 @@ export function Fleets() {
                   "Cor",
                   "Modelo",
                   "Placa",
+                  "Operação",
                   "Status",
                 ]}
                 data={data}
