@@ -3,7 +3,7 @@ import { InputSearch } from "../InputSearch/InputSearch";
 import { useAuth } from "../../hooks/auth";
 import { ProfileImage } from "../ProfileImage/ProfileImage";
 
-export function   Header() {
+export function   Header({ setSearch }) {
   const { user } = useAuth();
 
   function handleRedirectProfile() {
@@ -12,7 +12,7 @@ export function   Header() {
 
   return (
     <Container>
-      <InputSearch />
+      <InputSearch setSearch={setSearch}/>
       <UserAvatar onClick={handleRedirectProfile}>
         <p>{user.name}</p>
         <ProfileImage   

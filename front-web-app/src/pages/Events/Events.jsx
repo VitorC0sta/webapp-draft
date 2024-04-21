@@ -20,7 +20,7 @@ export function Events() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/events");
+        const response = await api.get(`/events?search=${search}`);
 
         const eventsList = response.data?.map((event) => {
           const {
@@ -46,21 +46,17 @@ export function Events() {
         console.log(err);
       }
     };
-    
+        
     fetchData();
-    
-    return;
-  }, []);
+  }, [search]);
+
   
-  useEffect(() => {
-    console.log(search);
-  },[search]);
 
   return (
     <Container>
       <SideBar />
       <ContentArea>
-        <Header  />
+        <Header setSearch={setSearch}/>
         <Main>
           <Content>
             <ContentHeader>

@@ -5,12 +5,15 @@ class EventsController {
 
   }
   async showEvents(req, res) {
-    const userLogged  = req.user
+    const userLogged  = req.user;
 
-    const list = await new ShowEventsUseCase().execute({ userLogged });
+    const { search } = req.query;
+    
+    const list = await new ShowEventsUseCase().execute({ userLogged, search });
 
     return res.status(200).json(list);
   }
+
 }
 
 module.exports = EventsController;
