@@ -15,7 +15,7 @@ import { format } from "date-fns";
 
 export function Events() {
   const [data, setData] = useState();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(" ");
 
   useEffect(() => {
     const fetchData = async () => {
