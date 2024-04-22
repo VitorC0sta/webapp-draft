@@ -44,11 +44,12 @@ export function Clients() {
     postalCode: "",
     state: "",
   });
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("admin/clients");
+        const response = await api.get(`admin/clients?search=${search}`);
 
         const clientsData = response.data?.map((client) => {
           const {
@@ -87,7 +88,7 @@ export function Clients() {
     fetchData();
 
     return;
-  }, []);
+  }, [search]);
 
   function handleChange(event) {
     const { id, value } = event.target;
@@ -112,7 +113,7 @@ export function Clients() {
     <Container>
       <SideBar />
       <ContentArea>
-        <Header />
+        <Header setSearch={setSearch}/>
         <Modal
           isOpen={open}
           setIsOpen={setOpen}

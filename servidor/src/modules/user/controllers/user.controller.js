@@ -97,14 +97,6 @@ class UserController {
 
     return res.status(200).json({ message: "User Deleted", user });
   }
-
-  async showUser(req, res) {''
-    const { id } = req.params;
-
-    const user = await new ShowUserUseCase().execute(id);
-
-    res.status(200).json(user);
-  }
 }
 
 module.exports = UserController;

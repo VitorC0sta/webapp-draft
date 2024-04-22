@@ -23,10 +23,12 @@ import { FiPlus } from "react-icons/fi";
 import { Input } from "../../common/components/Input/Input";
 import { Button } from "../../common/components/Button/Button";
 import { api } from "../../common/service/api";
+import { format } from "date-fns";
 
 export function Operations() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState();
+  const [search, setSearch] = useState("");
   const [formData, setFormData] = useState({
     operationName: "",
     destinationCity: "",
@@ -38,7 +40,7 @@ export function Operations() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/operation");
+        const response = await api.get(`/operation?search=${search}`);
 
         console.log(response);
 
@@ -53,14 +55,18 @@ export function Operations() {
             destinationRegion,
             destinationCountry,
             active,
+            createdAt
           } = operation;
 
           return {
             id,
             operationName,
-            destinationCity,
-            destinationRegion,
+            destination: {
+              destinationCity,
+              destinationRegion,
+            },
             destinationCountry,
+            createdAt: format(createdAt, "MM/dd/yyyy - hh:mm aa"),
             active,
             dbaName
           };
@@ -75,7 +81,7 @@ export function Operations() {
     fetchData();
 
     return;
-  }, []);
+  }, [search]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -100,7 +106,7 @@ export function Operations() {
     <Container>
       <SideBar />
       <ContentArea>
-        <Header />
+        <Header setSearch={setSearch}/>
         <Modal
           isOpen={open}
           setIsOpen={setOpen}

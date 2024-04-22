@@ -1,9 +1,6 @@
 const ShowEventsUseCase = require("../usecases/showEvents.usecase");
 
 class EventsController {
-  async showEvent() {
-
-  }
   async showEvents(req, res) {
     const userLogged  = req.user;
 

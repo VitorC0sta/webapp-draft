@@ -46,7 +46,6 @@ export const Container = styled.table`
         span {
           font-size: 1.4rem;
           color: ${({theme}) => theme.COLORS.NEUTRAL_600};
-          margin: 0.4rem;
         }
 
       }

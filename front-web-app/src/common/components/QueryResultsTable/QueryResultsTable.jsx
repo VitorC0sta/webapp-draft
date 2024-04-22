@@ -40,6 +40,13 @@ export function QueryResultsTable({ fields, data }) {
                   );
                 } else if  (key === "administrator") {
                   return user[key] ? <td key={key}>administrador</td> : <td>padrão</td>
+                } else if (key === "destination") {
+                  return (
+                    <td className=".destination" key={key}>
+                      <p>{user[key].destinationCity}</p>
+                      <span>{user[key].destinationRegion}</span>
+                    </td>
+                  );
                 }
 
                 return (

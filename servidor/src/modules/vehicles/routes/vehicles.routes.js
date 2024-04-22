@@ -6,7 +6,6 @@ const vehicleController = new VehicleController();
 const vehicleRoutes = Router();
 
 vehicleRoutes.post("/", vehicleController.create);
-vehicleRoutes.get("/:id", vehicleController.show);
 vehicleRoutes.get("/", vehicleController.showVehicles);
 
 module.exports = vehicleRoutes;

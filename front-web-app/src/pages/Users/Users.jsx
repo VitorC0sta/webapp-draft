@@ -35,13 +35,12 @@ import {
 export function Users() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get(
-          import.meta.env.VITE_API_URL + "admin/users"
-        );
+        const response = await api.get(`admin/users?search=${search}`);
 
         const usersData = response.data?.map((userData) => {
           const {
@@ -76,13 +75,13 @@ export function Users() {
     fetchData();
 
     return;
-  }, []);
+  }, [search]);
 
   return (
     <Container>
       <SideBar />
       <ContentArea>
-        <Header />
+        <Header setSearch={setSearch}/>
         <Modal
           isOpen={open}
           setIsOpen={setOpen}

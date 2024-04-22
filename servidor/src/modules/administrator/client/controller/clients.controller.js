@@ -3,7 +3,9 @@ const UpdateClientUseCase = require("../usecases/updateClient.usecase");
 
 class ClientsController  {
   async showClients(req, res) {
-    const clients = await new ShowClientsUseCase().execute();
+    const { search } = req.query;
+
+    const clients = await new ShowClientsUseCase().execute({ search });
 
     return res.status(200).json(clients);  
   }

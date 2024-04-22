@@ -13,6 +13,6 @@ const userAvatarController = new UserAvatarController();
 
 userRoutes.post("/", isAdmin, userController.create);
 userRoutes.put("/update", userController.update);
-userRoutes.get("/:id", isAdmin, userController.showUser);
+
 //serRoutes.patch("/:id/avatar", uploadConfig.MULTER, upload.single("avatar"), userAvatarController.update);
 module.exports = userRoutes;

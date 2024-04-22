@@ -20,19 +20,11 @@ class VehiclesController {
     return res.status(201).json(vehicle);
   }
 
-  async show(req, res) {
-    const { id } = req.params;
-    const userLogged = req.body;
-
-    const vehicle = await new ShowVehicleUseCase().execute(id, userLogged);
-
-    res.status(200).json(vehicle);
-  }
-
   async showVehicles(req, res) {
     const userLogged = req.user;
+    const { search } = req.query;
 
-    const vehicles = await new ShowVehiclesUseCase().execute(userLogged);
+    const vehicles = await new ShowVehiclesUseCase().execute({ userLogged, search });
 
     return res.status(200).json(vehicles);
   }

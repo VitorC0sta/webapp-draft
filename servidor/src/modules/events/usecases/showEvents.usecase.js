@@ -3,7 +3,6 @@ const Operations = require("../../../infra/database/entities/operations");
 const Vehicles = require("../../../infra/database/entities/vehicles");
 const Events = require("../../../infra/database/entities/events");
 const { Op, Sequelize } = require("sequelize");
-const { number } = require("yup");
 
 class ShowEventsUseCase {
   async execute({ userLogged, search }) {
@@ -13,8 +12,6 @@ class ShowEventsUseCase {
     Operations.belongsTo(Clients, { foreignKey: 'idClient' });
     
     search = search.toLowerCase();
-
-    console.log("É um numero: " + Number.isNaN(search));
     
     let where = search ? {
       [Op.or]: [

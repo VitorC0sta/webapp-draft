@@ -27,6 +27,8 @@ import { api } from "../../common/service/api";
 export function Fleets() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState();
+  const [search, setSearch] = useState("");
+
   const [formData, setFormData] = useState({
     vehicleName: "",
     vehicleColor: "",
@@ -38,8 +40,7 @@ export function Fleets() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/vehicles");
-        
+        const response = await api.get(`/vehicles?search=${search}`);
         
         const vehiclesData = response.data?.map( vehicle => {
           
@@ -65,7 +66,6 @@ export function Fleets() {
           };
         });
         
-        console.log(vehiclesData);
         setData(vehiclesData);
       } catch (err) {
         console.log(err);
@@ -75,7 +75,7 @@ export function Fleets() {
     fetchData();
 
     return;
-  }, []);
+  }, [search]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -100,7 +100,7 @@ export function Fleets() {
     <Container>
       <SideBar />
       <ContentArea>
-        <Header />
+        <Header setSearch={setSearch}/>
         <Modal
           isOpen={open}
           setIsOpen={setOpen}
