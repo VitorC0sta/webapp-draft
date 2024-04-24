@@ -36,6 +36,18 @@ export function Users() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState();
   const [search, setSearch] = useState("");
+  const [formData, setFormData] = useState({
+    address: "",
+    city: "",
+    companyEmail: "",
+    companyId: "",
+    companyPhone: "",
+    country: "",
+    dbaName: "",
+    legalName: "",
+    postalCode: "",
+    state: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,6 +89,24 @@ export function Users() {
     return;
   }, [search]);
 
+  function handleChange(event) {
+    const {name, value} = event.target
+    setFormData( prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  }
+
+  async function handleNewClient(event) {
+    event.prevState();
+
+    setOpen(false);
+
+    console.log({...formData});
+
+    await api.post("user/", { ...formData });
+  }
+
   return (
     <Container>
       <SideBar />
@@ -89,32 +119,34 @@ export function Users() {
           title="Criar Usuário"
           exists
         >
-          <form className="new-user-form">
+          <form className="new-user-form" onSubmit={handleNewClient}>
             <div className="user-info">
               <h3>Informações pessoais</h3>
-              <Input label="Nome" id="name" type="text" $srOnly icon={<BiUser/>}/>
+              <Input label="Nome" id="name" type="text" $srOnly icon={<BiUser/>} onChange={handleChange}/>
               <div className="flex-row">
                 <Input
                   label="Data de Nascimento"
                   id="birthdate"
+                  name="birthdate"
                   type="text"
                   $srOnly
                   icon={<BiCalendar/>}
+                  onChange={handleChange}
                 />
-                <Input label="CPF" id="nationalIdNumber" type="text" $srOnly icon={<BiIdCard/>}/>
+                <Input label="CPF" id="nationalIdNumber" name="nationalIdNumber"type="text" $srOnly icon={<BiIdCard/>} onChange={handleChange}/>
               </div>
             </div>
             <div className="address-details">
               <h3>Endereço</h3>
-              <Input label="Endereço" id="userAddress" type="text" $srOnly icon={<BiHomeAlt />}/>
+              <Input label="Endereço" id="userAddress" name="userAddress" type="text" $srOnly icon={<BiHomeAlt />} onChange={handleChange}/>
               <div className="flex-row">
-                <Input label="CEP" id="postalCode" type="text" $srOnly icon={<BiMapPin />}/>
-                <Input label="Cidade" id="userCity" type="text" $srOnly icon={<BiMap />}/>
+                <Input label="CEP" id="postalCode" name="postalCode" type="text" $srOnly icon={<BiMapPin />} onChange={handleChange}/>
+                <Input label="Cidade" id="userCity" name="userCity" type="text" $srOnly icon={<BiMap />} onChange={handleChange}/>
               </div>
 
               <div className="flex-row">
-                <Input label="Estado" id="userState" type="text" $srOnly icon={<BiMapAlt />}/>
-                <Input label="País" id="userCountry" type="text" $srOnly icon={<BiWorld />}/>
+                <Input label="Estado" id="userState" name="userState" type="text" $srOnly icon={<BiMapAlt />} onChange={handleChange}/>
+                <Input label="País" id="userCountry" name="userCountry" type="text" $srOnly icon={<BiWorld />} onChange={handleChange}/>
               </div>
             </div>
             <div className="account-info">
@@ -126,25 +158,27 @@ export function Users() {
                     <input
                       type="checkbox"
                       name="userAdmin"
-                      id="administrator"
+                      id="administrator"           
                     />
                   </div>
                 </div>
                 <Input
                   label="Id da empresa"
                   id="idClient"
+                  name="idClient"
                   type="text"
                   $srOnly
                   icon={<BiUserCircle />}
+                  onChange={handleChange}
                 />
-                <Input label="Cargo" id="companyRole" type="text" $srOnly icon={<BiBriefcase />}/>
+                <Input label="Cargo" id="companyRole" name="companyRole" type="text" $srOnly icon={<BiBriefcase />} onChange={handleChange}/>
               </div>
             </div>
             <div className="contact-detail">
               <h3>Contato</h3>
               <div className="flex-row">
-                <Input label="Telefone" id="phoneNumber" type="text" $srOnly icon={<BiMobileAlt />}/>
-                <Input label="Email" id="mail" type="email" $srOnly icon={<BiEnvelope />}/>
+                <Input label="Telefone" id="phoneNumber" name="phoneNumber" type="text" $srOnly icon={<BiMobileAlt />} onChange={handleChange}/>
+                <Input label="Email" id="mail" name="mail" type="email" $srOnly icon={<BiEnvelope />} onChange={handleChange}/>
               </div>
             </div>
             <section className="handle-buttons">

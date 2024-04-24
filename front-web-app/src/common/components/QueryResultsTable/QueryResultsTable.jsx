@@ -13,19 +13,19 @@ export function QueryResultsTable({ fields, data }) {
         </tr>
       </thead>
       <tbody>
-        {data?.map((user, index) => (
+        {data?.map((field, index) => (
           <tr key={index}>
-            {Object.keys(user).map((key) => {  
+            {Object.keys(field).map((key) => {  
                 if (key === "contact") {
                   return (
                     <td className=".contact" key={key}>
-                      <p>{user[key].email}</p>
-                      <span>{user[key].phoneNumber}</span>
+                      <p>{field[key].email}</p>
+                      <span>{field[key].phoneNumber}</span>
                     </td>
                   );
                 } else if (key === "active") {
                   
-                  return user[key] ? (
+                  return field[key] ? (
                     <td key={key} >
                       <Badge $active>
                         <p>Ativo</p>
@@ -39,19 +39,19 @@ export function QueryResultsTable({ fields, data }) {
                     </td>
                   );
                 } else if  (key === "administrator") {
-                  return user[key] ? <td key={key}>administrador</td> : <td>padrão</td>
+                  return field[key] ? <td key={key}>administrador</td> : <td>padrão</td>
                 } else if (key === "destination") {
                   return (
                     <td className=".destination" key={key}>
-                      <p>{user[key].destinationCity}</p>
-                      <span>{user[key].destinationRegion}</span>
+                      <p>{field[key].destinationCity}</p>
+                      <span>{field[key].destinationRegion}</span>
                     </td>
                   );
                 }
 
                 return (
                   <td key={key}>
-                    <p>{user[key]}</p>
+                    <p>{field[key]}</p>
                   </td>
                 );
               })

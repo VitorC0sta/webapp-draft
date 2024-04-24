@@ -1,6 +1,27 @@
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
+import { api } from "../../service/api";
 
-export function LastEventsTable({...rest}) {
+export function LastEventsTable({ ...rest }) {
+  const [data, setData] = useState(""); 
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.get("/events");
+
+      const lastEvents = response.data?.map(event => {
+        const { eventName } = event;
+        const {vehiclePlate} = event.Vehicle;
+
+        return { eventName, vehiclePlate };
+      });
+
+      setData(lastEvents);
+    }
+
+    fetchData();
+  } , []);
+
   return (
     <Container {...rest}>
       <div className="wrap-title">
@@ -14,23 +35,10 @@ export function LastEventsTable({...rest}) {
           </tr>
         </thead>
         <tbody id="tabela-body">
-          <tr>
-            <td>Alcoolizado</td>
-            <td>ABC1234</td>
-          </tr>
-          <tr>
-            <td>Sonolência</td>
-            <td>XYZ5678</td>
-          </tr>
-          <tr>
-            <td>Direção Perigosa</td>
-            <td>DEF9876</td>
-          </tr>
-          <tr>
-            <td>Sem Cinto</td>
-            <td>GHI6543</td>
-          </tr>
-          
+          {
+            console.log(data)
+            
+          }
         </tbody>
       </table>
     </Container>

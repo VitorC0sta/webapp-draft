@@ -11,7 +11,7 @@ class ShowEventsUseCase {
     Vehicles.belongsTo(Operations, { foreignKey: 'idOperation' });
     Operations.belongsTo(Clients, { foreignKey: 'idClient' });
     
-    search = search.toLowerCase();
+    search !== undefined ? search = search.toLowerCase() : null;
     
     let where = search ? {
       [Op.or]: [
