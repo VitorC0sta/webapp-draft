@@ -1,13 +1,13 @@
 const { hash } = require("../../../infra/providers/hashprovider");
 const Users = require("../../../infra/database/entities/users");
 const AppError = require("../../../infra/utils/AppError");
+const sendEmail = require("../../../infra/providers/sendEmail");
 
 class CreateUserUseCase {
   async execute({
     name,
     email,
     nationalIdNumber,
-    password,
     administrator,
     idClient,
     postalCode,
@@ -24,7 +24,15 @@ class CreateUserUseCase {
 
     if (chkUserExits) throw new AppError("[ERRO].: Email já cadastrado.");
 
+    const password =  Math.random().toString(36).slice(-8);
+
     const hashedPassword = await hash(password, 8);
+
+    const subject = "Your password";
+    const text = `Aqui está sua senha para acesso no portal Argus App: ${password}.`;
+    const message = `<p>Aqui está sua senha para acesso no portal Argus App: ${password}</p>`;
+
+    await sendEmail({ userEmail: email, subject, text, message });
 
     const user = await Users.create({
       name,
@@ -39,46 +47,13 @@ class CreateUserUseCase {
       userState,
       userCountry,
       phoneNumber,
-      birthdate: this.#stringToDate(birthdate),
+      birthdate: new Date(birthdate),
       companyRole,
     });
-
+    
     user.password = undefined;
 
     return user;
-  }
-
-  async #stringToDate(birthdate) {
-    const [monthString, dayString, yearString] = await birthdate.split("/");
-
-    const month = Number(monthString) - 1; //months in 'Date' [0-11] [jan-dec].
-    const day = Number(dayString);
-    const year = Number(yearString);
-
-    await this.#dateValidation({ month, day, year });
-
-    return new Date(month, day, year);
-  }
-
-  async #dateValidation({ month, day, year }) {
-    const currentDate = new Date();
-    const inputDate = new Date(year, month, day);
-
-    const currentYear = await currentDate.getFullYear();
-
-    if (inputDate > currentDate) {
-      throw new AppError("Data futura não permitida", 401);
-    }
-
-    if (
-      !(month >= 0 && month <= 11) ||
-      !(day >= 1 && day <= 31) ||
-      !(year >= currentYear - 130) ||
-      (month === 1 && day > 29)
-    ) {
-      throw new AppError("Data inválida", 401);
-    }
-    return ;
   }
 }
 

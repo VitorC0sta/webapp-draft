@@ -1,7 +1,8 @@
 
 import { useAuth } from "../../hooks/auth";
 import { Container, IntroductionCard } from "./styles";
-import { format } from "date-fns";
+import { format,  } from "date-fns";
+
 
 export function Introduction({ companyName }) {
   const {user} = useAuth();
@@ -11,7 +12,7 @@ export function Introduction({ companyName }) {
   const dates = {
     registeredAt: format(user.createdAt, "MM/dd/yyyy - hh:mm aa"),
     updatedAt: format(user.updatedAt, "MM/dd/yyyy - hh:mm aa"),
-    birthdateFormated: format(birthdate, "MM/dd/yyyy")
+    birthDate: format(new Date(birthdate), "yyyy/MM/dd", { timezone: "UTC" })
   }
 
   return (
@@ -21,7 +22,7 @@ export function Introduction({ companyName }) {
         <div className="info-container">
           <div className="wrap-info">
             <span>Data de Nascimento</span>
-            <p>{dates.birthdateFormated}</p>
+            <p>{dates.birthDate}</p>
           </div>
           <div className="wrap-info">
             <span>ID Internacional</span>

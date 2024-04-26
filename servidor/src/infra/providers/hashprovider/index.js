@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+
 module.exports = {
   async hash(password) {
     return await bcrypt.hash(password, 8);

@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const SecurityData = require("../../../infra/database/entities/security_data");
 const Users = require("../../../infra/database/entities/users");
-const sendEmail = require("../../../infra/providers/sendRecoveryEmail");
+const sendEmail = require("../../../infra/providers/sendEmail");
 const AppError = require("../../../infra/utils/AppError");
 const crypto = require("crypto");
 
@@ -29,7 +29,11 @@ class SendRecoveryEmailUseCase {
 
       const resetPasswordUrl = process.env.APP_URL + `/reset_password?token=${token}`;
       
-      await sendEmail({email, resetPasswordUrl});
+      const subject = "Recovery Password";
+      const text = `Você solicitou a recuperação de senha. Clique neste link para redefinir sua senha: ${resetPasswordUrl}. Válido por 30 minutos.`;
+      const message = `<p>Você solicitou a recuperação de senha. Clique neste link para redefinir sua senha: <a>${resetPasswordUrl}</a></p><br/><i>Válido por 30 minutos.</i>`;
+
+      await sendEmail({userEmail: email, subject, text, message});
 
     } catch (err) {
       console.log(err.message);

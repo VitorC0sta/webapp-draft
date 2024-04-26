@@ -15,10 +15,10 @@ export function QueryResultsTable({ fields, data }) {
       <tbody>
         {data?.map((field, index) => (
           <tr key={index}>
-            {Object.keys(field).map((key) => {  
+            {Object.keys(field).map((key, index) => {  
                 if (key === "contact") {
                   return (
-                    <td className=".contact" key={key}>
+                    <td className=".contact" key={index}>
                       <p>{field[key].email}</p>
                       <span>{field[key].phoneNumber}</span>
                     </td>

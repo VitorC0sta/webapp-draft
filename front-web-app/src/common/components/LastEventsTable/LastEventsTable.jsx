@@ -3,24 +3,25 @@ import { Container } from "./styles";
 import { api } from "../../service/api";
 
 export function LastEventsTable({ ...rest }) {
-  const [data, setData] = useState(""); 
+  const [data, setData] = useState();
 
   useEffect(() => {
     async function fetchData() {
-      const response = await api.get("/events");
+      const response = await api.get("/events/last_events");
 
-      const lastEvents = response.data?.map(event => {
-        const { eventName } = event;
-        const {vehiclePlate} = event.Vehicle;
+      // const lastEvents = response.data?.map(event => {
 
-        return { eventName, vehiclePlate };
-      });
+      //   const { eventName } = event;
+      //   const { vehiclePlate } = event.Vehicle;
 
-      setData(lastEvents);
+      //   return { eventName, vehiclePlate };
+      // });
+
+      setData(response.data);
     }
 
     fetchData();
-  } , []);
+  }, []);
 
   return (
     <Container {...rest}>
@@ -35,10 +36,12 @@ export function LastEventsTable({ ...rest }) {
           </tr>
         </thead>
         <tbody id="tabela-body">
-          {
-            console.log(data)
-            
-          }
+          {data?.map((lastEvent, index) => (
+            <tr key={index}>
+              <td>{lastEvent.eventName}</td>
+              <td>{lastEvent.Vehicle.vehiclePlate}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>

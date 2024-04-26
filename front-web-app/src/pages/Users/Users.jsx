@@ -37,16 +37,19 @@ export function Users() {
   const [data, setData] = useState();
   const [search, setSearch] = useState("");
   const [formData, setFormData] = useState({
-    address: "",
-    city: "",
-    companyEmail: "",
-    companyId: "",
-    companyPhone: "",
-    country: "",
-    dbaName: "",
-    legalName: "",
+    name: "",
+    email: "",
+    nationalIdNumber: "",
+    administrator: false,
+    idClient: "",
     postalCode: "",
-    state: "",
+    userAddress: "",
+    userCity: "",
+    userState: "",
+    userCountry: "",
+    phoneNumber: "",
+    birthdate: "",
+    companyRole: "",
   });
 
   useEffect(() => {
@@ -89,20 +92,12 @@ export function Users() {
     return;
   }, [search]);
 
-  function handleChange(event) {
-    const {name, value} = event.target
-    setFormData( prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  }
-
   async function handleNewClient(event) {
-    event.prevState();
+    event.preventDefault();
 
     setOpen(false);
 
-    console.log({...formData});
+    console.log({ ...formData });
 
     await api.post("user/", { ...formData });
   }
@@ -111,7 +106,7 @@ export function Users() {
     <Container>
       <SideBar />
       <ContentArea>
-        <Header setSearch={setSearch}/>
+        <Header setSearch={setSearch} />
         <Modal
           isOpen={open}
           setIsOpen={setOpen}
@@ -122,31 +117,92 @@ export function Users() {
           <form className="new-user-form" onSubmit={handleNewClient}>
             <div className="user-info">
               <h3>Informações pessoais</h3>
-              <Input label="Nome" id="name" type="text" $srOnly icon={<BiUser/>} onChange={handleChange}/>
+              <Input
+                label="Nome"
+                id="name"
+                name="name"
+                type="text"
+                $srOnly
+                icon={<BiUser />}
+                onChange={event => setFormData({...formData, name: event.target.value})}
+              />
               <div className="flex-row">
                 <Input
                   label="Data de Nascimento"
                   id="birthdate"
                   name="birthdate"
+                  type="date"
+                  $srOnly
+                  icon={<BiCalendar />}
+                  onChange={event => setFormData({...formData, birthdate: event.target.value})}
+                />
+                <Input
+                  label="CPF"
+                  id="nationalIdNumber"
+                  name="nationalIdNumber"
                   type="text"
                   $srOnly
-                  icon={<BiCalendar/>}
-                  onChange={handleChange}
+                  icon={<BiIdCard />}
+                  onChange={event => setFormData({...formData, nationalIdNumber: event.target.value.replace(/\D/g, "")})}
                 />
-                <Input label="CPF" id="nationalIdNumber" name="nationalIdNumber"type="text" $srOnly icon={<BiIdCard/>} onChange={handleChange}/>
               </div>
             </div>
             <div className="address-details">
               <h3>Endereço</h3>
-              <Input label="Endereço" id="userAddress" name="userAddress" type="text" $srOnly icon={<BiHomeAlt />} onChange={handleChange}/>
+              <Input
+                label="Endereço"
+                id="userAddress"
+                name="userAddress"
+                type="text"
+                $srOnly
+                icon={<BiHomeAlt />}
+                onChange={event => setFormData({...formData, userAddress: event.target.value})}
+              />
               <div className="flex-row">
-                <Input label="CEP" id="postalCode" name="postalCode" type="text" $srOnly icon={<BiMapPin />} onChange={handleChange}/>
-                <Input label="Cidade" id="userCity" name="userCity" type="text" $srOnly icon={<BiMap />} onChange={handleChange}/>
+                <Input
+                  label="CEP"
+                  id="postalCode"
+                  name="postalCode"
+                  type="text"
+                  $srOnly
+                  icon={<BiMapPin />}
+                  onChange={event => setFormData({...formData, postalCode: event.target.value})}
+                />
+                <Input
+                  label="Cidade"
+                  id="userCity"
+                  name="userCity"
+                  type="text"
+                  $srOnly
+                  icon={<BiMap />}
+                  onChange={event => setFormData({...formData, userCity: event.target.value})}
+                />
               </div>
 
               <div className="flex-row">
-                <Input label="Estado" id="userState" name="userState" type="text" $srOnly icon={<BiMapAlt />} onChange={handleChange}/>
-                <Input label="País" id="userCountry" name="userCountry" type="text" $srOnly icon={<BiWorld />} onChange={handleChange}/>
+                <Input
+                  label="Estado"
+                  id="userState"
+                  name="userState"
+                  type="text"
+                  $srOnly
+                  icon={<BiMapAlt />}
+                  onChange={event => setFormData({...formData, userState: event.target.value})}
+                />
+                <Input
+                  label="País"
+                  id="userCountry"
+                  name="userCountry"
+                  type="text"
+                  $srOnly
+                  icon={<BiWorld />}
+                  onChange={(event) =>
+                    setFormData({
+                      ...formData,
+                      userCountry: event.target.value,
+                    })
+                  }
+                />
               </div>
             </div>
             <div className="account-info">
@@ -158,7 +214,13 @@ export function Users() {
                     <input
                       type="checkbox"
                       name="userAdmin"
-                      id="administrator"           
+                      id="administrator"
+                      onChange={(event) =>
+                        setFormData({
+                          ...formData,
+                          administrator: event.target.checked,
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -169,21 +231,44 @@ export function Users() {
                   type="text"
                   $srOnly
                   icon={<BiUserCircle />}
-                  onChange={handleChange}
+                  onChange={event => setFormData({...formData, idClient: event.target.value.replace(/\D/g, "")})}
                 />
-                <Input label="Cargo" id="companyRole" name="companyRole" type="text" $srOnly icon={<BiBriefcase />} onChange={handleChange}/>
+                <Input
+                  label="Cargo"
+                  id="companyRole"
+                  name="companyRole"
+                  type="text"
+                  icon={<BiBriefcase />}
+                  onChange={event => setFormData({...formData, companyRole: event.target.value})}
+                />
               </div>
             </div>
             <div className="contact-detail">
               <h3>Contato</h3>
               <div className="flex-row">
-                <Input label="Telefone" id="phoneNumber" name="phoneNumber" type="text" $srOnly icon={<BiMobileAlt />} onChange={handleChange}/>
-                <Input label="Email" id="mail" name="mail" type="email" $srOnly icon={<BiEnvelope />} onChange={handleChange}/>
+                <Input
+                  label="Telefone"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  type="text"
+                  $srOnly
+                  icon={<BiMobileAlt />}
+                  onChange={event => setFormData({...formData, phoneNumber: event.target.value.replace(/\D/g, "")})}
+                />
+                <Input
+                  label="Email"
+                  id="email"
+                  name="email"
+                  type="email"
+                  $srOnly
+                  icon={<BiEnvelope />}
+                  onChange={event => setFormData({...formData, email: event.target.value})}
+                />
               </div>
             </div>
             <section className="handle-buttons">
               <Button title="Limpar" width="8rem" />
-              <Button title="Enviar" $typeSubmit width="8rem" />
+              <Button title="Enviar" type="submit" $typeSubmit width="8rem" />
             </section>
           </form>
         </Modal>

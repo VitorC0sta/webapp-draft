@@ -28,7 +28,7 @@ class ShowEventsUseCase {
       ],
     } : {};
 
-    if(!userLogged. isAdmin) {
+    if(!userLogged.isAdmin) {
       where = {
         ...where,
         '$Vehicle.Operation.Client.id$': userLogged.idClient

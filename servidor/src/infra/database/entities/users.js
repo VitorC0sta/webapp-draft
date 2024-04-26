@@ -9,7 +9,7 @@ const Users = databaseConnection.define("User", {
   administrator: DataTypes.BOOLEAN,
   password: DataTypes.STRING,
   active: DataTypes.BOOLEAN,
-  birthdate: DataTypes.STRING,
+  birthdate: DataTypes.DATE,
   nationalIdNumber: { type: DataTypes.STRING, field: "national_id_number"  },
   createdAt: { type: DataTypes.DATE, field: "created_at" },
   updatedAt: { type: DataTypes.DATE, field: "updated_at" },

@@ -9,7 +9,6 @@ class UserController {
     const {
       name,
       nationalIdNumber,
-      password,
       email,
       idClient,
       administrator,
@@ -28,7 +27,6 @@ class UserController {
     const user = await new CreateUserUseCase().execute({
       name,
       nationalIdNumber,
-      password,
       email,
       idClient,
       administrator,

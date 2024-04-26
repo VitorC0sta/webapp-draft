@@ -1,3 +1,4 @@
+const ShowLastEventsUseCase = require("../usecases/lastEvents.usecase");
 const ShowEventsUseCase = require("../usecases/showEvents.usecase");
 
 class EventsController {
@@ -11,6 +12,13 @@ class EventsController {
     return res.status(200).json(list);
   }
 
+  async showLastEvents(req, res) {
+    const { user } = req;
+    
+    const list = await new ShowLastEventsUseCase().execute({ user });
+
+    return res.status(200).json(list);
+  }
 }
 
 module.exports = EventsController;
