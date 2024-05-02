@@ -104,9 +104,7 @@ export function SignIn() {
                 onChange={e => {setRecoveryEmail(e.target.value)} }
               ></Input>
             </div>
-            <Button type="submit" onClick={handleSendEmail} $typeSubmit={true}>
-              Enviar
-            </Button>
+            <Button type="submit" title="Enviar" onClick={handleSendEmail} $typeSubmit/>
           </form>
         </Modal>
       </Section>

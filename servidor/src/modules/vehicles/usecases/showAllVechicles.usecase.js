@@ -34,7 +34,7 @@ class ShowVehiclesUseCase {
     if (!userLogged.isAdmin) {
       where = {
         ...where,
-        '$Operation.idClient$': userLogged.idClient,
+        '$Operation.id_client$': userLogged.idClient,
       };
     }
 

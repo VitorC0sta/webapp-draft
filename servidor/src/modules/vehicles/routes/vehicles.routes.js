@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const VehicleController = require("../controllers/vehicles.controller.js");
-const isAdmin = require("../../../infra/middlewares/isAdmin.js");
 
 const vehicleController = new VehicleController();
 const vehicleRoutes = Router();

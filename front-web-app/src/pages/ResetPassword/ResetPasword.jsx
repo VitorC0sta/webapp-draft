@@ -5,19 +5,22 @@ import Logo from "../../assets/argus-svg/argus-logo.svg";
 import Icon from "../../assets/argus-svg/argus-icon-background.svg";
 import { api } from "../../common/service/api";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function ResetPassword () {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const { search } = useLocation();
+  const navigate = useNavigate();
 
   async function handleNewPassword(event) {
     event.preventDefault();
 
     const token = new URLSearchParams(search).get('token');
 
-    return await api.post(`/reset_password?token=${token}`, {newPassword, confirmNewPassword});
+    await api.post(`/reset_password?token=${token}`, {newPassword, confirmNewPassword});
+  
+    navigate("/", {replace: true});
   }
 
   return(

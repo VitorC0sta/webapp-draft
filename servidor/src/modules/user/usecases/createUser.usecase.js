@@ -32,28 +32,34 @@ class CreateUserUseCase {
     const text = `Aqui está sua senha para acesso no portal Argus App: ${password}.`;
     const message = `<p>Aqui está sua senha para acesso no portal Argus App: ${password}</p>`;
 
-    await sendEmail({ userEmail: email, subject, text, message });
-
-    const user = await Users.create({
-      name,
-      email,
-      nationalIdNumber,
-      password: hashedPassword,
-      administrator,
-      idClient,
-      postalCode,
-      userAddress,
-      userCity,
-      userState,
-      userCountry,
-      phoneNumber,
-      birthdate: new Date(birthdate),
-      companyRole,
-    });
     
-    user.password = undefined;
+    try {
+      const user = await Users.create({
+        name,
+        email,
+        nationalIdNumber,
+        password: hashedPassword,
+        administrator,
+        idClient,
+        postalCode,
+        userAddress,
+        userCity,
+        userState,
+        userCountry,
+        phoneNumber,
+        birthdate: new Date(birthdate),
+        companyRole,
+      });
+      
+      user.password = undefined;
+    
+      await sendEmail({ userEmail: email, subject, text, message });
 
-    return user;
+      return user;
+    } catch (err) {
+      console.error(err);
+    }
+
   }
 }
 

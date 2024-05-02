@@ -1,6 +1,5 @@
 const createVehicleSchema = require("../schemas/createVehicleSchema");
 const ShowVehiclesUseCase = require("../usecases/showAllVechicles.usecase");
-const ShowVehicleUseCase = require("../usecases/showVehicle.usecase");
 const VehiclesCreateUseCase = require("../usecases/vehiclesCreate.usecase");
 
 class VehiclesController {

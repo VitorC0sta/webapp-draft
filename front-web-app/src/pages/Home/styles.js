@@ -40,19 +40,27 @@ export const Cards = styled.div`
     background: ${({ theme }) => theme.COLORS.LIGHTBLUE_600};
   }
   > .operations {
-    background: ${({ theme }) => theme.COLORS.GREEN_100};
+    background: ${({ theme }) => theme.COLORS.GREEN_200};
   }
   > .events {
     background: ${({ theme }) => theme.COLORS.ORANGE_100};
   }
-  > .clients {
+  > .users {
     background: ${({ theme }) => theme.COLORS.NEUTRAL_900};
     color: ${({ theme }) => theme.COLORS.WHITE_700};
   }
 `;
 
 export const Charts = styled.div`
-  //grid-area: chart-container;
+  padding: 1rem;
+
+  h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: ${({theme}) => theme.COLORS.DARKBLUE_700};
+  }
+
   background-color: ${({theme}) => theme.COLORS.NEUTRAL_100};
 `;
 

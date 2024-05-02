@@ -1,27 +1,7 @@
-import { useEffect, useState } from "react";
 import { Container } from "./styles";
-import { api } from "../../service/api";
 
-export function LastEventsTable({ ...rest }) {
-  const [data, setData] = useState();
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await api.get("/events/last_events");
-
-      // const lastEvents = response.data?.map(event => {
-
-      //   const { eventName } = event;
-      //   const { vehiclePlate } = event.Vehicle;
-
-      //   return { eventName, vehiclePlate };
-      // });
-
-      setData(response.data);
-    }
-
-    fetchData();
-  }, []);
+export function LastEventsTable({ data, ...rest }) {
 
   return (
     <Container {...rest}>
@@ -39,7 +19,7 @@ export function LastEventsTable({ ...rest }) {
           {data?.map((lastEvent, index) => (
             <tr key={index}>
               <td>{lastEvent.eventName}</td>
-              <td>{lastEvent.Vehicle.vehiclePlate}</td>
+              <td>{lastEvent.vehiclePlate}</td>
             </tr>
           ))}
         </tbody>

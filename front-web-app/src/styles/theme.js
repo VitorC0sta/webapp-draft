@@ -4,7 +4,7 @@ export default {
     LIGHTBLUE_600: "#A2CDF0",
     LIGHTBLUE_500: "#B2D5F2",
     LIGHTBLUE_100: "#EAF6FF",
-    
+
     DARKBLUE_700: "#262D3C",
     DARKBLUE_600: "#293349",
     DARKBLUE_500: "#46526C",
