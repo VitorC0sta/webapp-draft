@@ -1,7 +1,7 @@
 const { object, string, boolean, number, date } = require("yup");
 
 const userUpdateSchema = object({
-  password: string().min(8, "Mínimo 8 caracteres"),
+  password: string().min(6, "Mínimo 8 caracteres"),
   idClient: number(),
   newPassword: string(),
   isAdmin: boolean(),

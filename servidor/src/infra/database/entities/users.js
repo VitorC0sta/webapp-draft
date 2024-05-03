@@ -28,6 +28,7 @@ const Users = databaseConnection.define("User", {
   userState: { type: DataTypes.STRING, field: "user_state" },
   userCountry: { type: DataTypes.STRING, field: "user_country" },
   phoneNumber: { type: DataTypes.STRING, field: "phone_number"},
+  firstAccess: {type: DataTypes.BOOLEAN, field: "first_access"},
 });
 
 

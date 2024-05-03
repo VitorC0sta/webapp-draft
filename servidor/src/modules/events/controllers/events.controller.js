@@ -1,6 +1,6 @@
 const ShowLastEventsUseCase = require("../usecases/lastEvents.usecase");
 const ShowEventsUseCase = require("../usecases/showEvents.usecase");
-const ShowLastDaysEventsUseCase = require("../usecases/showaLastDaysEvents.usecase");
+const ShowLastDaysEventsUseCase = require("../usecases/showLastDaysEvents.usecase");
 
 class EventsController {
   async showEvents(req, res) {
@@ -14,17 +14,17 @@ class EventsController {
   }
 
   async showLastEvents(req, res) {
-    const { user } = req;
+    const userLogged = req.user;
     
-    const list = await new ShowLastEventsUseCase().execute({ user });
+    const list = await new ShowLastEventsUseCase().execute({ userLogged });
 
     return res.status(200).json(list);
   }
 
   async showLastDaysEvents(req , res) {
-    const { user } = req;
+    const userLogged = req.user;
 
-    const events = await new ShowLastDaysEventsUseCase().execute({ user });
+    const events = await new ShowLastDaysEventsUseCase().execute({ userLogged });
 
     return res.status(201).json(events);
   }

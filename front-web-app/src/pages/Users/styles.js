@@ -33,7 +33,6 @@ export const ContentArea = styled.section`
     .user-info {
       display: flex;
       flex-direction: column;
-
       gap: 1rem;
     }
 
@@ -54,6 +53,7 @@ export const ContentArea = styled.section`
         
         border-radius: 0.5rem ;
         border: solid 1px ${({theme}) => theme.COLORS.NEUTRAL_400};
+
       }
     }
 

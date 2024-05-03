@@ -6,11 +6,11 @@ const Vehicles = require("../../../infra/database/entities/vehicles");
 const { Op } = require("sequelize");
 
 class ShowLastDaysEventsUseCase {
-  async execute({ user }) {
+  async execute({ userLogged }) {
     let where = {
-      // createdAt: {
-      //   [Op.gte]: subDays(new Date(), 7),
-      // },
+      createdAt: {
+        [Op.gte]: subDays(new Date(), 7),
+      },
     };
 
     const lastEventsInWeek = [
@@ -40,14 +40,34 @@ class ShowLastDaysEventsUseCase {
     Vehicles.belongsTo(Operations, { foreignKey: "idOperation" });
     Operations.belongsTo(Clients, { foreignKey: "idClient" });
 
-    if (!user.isAdmin) {
+    if (!userLogged.isAdmin) {
       where = {
-        //...where,
-        "$Vehicle.Operation.Client.id$": user.idClient,
+        ...where,
+        "$Vehicle.Operation.Client.id$": userLogged.idClient,
       };
     }
 
-    const lastEvents = await Events.findAll();
+    const lastEvents = await Events.findAll({
+      include: [
+        {
+          model: Vehicles,
+          attributes: [],
+          include: [
+            {
+              model: Operations,
+              attributes: [],
+              include: [
+                {
+                  model: Clients,
+                  attributes: [],
+                }
+              ]
+            }
+          ]
+        }
+      ], 
+      where: where,
+    });
 
 
     lastEventsInWeek.forEach(lastEventInWeek => {

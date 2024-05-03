@@ -1,20 +1,19 @@
-const Clients = require("../../../infra/database/entities/clients");
 const Events = require("../../../infra/database/entities/events");
 const Operations = require("../../../infra/database/entities/operations");
 const Vehicles = require("../../../infra/database/entities/vehicles");
-
+const Clients = require("../../../infra/database/entities/clients");  
 class ShowLastEventsUseCase {
-  async execute({ user }) {
+  async execute({ userLogged }) {
 
-    let where = {};
+    let where;
 
     Events.belongsTo(Vehicles, { foreignKey: 'idVehicle' });
     Vehicles.belongsTo(Operations, { foreignKey: 'idOperation' });
     Operations.belongsTo(Clients, { foreignKey: 'idClient' });
 
-    if(!user.isAdmin) {
+    if(!userLogged.isAdmin) {
       where = {
-        '$Vehicle.Operation.Client.id$': user.idClient,
+        id: userLogged.idClient
       }
     }
 
@@ -25,9 +24,21 @@ class ShowLastEventsUseCase {
         {
           model: Vehicles,
           attributes: ['vehiclePlate'],
+          include: [
+            {
+              model: Operations,
+              attributes: [],
+              include: [
+                {
+                  model: Clients,
+                  attributes: [],
+                  where: where,
+                }
+              ]
+            }
+          ]
         }
       ], 
-      where: where,
     });
 
     return lastEvents

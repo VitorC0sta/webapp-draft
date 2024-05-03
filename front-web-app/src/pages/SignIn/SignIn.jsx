@@ -9,6 +9,8 @@ import { Button } from "../../common/components/Button/Button";
 import { useAuth } from "../../common/hooks/auth";
 import { Modal } from "../../common/components/Modal/Modal";
 import { api } from "../../common/service/api";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export function SignIn() {
   const [email, setEmail] = useState("");
@@ -30,7 +32,7 @@ export function SignIn() {
     try {
       await api.post("/forgot_password", { recoveryEmail });
     } catch (err) {
-      console.log("Não foi possível enviar o email");
+      toast("Não foi possível enviar o email");
     }
 
     setOpen(false);
@@ -41,7 +43,7 @@ export function SignIn() {
   }
 
   return (
-    <Container onKeyDown={handleSendEmailOnKeyDown}>
+    <Container onKeyDown={handleSendEmailOnKeyDown}> 
       <Section>
         <Header>
           <Link to="/">
@@ -60,6 +62,7 @@ export function SignIn() {
           </div>
         </Tittle>
         <form>
+        <ToastContainer />
           <Input
             label="Email"
             id="email"
@@ -94,6 +97,7 @@ export function SignIn() {
           </div>
         </div>
         <Modal isOpen={open} setIsOpen={setOpen} className="modal">
+          <ToastContainer />
           <form className="forgot-password">
             <div>
               <h2>Enviar email de recuperação</h2>

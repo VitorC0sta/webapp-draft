@@ -1,5 +1,7 @@
 import { createContext, useContext, useCallback, useState } from "react";
 import { api } from "../service/api";
+import { toast } from 'react-toastify';
+
 
 const AuthContext = createContext({});
 
@@ -30,9 +32,11 @@ function AuthProvider({ children }) {
       
       setData({ token, user: userResponse });
     } catch (err) {
-      alert("Não foi possível fazer login, tente novamente");
-
-      //to do adicionar toastfy 
+      toast("Não foi possível fazer login, tente novamente", {
+        theme: "light",
+        autoClose: 3000,
+        closeOnClick: true,
+      });
     }
   }, []);
 

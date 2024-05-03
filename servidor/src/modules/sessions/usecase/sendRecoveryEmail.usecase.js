@@ -7,11 +7,11 @@ const AppError = require("../../../infra/utils/AppError");
 const crypto = require("crypto");
 
 class SendRecoveryEmailUseCase {
-  async  execute({email}) {
+  async  execute({ email }) {
     try {
       const user = await Users.findOne({ where: {email} });
 
-      if(!user) {
+      if(!user || !email) {
         throw new AppError("Email e/ou usuário inválido", 401);
       }
 

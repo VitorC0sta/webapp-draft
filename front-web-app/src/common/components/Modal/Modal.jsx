@@ -1,10 +1,10 @@
 import { Container, ModalContent, ModalContainer } from "./styles";
 import { IoIosClose } from "react-icons/io";
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import PerfectScrollbar from "react-perfect-scrollbar";
 
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import "react-perfect-scrollbar/dist/css/styles.css";
 
-export function Modal({ children, isOpen, setIsOpen, title }) {
+export function Modal({ children, isOpen, setIsOpen, title, noClose }) {
   return (
     <>
       {isOpen && (
@@ -13,14 +13,14 @@ export function Modal({ children, isOpen, setIsOpen, title }) {
             <ModalContent>
               <div className="modal-header">
                 <h2>{title}</h2>
-                <IoIosClose
-                  className="close-modal" 
-                  onClick={() => setIsOpen(false)}
-                />
+                {!noClose && (
+                  <IoIosClose
+                    className="close-modal"
+                    onClick={() => setIsOpen(false)}
+                  />
+                )}
               </div>
-              <PerfectScrollbar>
-                {children}
-              </PerfectScrollbar>
+              <PerfectScrollbar>{children}</PerfectScrollbar>
             </ModalContent>
           </ModalContainer>
         </Container>

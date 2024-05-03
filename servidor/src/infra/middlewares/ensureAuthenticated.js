@@ -16,7 +16,8 @@ function ensureAuthenticated(req, res, nxt) {
             id: Number(decoded.sub),
             isAdmin: decoded.administrator,
             idClient: decoded.idClient,
-            active: decoded.active
+            active: decoded.active,
+            firstAccess: decoded.firstAccess
         } 
 
         return nxt();

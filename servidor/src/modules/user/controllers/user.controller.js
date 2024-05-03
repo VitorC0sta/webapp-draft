@@ -57,7 +57,8 @@ class UserController {
       userCountry,
       phoneNumber,
       birthdate,
-      companyRole
+      companyRole,
+      firstAccess,
     } = req.body;
 
     await userUpdateSchema.validate(req.body, { abortEarly: false });
@@ -79,6 +80,7 @@ class UserController {
       phoneNumber,
       companyRole,
       birthdate,
+      firstAccess
     });
 
     return res.status(200).json(user);

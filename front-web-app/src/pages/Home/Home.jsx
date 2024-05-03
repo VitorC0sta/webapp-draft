@@ -8,12 +8,22 @@ import { BarChartStack } from "../../common/components/Charts/BarChartStack/BarC
 import { LastEventsTable } from "../../common/components/LastEventsTable/LastEventsTable";
 import { useEffect, useState } from "react";
 import { api } from "../../common/service/api";
-
+import { useAuth } from "../../common/hooks/auth";
+import { Modal } from "../../common/components/Modal/Modal";
+import { Input } from "../../common/components/Input/Input";
+import { Button } from "../../common/components/Button/Button";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Home() {
   const [analyticsData, setAnalyticsData] = useState();
   const [lastEventsData, setLastEventsData] = useState([]);
   const [sevenDaysData, setSevenDaysData] = useState([]);
+  const [open, setOpen] = useState(true);
+  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const { user } = useAuth();
 
   useEffect(() => {
     async function fetchData() {
@@ -44,8 +54,63 @@ export function Home() {
     fetchData();
   }, []);
 
+  async function handleFirstPassword(event) {
+    event.preventDefault();
+
+    try {
+      await api.put("user/update", {
+        password,
+        newPassword,
+        confirmNewPassword,
+        firstAccess: false,
+      });
+      setOpen(false);
+    } catch {
+      toast("Não foi possível alterar a senha.");
+    }
+  }
+
   return (
     <Container>
+      {user.firstAccess && (
+        <Modal
+          isOpen={open}
+          title={"Alterar senha de primeiro acesso"}
+          className="modal"
+          exists
+          noClose
+        >
+          <ToastContainer />
+          <form>
+            <div className="wrap-passwords">
+              <Input
+                label="Código de acesso"
+                id="password"
+                type="text"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Input
+                label="Nova senha"
+                id="new-password"
+                type="password"
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <Input
+                label="Confirme a nova senha"
+                id="password"
+                type="password"
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
+              />
+            </div>
+            <Button
+              type="button"
+              title={"Mudar"}
+              onClick={handleFirstPassword}
+              $typeSubmit
+            />
+          </form>
+        </Modal>
+      )}
       <SideBar />
       <Main>
         <Title $text="Dashboard" className="title" />

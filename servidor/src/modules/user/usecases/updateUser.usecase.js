@@ -18,6 +18,7 @@ class UpdateUserUseCase {
     phoneNumber,
     companyRole,
     birthdate,
+    firstAccess
   }) {
     return (await userLogged.isAdmin) && id
       ? this.#userAdmin(
@@ -32,9 +33,10 @@ class UpdateUserUseCase {
           userCountry,
           phoneNumber,
           companyRole,
-          birthdate
+          birthdate,
+          firstAccess
         )
-      : this.#loggedUser(password, newPassword, userLogged);
+      : this.#loggedUser(password, newPassword, userLogged, firstAccess);
   }
 
   async #userAdmin(
@@ -49,7 +51,8 @@ class UpdateUserUseCase {
     userCountry,
     phoneNumber,
     companyRole,
-    birthdate
+    birthdate,
+    firstAccess
   ) {
     const user = await Users.findOne({ where: { id } });
     console.log(user);
@@ -66,6 +69,7 @@ class UpdateUserUseCase {
       user.phoneNumber = phoneNumber ?? user.phoneNumber;
       user.companyRole = companyRole ?? user.companyRole;
       user.birthdate = await this.#stringToDate(birthdate) ?? user.birthdate;
+      user.firstAccess = firstAccess ?? user.firstAccess;
       newPassword ? (user.password = await hash(newPassword, 8)) : "";
 
     } catch (err) {
@@ -79,7 +83,7 @@ class UpdateUserUseCase {
     return user;
   }
 
-  async #loggedUser(password, newPassword, userLogged) {
+  async #loggedUser(password, newPassword, userLogged, firstAccess) {
     const userLoggedUpdate = await Users.findOne({
       where: { id: userLogged.id },
     });
@@ -95,10 +99,11 @@ class UpdateUserUseCase {
     }
 
     userLoggedUpdate.password = await hash(newPassword, 8);
-
+    userLoggedUpdate.firstAccess = firstAccess ?? userLoggedUpdate.firstAccess;
     await userLoggedUpdate.save();
 
     userLoggedUpdate.password = undefined;
+    
 
     return userLoggedUpdate;
   }
@@ -106,7 +111,7 @@ class UpdateUserUseCase {
   async #stringToDate(birthdate) {
     const [yearString, monthString, dayString] = birthdate.split("/");
 
-      const year = Number(yearString);
+    const year = Number(yearString);
     const month = Number(monthString) - 1; //months in 'Date' [0-11] [jan-dec].
     const day = Number(dayString);
 

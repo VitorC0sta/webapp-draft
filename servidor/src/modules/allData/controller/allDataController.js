@@ -2,9 +2,9 @@ const ShowAllDataUseCase = require("../usecase/showAllData.usecase");
 
 class AllDataController {
   async showAllData(req, res) {
-    const  { user } = req;
+    const  userLogged = req.user;
 
-    const allData = await new ShowAllDataUseCase().execute({ user });
+    const allData = await new ShowAllDataUseCase().execute({ userLogged });
 
     return res.status(201).json(allData); 
   }

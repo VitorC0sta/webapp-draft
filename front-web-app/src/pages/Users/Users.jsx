@@ -31,6 +31,8 @@ import {
   BiMobileAlt,
   BiBriefcase,
 } from "react-icons/bi";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Users() {
   const [open, setOpen] = useState(false);
@@ -97,9 +99,12 @@ export function Users() {
 
     setOpen(false);
 
-    console.log({ ...formData });
 
-    await api.post("user/", { ...formData });
+    try {
+      await api.post("user/", { ...formData });
+    } catch (err) {
+      toast("Não foi possível criar o usuário");
+    }
   }
 
   return (
@@ -114,6 +119,7 @@ export function Users() {
           title="Criar Usuário"
           exists
         >
+          <ToastContainer/>
           <form className="new-user-form" onSubmit={handleNewClient}>
             <div className="user-info">
               <h3>Informações pessoais</h3>
@@ -239,6 +245,7 @@ export function Users() {
                   name="companyRole"
                   type="text"
                   icon={<BiBriefcase />}
+                  $srOnly
                   onChange={event => setFormData({...formData, companyRole: event.target.value})}
                 />
               </div>
