@@ -9,7 +9,7 @@ class ShowLastDaysEventsUseCase {
   async execute({ userLogged }) {
     let where = {
       createdAt: {
-        [Op.gte]: subDays(new Date(), 7),
+        [Op.gte]: subDays(new Date(), 100),
       },
     };
 

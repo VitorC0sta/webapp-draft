@@ -29,9 +29,12 @@ export function SignIn() {
 
   async function handleSendEmail(event) {
     event.preventDefault();
+
     try {
       await api.post("/forgot_password", { recoveryEmail });
+    
     } catch (err) {
+    
       toast("Não foi possível enviar o email");
     }
 
@@ -97,7 +100,6 @@ export function SignIn() {
           </div>
         </div>
         <Modal isOpen={open} setIsOpen={setOpen} className="modal">
-          <ToastContainer />
           <form className="forgot-password">
             <div>
               <h2>Enviar email de recuperação</h2>
@@ -106,9 +108,9 @@ export function SignIn() {
                 id="forgot-password-email"
                 type="email"
                 onChange={e => {setRecoveryEmail(e.target.value)} }
-              ></Input>
+              />
             </div>
-            <Button type="submit" title="Enviar" onClick={handleSendEmail} $typeSubmit/>
+            <Button disabled={recoveryEmail.length === 0} type="submit" title="Enviar" onClick={handleSendEmail} $typeSubmit/>
           </form>
         </Modal>
       </Section>
